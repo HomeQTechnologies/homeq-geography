@@ -1,0 +1,48 @@
+{
+  "name": "geo-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest --mode test"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mapbox/mapbox-gl-draw": "^1.5.1",
+    "@mui/icons-material": "^5.0.4",
+    "@mui/material": "^5.14.2",
+    "sonner": "^2.0.3",
+    "@tailwindcss/vite": "^4.1.12",
+    "@turf/area": "^7.3.5",
+    "@turf/bbox": "^7.2.0",
+    "@turf/difference": "^7.3.5",
+    "@turf/helpers": "^7.3.5",
+    "@turf/intersect": "^7.3.5",
+    "@turf/union": "^7.3.5",
+    "axios": "^1.4.0",
+    "clsx": "^2.1.1",
+    "js-md5": "^0.7.3",
+    "maplibre-gl": "^2.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-map-gl": "^7.1.8"
+  },
+  "devDependencies": {
+    "@types/js-md5": "^0.8.0",
+    "@types/node": "^20.19.11",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.1.0",
+    "happy-dom": "^20.8.4",
+    "sass": "^1.89.2",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.1.6",
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^4.1.0"
+  }
+}

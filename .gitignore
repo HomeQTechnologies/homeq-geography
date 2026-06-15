@@ -1,0 +1,6 @@
+.idea/
+data/geojson/*
+data/gpkg/*
+**/*.geojson
+data/individual/**/*.json
+__pycache__/
