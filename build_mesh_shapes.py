@@ -32,7 +32,7 @@ from shapely import make_valid, unary_union
 from shapely.geometry import Polygon
 from shapely.geometry.base import BaseGeometry
 
-from flatten import build_geojson, slugify
+from flatten_lib import build_geojson, slugify
 
 MESH_FILE_TYPE = "homeq-mesh"
 COORDINATE_PRECISION = 6

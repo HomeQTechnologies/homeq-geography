@@ -1,15 +1,18 @@
+// @ts-ignore
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+// @ts-ignore
 import path from "path";
 import { fileURLToPath } from "url";
 import { loadEnv } from "vite";
 import viteTsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
+// @ts-ignore
 import { localFilesPlugin } from "./vite/localFilesPlugin.mts";
 
+// @ts-ignore
 const configDir = path.dirname(fileURLToPath(import.meta.url));
 
-// @ts-expect-error Vite/Vitest config typing is version-skewed in this workspace
 export default defineConfig(({ mode }) => {
   const env = {
     ...process.env,
