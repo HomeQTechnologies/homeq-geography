@@ -23,8 +23,6 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
-from flatten_lib import load_existing_package, resolve_metadata
-
 GEOJSON_PATH = Path("data/geojson/urban_areas.geojson")
 OUTPUT_DIR = Path("data/individual/urban_areas")
 
@@ -60,6 +58,42 @@ def build_geojson(feature: dict[str, Any]) -> dict[str, Any]:
             }
         ],
     }
+
+
+def load_existing_package(output_dir: Path, basename: str) -> dict[str, Any] | None:
+    gz_path = output_dir / f"{basename}.geojson.gz"
+    if not gz_path.is_file():
+        return None
+    with gzip.open(gz_path, "rt", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def empty_metadata(metadata_type: str, name: str) -> dict[str, Any]:
+    return {
+        "id": None,
+        "old_id": None,
+        "type": metadata_type,
+        "name": name,
+        "hash": "",
+    }
+
+
+def resolve_metadata(
+    existing_package: dict[str, Any] | None,
+    metadata_type: str,
+    name: str,
+) -> tuple[dict[str, Any], bool]:
+    if existing_package is None:
+        return empty_metadata(metadata_type, name), True
+
+    previous = existing_package.get("metadata") or {}
+    return {
+        "id": previous.get("id"),
+        "old_id": previous.get("old_id"),
+        "type": metadata_type,
+        "name": name,
+        "hash": previous.get("hash", ""),
+    }, False
 
 
 def build_output(feature: dict[str, Any], metadata: dict[str, Any]) -> dict[str, Any]:
