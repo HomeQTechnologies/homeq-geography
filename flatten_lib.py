@@ -12,7 +12,6 @@ from typing import Any
 
 GEOJSON_DIR = Path("data/geojson")
 OUTPUT_DIR = Path("data/individual")
-METADATA_PATH = Path("data/existing/metadata.json")
 METADATA_FIELDS = ("id", "old_id", "type", "name", "hash")
 
 # feature_type, metadata_type, filename name key, metadata match name key,
@@ -92,38 +91,30 @@ def build_geojson(feature: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def load_metadata_index(
-    path: Path,
-) -> tuple[dict[tuple[str, str], list[dict[str, Any]]], dict[tuple[str, int], dict[str, Any]]]:
-    records = json.loads(path.read_text(encoding="utf-8"))
-    by_type_name: dict[tuple[str, str], list[dict[str, Any]]] = {}
-    by_type_code: dict[tuple[str, int], dict[str, Any]] = {}
-    for record in records:
-        by_type_name.setdefault((record["type"], record["name"].lower()), []).append(record)
-        by_type_code[(record["type"], record["old_id"])] = record
-    return by_type_name, by_type_code
+def load_existing_package(output_dir: Path, basename: str) -> dict[str, Any] | None:
+    gz_path = output_dir / f"{basename}.geojson.gz"
+    if not gz_path.is_file():
+        return None
+    with gzip.open(gz_path, "rt", encoding="utf-8") as handle:
+        return json.load(handle)
 
 
-def lookup_metadata(
-    by_type_name: dict[tuple[str, str], list[dict[str, Any]]],
-    by_type_code: dict[tuple[str, int], dict[str, Any]],
+def resolve_metadata(
+    existing_package: dict[str, Any] | None,
     metadata_type: str,
-    match_name: str,
-    code: int | str | None,
-) -> dict[str, Any] | None:
-    matches = by_type_name.get((metadata_type, match_name.lower()), [])
-    if len(matches) == 1:
-        return matches[0]
-    if len(matches) > 1 and code is not None:
-        for match in matches:
-            if match["old_id"] == code:
-                return match
-        return None
-    if len(matches) > 1:
-        return None
-    if code is not None:
-        return by_type_code.get((metadata_type, code))
-    return None
+    name: str,
+) -> tuple[dict[str, Any], bool]:
+    if existing_package is None:
+        return empty_metadata(metadata_type, name), True
+
+    previous = existing_package.get("metadata") or {}
+    return {
+        "id": previous.get("id"),
+        "old_id": previous.get("old_id"),
+        "type": metadata_type,
+        "name": name,
+        "hash": previous.get("hash", ""),
+    }, False
 
 
 def empty_metadata(metadata_type: str, name: str) -> dict[str, Any]:
@@ -164,10 +155,8 @@ def flatten_file(
     source: Path,
     output_dir: Path,
     naming: FlattenNaming,
-    by_type_name: dict[tuple[str, str], list[dict[str, Any]]],
-    by_type_code: dict[tuple[str, int], dict[str, Any]],
 ) -> tuple[int, int]:
-    feature_type, metadata_type, name_key, match_name_key, code_key, code_fn = naming
+    feature_type, metadata_type, name_key, match_name_key, code_key, _code_fn = naming
 
     with source.open(encoding="utf-8") as handle:
         collection = json.load(handle)
@@ -182,17 +171,8 @@ def flatten_file(
     for feature, properties in zip(features, properties_list):
         if source.stem == "state":
             match_name = "Sweden"
-            code = None
         else:
             match_name = properties[match_name_key]
-            code = code_fn(properties) if code_fn is not None else None
-
-        existing = lookup_metadata(by_type_name, by_type_code, metadata_type, match_name, code)
-        if existing is None:
-            metadata = empty_metadata(metadata_type, match_name)
-            new_count += 1
-        else:
-            metadata = {field: existing[field] for field in METADATA_FIELDS}
 
         basename = feature_basename(
             feature_type,
@@ -200,7 +180,10 @@ def flatten_file(
             name_key,
             code_key,
         )
-        if existing is None:
+        existing_package = load_existing_package(out_dir, basename)
+        metadata, is_new = resolve_metadata(existing_package, metadata_type, match_name)
+        if is_new:
+            new_count += 1
             print(f"New shape: {source.stem}/{basename}.geojson.gz")
 
         output = build_output(feature, metadata)
@@ -216,9 +199,7 @@ def run_flatten(
     *,
     geojson_dir: Path = GEOJSON_DIR,
     output_dir: Path = OUTPUT_DIR,
-    metadata_path: Path = METADATA_PATH,
 ) -> tuple[int, int]:
-    by_type_name, by_type_code = load_metadata_index(metadata_path)
     total = 0
     total_new = 0
 
@@ -229,7 +210,7 @@ def run_flatten(
             print(f"Skipping {source.name}: file not found")
             continue
 
-        count, new_count = flatten_file(source, output_dir, naming, by_type_name, by_type_code)
+        count, new_count = flatten_file(source, output_dir, naming)
         print(f"{source.name}: {count} features ({new_count} new)")
         total += count
         total_new += new_count

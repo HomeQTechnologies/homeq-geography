@@ -4,6 +4,9 @@
 This script is intentionally self-contained so district-specific rules can
 evolve independently from urban areas, counties, municipalities, and state.
 
+Existing shape packages in the output directory are the source of truth for
+id, old_id, and hash. Each package is keyed by distriktskod.
+
 Usage:
     python flatten_districts.py
     python flatten_districts.py --geojson data/geojson/districts.geojson
@@ -13,7 +16,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import csv
 import gzip
 import json
 import re
@@ -21,23 +23,21 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
+from flatten_lib import load_existing_package, resolve_metadata
+
 GEOJSON_PATH = Path("data/geojson/districts.geojson")
 OUTPUT_DIR = Path("data/individual/districts")
-METADATA_PATH = Path("existing_districts.csv")
 
 FEATURE_TYPE = "district"
 METADATA_TYPE = "district"
 NAME_KEY = "distriktsnamn"
 FILENAME_KEY = "distriktskod"
-BOUND_FIELDS = ("min_latitude", "max_latitude", "min_longitude", "max_longitude")
-MAX_CENTER_DISTANCE_DEGREES = 0.15
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--geojson", type=Path, default=GEOJSON_PATH)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
-    parser.add_argument("--metadata", type=Path, default=METADATA_PATH)
     return parser.parse_args()
 
 
@@ -70,16 +70,6 @@ def build_output(feature: dict[str, Any], metadata: dict[str, Any]) -> dict[str,
             "geometry": feature.get("geometry"),
             "properties": feature.get("properties", {}),
         },
-    }
-
-
-def empty_metadata(name: str) -> dict[str, Any]:
-    return {
-        "id": None,
-        "old_id": None,
-        "type": METADATA_TYPE,
-        "name": name,
-        "hash": "",
     }
 
 
@@ -118,39 +108,6 @@ def geometry_bounds(geometry: dict[str, Any]) -> dict[str, float]:
     }
 
 
-def box_center(bounds: dict[str, float]) -> tuple[float, float]:
-    return (
-        (bounds["min_latitude"] + bounds["max_latitude"]) / 2,
-        (bounds["min_longitude"] + bounds["max_longitude"]) / 2,
-    )
-
-
-def center_distance(left: dict[str, float], right: dict[str, float]) -> float:
-    lat1, lon1 = box_center(left)
-    lat2, lon2 = box_center(right)
-    return ((lat1 - lat2) ** 2 + (lon1 - lon2) ** 2) ** 0.5
-
-
-def load_district_metadata_index(path: Path) -> dict[str, list[dict[str, Any]]]:
-    by_name: dict[str, list[dict[str, Any]]] = {}
-
-    with path.open(encoding="utf-8", newline="") as handle:
-        for row in csv.reader(handle):
-            record = {
-                "id": int(row[0]),
-                "old_id": int(row[1]),
-                "name": row[2],
-                "hash": row[3],
-                "min_latitude": float(row[4]),
-                "max_latitude": float(row[5]),
-                "min_longitude": float(row[6]),
-                "max_longitude": float(row[7]),
-            }
-            by_name.setdefault(record["name"].lower(), []).append(record)
-
-    return by_name
-
-
 def validate_district_feature(feature: dict[str, Any]) -> str | None:
     """Return an error message when a feature should be skipped."""
     properties = feature.get("properties") or {}
@@ -167,31 +124,6 @@ def validate_district_feature(feature: dict[str, Any]) -> str | None:
         return "missing geometry"
 
     return None
-
-
-def lookup_district_metadata(
-    by_name: dict[str, list[dict[str, Any]]],
-    name: str,
-    bounds: dict[str, float],
-    assigned_ids: set[int],
-) -> dict[str, Any] | None:
-    """Match districts by name, disambiguating duplicates via nearest bbox center."""
-    matches = [
-        record
-        for record in by_name.get(name.lower(), [])
-        if record["id"] not in assigned_ids
-    ]
-    if not matches:
-        return None
-
-    best = min(
-        matches,
-        key=lambda record: center_distance(bounds, {field: record[field] for field in BOUND_FIELDS}),
-    )
-    best_distance = center_distance(bounds, {field: best[field] for field in BOUND_FIELDS})
-    if best_distance > MAX_CENTER_DISTANCE_DEGREES:
-        return None
-    return best
 
 
 def feature_basename(properties: dict[str, Any]) -> str:
@@ -214,23 +146,14 @@ def write_shape_package(output_dir: Path, basename: str, feature: dict[str, Any]
     json_path.write_text(json.dumps(build_geojson(feature), ensure_ascii=False), encoding="utf-8")
 
 
-def flatten_districts(
-    source: Path,
-    output_dir: Path,
-    metadata_path: Path,
-) -> tuple[int, int, int]:
+def flatten_districts(source: Path, output_dir: Path) -> tuple[int, int, int]:
     if not source.is_file():
         raise SystemExit(f"GeoJSON file not found: {source}")
-    if not metadata_path.is_file():
-        raise SystemExit(f"Metadata file not found: {metadata_path}")
 
     with source.open(encoding="utf-8") as handle:
         collection = json.load(handle)
 
     features = collection.get("features", [])
-    by_name = load_district_metadata_index(metadata_path)
-    assigned_ids: set[int] = set()
-
     written = 0
     new_count = 0
     skipped = 0
@@ -245,26 +168,13 @@ def flatten_districts(
 
         properties = feature["properties"]
         name = properties[NAME_KEY].strip()
-        bounds = geometry_bounds(feature["geometry"])
-        existing = lookup_district_metadata(by_name, name, bounds, assigned_ids)
-
-        if existing is None:
-            metadata = empty_metadata(name)
-            new_count += 1
-        else:
-            metadata = {
-                "id": existing["id"],
-                "old_id": existing["old_id"],
-                "type": METADATA_TYPE,
-                "name": name,
-                "hash": existing["hash"],
-            }
-            assigned_ids.add(existing["id"])
-
-        metadata = {**metadata, **bounds}
         basename = feature_basename(properties)
+        existing_package = load_existing_package(output_dir, basename)
+        metadata, is_new = resolve_metadata(existing_package, METADATA_TYPE, name)
+        metadata = {**metadata, **geometry_bounds(feature["geometry"])}
 
-        if existing is None:
+        if is_new:
+            new_count += 1
             print(f"New shape: {basename}.geojson.gz")
 
         write_shape_package(output_dir, basename, feature, metadata)
@@ -275,7 +185,7 @@ def flatten_districts(
 
 def main() -> None:
     args = parse_args()
-    written, new_count, skipped = flatten_districts(args.geojson, args.output_dir, args.metadata)
+    written, new_count, skipped = flatten_districts(args.geojson, args.output_dir)
     print(
         f"Wrote {written} district shape packages under {args.output_dir}/ "
         f"({new_count} new, {skipped} skipped)"
