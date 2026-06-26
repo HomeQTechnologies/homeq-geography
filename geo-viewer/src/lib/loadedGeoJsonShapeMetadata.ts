@@ -1,4 +1,4 @@
-import { extractShapesFromFeatures } from "./extractGeoJsonShapes";
+import { listLoadedGeoJsonFeatures } from "./extractGeoJsonShapes";
 import { getShapeKey } from "./geoJsonShapeGroups";
 import type { LoadedGeoJsonFile } from "./loadedGeoJsonFiles";
 
@@ -46,7 +46,7 @@ export function buildShapeMetadataForFile(
   file: LoadedGeoJsonFile,
   existing: LoadedGeoJsonShapeMetadataByKey = {},
 ): LoadedGeoJsonShapeMetadataByKey {
-  const shapes = extractShapesFromFeatures(file.features);
+  const shapes = listLoadedGeoJsonFeatures(file.features);
   let next = { ...existing };
 
   for (const shape of shapes) {

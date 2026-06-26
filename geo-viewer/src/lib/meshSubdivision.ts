@@ -23,7 +23,8 @@ export type MeshInteractionMode =
   | "extrude-edge"
   | "subdivide-face"
   | "create-face"
-  | "merge-faces";
+  | "merge-faces"
+  | "delete-vertex-chain";
 
 export function createEmptyMeshDocument(): MeshDocument {
   return { vertices: {}, faces: [] };
@@ -330,6 +331,260 @@ function facesSharingUndirectedEdge(
   }
 
   return matches;
+}
+
+export function areMeshVerticesAdjacent(
+  document: MeshDocument,
+  vertexIdA: string,
+  vertexIdB: string,
+): boolean {
+  if (vertexIdA === vertexIdB) return false;
+  return facesSharingUndirectedEdge(document, vertexIdA, vertexIdB).length > 0;
+}
+
+export interface DeleteChainPick {
+  startId: string | null;
+  directionId: string | null;
+  chainVertexIds: string[];
+  isComplete: boolean;
+}
+
+export const EMPTY_DELETE_CHAIN_PICK: DeleteChainPick = {
+  startId: null,
+  directionId: null,
+  chainVertexIds: [],
+  isComplete: false,
+};
+
+export function getMeshVertexNeighbors(document: MeshDocument, vertexId: string): string[] {
+  const neighbors = new Set<string>();
+
+  for (const face of document.faces) {
+    const index = face.vertexIds.indexOf(vertexId);
+    if (index === -1) continue;
+
+    const length = face.vertexIds.length;
+    neighbors.add(face.vertexIds[(index - 1 + length) % length]!);
+    neighbors.add(face.vertexIds[(index + 1) % length]!);
+  }
+
+  return [...neighbors];
+}
+
+function shortestPathAwayFrom(
+  document: MeshDocument,
+  fromId: string,
+  toId: string,
+  awayFromId: string,
+): string[] | null {
+  if (fromId === toId) {
+    return [fromId];
+  }
+
+  const queue = [fromId];
+  const visited = new Set<string>([fromId]);
+  const parent = new Map<string, string | null>([[fromId, null]]);
+
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    if (current === toId) {
+      const path: string[] = [];
+      let node: string | null = toId;
+      while (node !== null) {
+        path.unshift(node);
+        node = parent.get(node) ?? null;
+      }
+      return path;
+    }
+
+    for (const neighbor of getMeshVertexNeighbors(document, current)) {
+      if (neighbor === awayFromId || visited.has(neighbor)) {
+        continue;
+      }
+      visited.add(neighbor);
+      parent.set(neighbor, current);
+      queue.push(neighbor);
+    }
+  }
+
+  return null;
+}
+
+export function buildDeleteChainAlongDirection(
+  document: MeshDocument,
+  startId: string,
+  directionId: string,
+  endId: string,
+): string[] | null {
+  if (!areMeshVerticesAdjacent(document, startId, directionId)) {
+    return null;
+  }
+
+  if (endId === startId) {
+    return [startId];
+  }
+
+  if (endId === directionId) {
+    return [startId, directionId];
+  }
+
+  const forwardPath = shortestPathAwayFrom(document, directionId, endId, startId);
+  if (!forwardPath) {
+    return null;
+  }
+
+  return [startId, ...forwardPath];
+}
+
+export function pickDeleteChainVertex(
+  document: MeshDocument,
+  pick: DeleteChainPick,
+  vertexId: string,
+  outerVerticesLocked: boolean,
+): DeleteChainPick | null {
+  if (!isMeshVertexRemovable(document, vertexId, outerVerticesLocked)) {
+    return null;
+  }
+
+  if (pick.isComplete) {
+    return {
+      startId: vertexId,
+      directionId: null,
+      chainVertexIds: [vertexId],
+      isComplete: false,
+    };
+  }
+
+  if (!pick.startId) {
+    return {
+      startId: vertexId,
+      directionId: null,
+      chainVertexIds: [vertexId],
+      isComplete: false,
+    };
+  }
+
+  if (!pick.directionId) {
+    if (vertexId === pick.startId) {
+      return { ...EMPTY_DELETE_CHAIN_PICK };
+    }
+
+    if (!areMeshVerticesAdjacent(document, pick.startId, vertexId)) {
+      return {
+        startId: vertexId,
+        directionId: null,
+        chainVertexIds: [vertexId],
+        isComplete: false,
+      };
+    }
+
+    return {
+      startId: pick.startId,
+      directionId: vertexId,
+      chainVertexIds: [pick.startId, vertexId],
+      isComplete: false,
+    };
+  }
+
+  if (vertexId === pick.startId) {
+    return { ...EMPTY_DELETE_CHAIN_PICK };
+  }
+
+  if (vertexId === pick.directionId) {
+    return {
+      startId: pick.startId,
+      directionId: pick.directionId,
+      chainVertexIds: [pick.startId, pick.directionId],
+      isComplete: true,
+    };
+  }
+
+  const chain = buildDeleteChainAlongDirection(document, pick.startId, pick.directionId, vertexId);
+  if (!chain) {
+    return pick;
+  }
+
+  return {
+    startId: pick.startId,
+    directionId: pick.directionId,
+    chainVertexIds: chain,
+    isComplete: true,
+  };
+}
+
+export function resolveDeleteChainPreviewVertexIds(
+  document: MeshDocument,
+  pick: DeleteChainPick,
+  hoverVertexId: string | null,
+): string[] {
+  if (pick.isComplete) {
+    return pick.chainVertexIds;
+  }
+
+  if (pick.startId && pick.directionId && hoverVertexId) {
+    const preview = buildDeleteChainAlongDirection(
+      document,
+      pick.startId,
+      pick.directionId,
+      hoverVertexId,
+    );
+    if (preview) {
+      return preview;
+    }
+  }
+
+  return pick.chainVertexIds;
+}
+
+export function buildMeshVertexChainPreviewCollection(
+  document: MeshDocument,
+  pick: DeleteChainPick,
+  hoverVertexId: string | null,
+): GeoJSON.FeatureCollection {
+  const previewVertexIds = resolveDeleteChainPreviewVertexIds(document, pick, hoverVertexId);
+
+  if (previewVertexIds.length === 0) {
+    return { type: "FeatureCollection", features: [] };
+  }
+
+  const pointFeatures = previewVertexIds
+    .map(vertexId => document.vertices[vertexId])
+    .filter((vertex): vertex is MeshVertex => vertex !== undefined)
+    .map(vertex => ({
+      type: "Feature" as const,
+      properties: { vertexId: vertex.id },
+      geometry: {
+        type: "Point" as const,
+        coordinates: vertex.position,
+      },
+    }));
+
+  if (previewVertexIds.length < 2) {
+    return { type: "FeatureCollection", features: pointFeatures };
+  }
+
+  const lineCoordinates = previewVertexIds
+    .map(vertexId => document.vertices[vertexId]?.position)
+    .filter((position): position is GeoJSON.Position => position !== undefined);
+
+  if (lineCoordinates.length < 2) {
+    return { type: "FeatureCollection", features: pointFeatures };
+  }
+
+  return {
+    type: "FeatureCollection",
+    features: [
+      ...pointFeatures,
+      {
+        type: "Feature",
+        properties: {},
+        geometry: {
+          type: "LineString",
+          coordinates: lineCoordinates,
+        },
+      },
+    ],
+  };
 }
 
 function areAdjacentOnFace(face: MeshFace, vertexIdA: string, vertexIdB: string): boolean {
@@ -1377,4 +1632,47 @@ function isPointInPolygon(point: GeoJSON.Position, ring: GeoJSON.Position[]): bo
   }
 
   return inside;
+}
+
+export function isMeshVertexRemovable(
+  document: MeshDocument,
+  vertexId: string,
+  outerVerticesLocked: boolean,
+): boolean {
+  if (!getVertex(document, vertexId) || isMeshVertexLocked(document, vertexId)) {
+    return false;
+  }
+
+  if (outerVerticesLocked && isOuterMeshVertex(document, vertexId)) {
+    return false;
+  }
+
+  return true;
+}
+
+export function removeMeshVertices(document: MeshDocument, vertexIds: Iterable<string>): MeshDocument {
+  const removeIds = new Set(vertexIds);
+  for (const vertexId of [...removeIds]) {
+    if (!getVertex(document, vertexId) || isMeshVertexLocked(document, vertexId)) {
+      removeIds.delete(vertexId);
+    }
+  }
+
+  if (removeIds.size === 0) {
+    return document;
+  }
+
+  const faces = document.faces
+    .map(face => ({
+      ...face,
+      vertexIds: face.vertexIds.filter(id => !removeIds.has(id)),
+    }))
+    .filter(face => face.vertexIds.length >= 3);
+
+  const usedVertexIds = new Set(faces.flatMap(face => face.vertexIds));
+  const vertices = Object.fromEntries(
+    Object.entries(document.vertices).filter(([id]) => usedVertexIds.has(id)),
+  );
+
+  return { vertices, faces };
 }

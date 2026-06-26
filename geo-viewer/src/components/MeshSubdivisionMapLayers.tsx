@@ -10,6 +10,10 @@ import {
   buildMeshVertexCollection,
   buildMeshVertexPickPreviewCollection,
   buildMeshFacePickPreviewCollection,
+  buildMeshVertexChainPreviewCollection,
+  EMPTY_DELETE_CHAIN_PICK,
+  pickDeleteChainVertex,
+  type DeleteChainPick,
   createFaceFromVertices,
   mergeFaces,
   explainMergeFacesFailure,
@@ -49,6 +53,7 @@ interface MeshSubdivisionMapLayersProps {
   onSelectEdge: (faceId: string, edgeIndex: number | null) => void;
   onInsertCursorChange?: (cursor: string | null) => void;
   onVertexMoveCommitted?: (entry: MeshVertexMoveUndoEntry) => void;
+  onDeleteMeshVertices?: (vertexIds: string[]) => void;
   onMergeError?: (message: string | null) => void;
 }
 
@@ -59,6 +64,7 @@ function resolveMeshInsertCursor(options: {
   highlightedEdge: HighlightedMeshEdge | null;
   subdivideHoverVertexId: string | null;
   createFaceHoverVertexId: string | null;
+  deleteChainHoverVertexId: string | null;
   mergeHoverFaceId: string | null;
   dragging: boolean;
 }): string | null {
@@ -69,6 +75,9 @@ function resolveMeshInsertCursor(options: {
   if (options.interactionMode === "create-face") {
     return options.createFaceHoverVertexId ? "pointer" : "crosshair";
   }
+  if (options.interactionMode === "delete-vertex-chain") {
+    return options.deleteChainHoverVertexId ? "pointer" : "crosshair";
+  }
   if (options.interactionMode === "merge-faces") {
     return options.mergeHoverFaceId ? "pointer" : "crosshair";
   }
@@ -78,7 +87,7 @@ function resolveMeshInsertCursor(options: {
 }
 
 function isVertexPickInteractionMode(mode: MeshInteractionMode): boolean {
-  return mode === "subdivide-face" || mode === "create-face";
+  return mode === "subdivide-face" || mode === "create-face" || mode === "delete-vertex-chain";
 }
 
 const EMPTY_FEATURE_COLLECTION: GeoJSON.FeatureCollection = {
@@ -98,6 +107,7 @@ export function MeshSubdivisionMapLayers({
   onSelectEdge,
   onInsertCursorChange,
   onVertexMoveCommitted,
+  onDeleteMeshVertices,
   onMergeError,
 }: MeshSubdivisionMapLayersProps) {
   const { current: mapRef } = useMap();
@@ -107,11 +117,13 @@ export function MeshSubdivisionMapLayers({
   const onSelectEdgeRef = useRef(onSelectEdge);
   const onInsertCursorChangeRef = useRef(onInsertCursorChange);
   const onVertexMoveCommittedRef = useRef(onVertexMoveCommitted);
+  const onDeleteMeshVerticesRef = useRef(onDeleteMeshVertices);
   const onMergeErrorRef = useRef(onMergeError);
   const documentRef = useRef(document);
   const interactionModeRef = useRef(interactionMode);
   const outerVerticesLockedRef = useRef(outerVerticesLocked);
   const selectedFaceIdRef = useRef(selectedFaceId);
+  const lastInsertCursorRef = useRef<string | null | undefined>(undefined);
   const shiftHeldRef = useRef(false);
   const highlightedEdgeRef = useRef<HighlightedMeshEdge | null>(null);
   const highlightedVertexIdRef = useRef<string | null>(null);
@@ -121,6 +133,8 @@ export function MeshSubdivisionMapLayers({
   const createFaceHoverVertexIdRef = useRef<string | null>(null);
   const mergePickFaceIdsRef = useRef<string[]>([]);
   const mergeHoverFaceIdRef = useRef<string | null>(null);
+  const deleteChainPickRef = useRef<DeleteChainPick>(EMPTY_DELETE_CHAIN_PICK);
+  const deleteChainHoverVertexIdRef = useRef<string | null>(null);
   const [shiftHeld, setShiftHeld] = useState(false);
   const [highlightedEdge, setHighlightedEdge] = useState<HighlightedMeshEdge | null>(null);
   const [highlightedVertexId, setHighlightedVertexId] = useState<string | null>(null);
@@ -130,12 +144,15 @@ export function MeshSubdivisionMapLayers({
   const [createFaceHoverVertexId, setCreateFaceHoverVertexId] = useState<string | null>(null);
   const [mergePickFaceIds, setMergePickFaceIds] = useState<string[]>([]);
   const [mergeHoverFaceId, setMergeHoverFaceId] = useState<string | null>(null);
+  const [deleteChainPick, setDeleteChainPick] = useState<DeleteChainPick>(EMPTY_DELETE_CHAIN_PICK);
+  const [deleteChainHoverVertexId, setDeleteChainHoverVertexId] = useState<string | null>(null);
 
   onDocumentChangeRef.current = onDocumentChange;
   onSelectFaceRef.current = onSelectFace;
   onSelectEdgeRef.current = onSelectEdge;
   onInsertCursorChangeRef.current = onInsertCursorChange;
   onVertexMoveCommittedRef.current = onVertexMoveCommitted;
+  onDeleteMeshVerticesRef.current = onDeleteMeshVertices;
   onMergeErrorRef.current = onMergeError;
   documentRef.current = document;
   interactionModeRef.current = interactionMode;
@@ -150,20 +167,36 @@ export function MeshSubdivisionMapLayers({
   createFaceHoverVertexIdRef.current = createFaceHoverVertexId;
   mergePickFaceIdsRef.current = mergePickFaceIds;
   mergeHoverFaceIdRef.current = mergeHoverFaceId;
+  deleteChainPickRef.current = deleteChainPick;
+  deleteChainHoverVertexIdRef.current = deleteChainHoverVertexId;
+
+  const clearDeleteChainPick = () => {
+    deleteChainPickRef.current = EMPTY_DELETE_CHAIN_PICK;
+    setDeleteChainPick(EMPTY_DELETE_CHAIN_PICK);
+    setDeleteChainHoverVertexId(null);
+    deleteChainHoverVertexIdRef.current = null;
+    syncInsertCursor();
+  };
 
   const syncInsertCursor = () => {
-    onInsertCursorChangeRef.current?.(
-      resolveMeshInsertCursor({
-        shiftHeld: shiftHeldRef.current,
-        interactionMode: interactionModeRef.current,
-        highlightedVertexId: highlightedVertexIdRef.current,
-        highlightedEdge: highlightedEdgeRef.current,
-        subdivideHoverVertexId: subdivideHoverVertexIdRef.current,
-        createFaceHoverVertexId: createFaceHoverVertexIdRef.current,
-        mergeHoverFaceId: mergeHoverFaceIdRef.current,
-        dragging: dragStateRef.current !== null,
-      }),
-    );
+    const nextCursor = resolveMeshInsertCursor({
+      shiftHeld: shiftHeldRef.current,
+      interactionMode: interactionModeRef.current,
+      highlightedVertexId: highlightedVertexIdRef.current,
+      highlightedEdge: highlightedEdgeRef.current,
+      subdivideHoverVertexId: subdivideHoverVertexIdRef.current,
+      createFaceHoverVertexId: createFaceHoverVertexIdRef.current,
+      deleteChainHoverVertexId: deleteChainHoverVertexIdRef.current,
+      mergeHoverFaceId: mergeHoverFaceIdRef.current,
+      dragging: dragStateRef.current !== null,
+    });
+
+    if (lastInsertCursorRef.current === nextCursor) {
+      return;
+    }
+
+    lastInsertCursorRef.current = nextCursor;
+    onInsertCursorChangeRef.current?.(nextCursor);
   };
 
   const faceCollection = useMemo(() => buildMeshFaceCollection(document), [document]);
@@ -258,6 +291,15 @@ export function MeshSubdivisionMapLayers({
     () => buildCompositeBoundaryCollection(document, highlightedCompositeFaceNames),
     [document, highlightedCompositeFaceNames],
   );
+  const deleteChainPreviewCollection = useMemo(
+    () =>
+      buildMeshVertexChainPreviewCollection(
+        document,
+        deleteChainPick,
+        deleteChainHoverVertexId,
+      ),
+    [document, deleteChainPick, deleteChainHoverVertexId],
+  );
 
   useEffect(() => {
     setSubdividePickVertexIds([]);
@@ -272,6 +314,7 @@ export function MeshSubdivisionMapLayers({
     mergePickFaceIdsRef.current = [];
     setMergeHoverFaceId(null);
     mergeHoverFaceIdRef.current = null;
+    clearDeleteChainPick();
     syncInsertCursor();
   }, [interactionMode]);
 
@@ -324,7 +367,50 @@ export function MeshSubdivisionMapLayers({
 
   useEffect(() => {
     syncInsertCursor();
-  }, [shiftHeld, highlightedEdge, highlightedVertexId, selectedFaceId, subdivideHoverVertexId, createFaceHoverVertexId, mergeHoverFaceId, interactionMode]);
+  }, [
+    shiftHeld,
+    highlightedEdge,
+    highlightedVertexId,
+    selectedFaceId,
+    subdivideHoverVertexId,
+    createFaceHoverVertexId,
+    deleteChainHoverVertexId,
+    mergeHoverFaceId,
+    interactionMode,
+  ]);
+
+  useEffect(() => {
+    const isTypingTarget = (target: EventTarget | null) =>
+      target instanceof HTMLElement &&
+      (target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.isContentEditable);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (interactionModeRef.current !== "delete-vertex-chain") return;
+      if (isTypingTarget(event.target)) return;
+
+      const key = event.key.toLowerCase();
+
+      if (key === "d" && !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey) {
+        const pick = deleteChainPickRef.current;
+        if (!pick.isComplete || pick.chainVertexIds.length < 2) return;
+        event.preventDefault();
+        onDeleteMeshVerticesRef.current?.(pick.chainVertexIds);
+        clearDeleteChainPick();
+        return;
+      }
+
+      if (key === "escape") {
+        if (!deleteChainPickRef.current.startId) return;
+        event.preventDefault();
+        clearDeleteChainPick();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     const map = mapRef?.getMap();
@@ -422,6 +508,8 @@ export function MeshSubdivisionMapLayers({
         subdivideHoverVertexIdRef.current = null;
         setCreateFaceHoverVertexId(previous => (previous === null ? previous : null));
         createFaceHoverVertexIdRef.current = null;
+        setDeleteChainHoverVertexId(previous => (previous === null ? previous : null));
+        deleteChainHoverVertexIdRef.current = null;
         syncInsertCursor();
         return;
       }
@@ -432,26 +520,23 @@ export function MeshSubdivisionMapLayers({
         setSubdivideHoverVertexId(previous => (previous === vertexId ? previous : vertexId));
         setCreateFaceHoverVertexId(previous => (previous === null ? previous : null));
         createFaceHoverVertexIdRef.current = null;
-      } else {
+        setDeleteChainHoverVertexId(previous => (previous === null ? previous : null));
+        deleteChainHoverVertexIdRef.current = null;
+      } else if (mode === "create-face") {
         createFaceHoverVertexIdRef.current = vertexId;
         setCreateFaceHoverVertexId(previous => (previous === vertexId ? previous : vertexId));
         setSubdivideHoverVertexId(previous => (previous === null ? previous : null));
         subdivideHoverVertexIdRef.current = null;
+        setDeleteChainHoverVertexId(previous => (previous === null ? previous : null));
+        deleteChainHoverVertexIdRef.current = null;
+      } else {
+        deleteChainHoverVertexIdRef.current = vertexId;
+        setDeleteChainHoverVertexId(previous => (previous === vertexId ? previous : vertexId));
+        setSubdivideHoverVertexId(previous => (previous === null ? previous : null));
+        subdivideHoverVertexIdRef.current = null;
+        setCreateFaceHoverVertexId(previous => (previous === null ? previous : null));
+        createFaceHoverVertexIdRef.current = null;
       }
-      syncInsertCursor();
-    };
-
-    const updateMergeHover = (event: MapLayerMouseEvent) => {
-      if (interactionModeRef.current !== "merge-faces" || shiftHeldRef.current) {
-        setMergeHoverFaceId(previous => (previous === null ? previous : null));
-        mergeHoverFaceIdRef.current = null;
-        syncInsertCursor();
-        return;
-      }
-
-      const faceId = findMeshFaceAtLngLat(documentRef.current, event.lngLat);
-      mergeHoverFaceIdRef.current = faceId;
-      setMergeHoverFaceId(previous => (previous === faceId ? previous : faceId));
       syncInsertCursor();
     };
 
@@ -495,6 +580,20 @@ export function MeshSubdivisionMapLayers({
       };
       syncInsertCursor();
       map.dragPan.disable();
+    };
+
+    const updateMergeHover = (event: MapLayerMouseEvent) => {
+      if (interactionModeRef.current !== "merge-faces" || shiftHeldRef.current) {
+        setMergeHoverFaceId(previous => (previous === null ? previous : null));
+        mergeHoverFaceIdRef.current = null;
+        syncInsertCursor();
+        return;
+      }
+
+      const faceId = findMeshFaceAtLngLat(documentRef.current, event.lngLat);
+      mergeHoverFaceIdRef.current = faceId;
+      setMergeHoverFaceId(previous => (previous === faceId ? previous : faceId));
+      syncInsertCursor();
     };
 
     const handleMouseMove = (event: MapLayerMouseEvent) => {
@@ -691,6 +790,26 @@ export function MeshSubdivisionMapLayers({
         return;
       }
 
+      if (mode === "delete-vertex-chain") {
+        const vertexId = findNearestMeshVertex(map, currentDocument, event.lngLat);
+        if (!vertexId) {
+          onSelectFaceRef.current(findMeshFaceAtLngLat(currentDocument, event.lngLat));
+          return;
+        }
+
+        const nextPick = pickDeleteChainVertex(
+          currentDocument,
+          deleteChainPickRef.current,
+          vertexId,
+          outerVerticesLockedRef.current,
+        );
+        if (!nextPick) return;
+
+        deleteChainPickRef.current = nextPick;
+        setDeleteChainPick(nextPick);
+        return;
+      }
+
       if (mode === "merge-faces") {
         const currentPick = mergePickFaceIdsRef.current;
         const clickedFaceId = findMeshFaceAtLngLat(currentDocument, event.lngLat, {
@@ -765,6 +884,8 @@ export function MeshSubdivisionMapLayers({
       createFaceHoverVertexIdRef.current = null;
       setMergeHoverFaceId(previous => (previous === null ? previous : null));
       mergeHoverFaceIdRef.current = null;
+      setDeleteChainHoverVertexId(previous => (previous === null ? previous : null));
+      deleteChainHoverVertexIdRef.current = null;
       if (!dragStateRef.current) {
         syncInsertCursor();
       }
@@ -783,10 +904,17 @@ export function MeshSubdivisionMapLayers({
       map.off("click", handleClick);
       map.off("mouseout", handleMouseOut);
       dragStateRef.current = null;
-      onInsertCursorChangeRef.current?.(null);
       map.dragPan.enable();
     };
   }, [mapRef, outerVerticesLocked]);
+
+  useEffect(
+    () => () => {
+      lastInsertCursorRef.current = undefined;
+      onInsertCursorChangeRef.current?.(null);
+    },
+    [],
+  );
 
   if (document.faces.length === 0) {
     return null;
@@ -922,6 +1050,31 @@ export function MeshSubdivisionMapLayers({
           />
         </Source>
       ) : null}
+      {deleteChainPreviewCollection.features.length > 0 ? (
+        <Source id="geo-mesh-delete-chain-preview" type="geojson" data={deleteChainPreviewCollection}>
+          <Layer
+            id="geo-mesh-delete-chain-preview-line"
+            type="line"
+            filter={["==", ["geometry-type"], "LineString"]}
+            paint={{
+              "line-color": "#DC2626",
+              "line-width": 3,
+              "line-dasharray": [2, 2],
+            }}
+          />
+          <Layer
+            id="geo-mesh-delete-chain-preview-points"
+            type="circle"
+            filter={["==", ["geometry-type"], "Point"]}
+            paint={{
+              "circle-radius": 9,
+              "circle-color": "#DC2626",
+              "circle-stroke-color": "#FFFFFF",
+              "circle-stroke-width": 2,
+            }}
+          />
+        </Source>
+      ) : null}
       {subdividePreviewCollection.features.length > 0 ? (
         <Source id="geo-mesh-subdivide-preview" type="geojson" data={subdividePreviewCollection}>
           <Layer
@@ -1035,6 +1188,7 @@ export function MeshSubdivisionMapLayers({
               interactionMode === "edit-vertices" ||
               interactionMode === "subdivide-face" ||
               interactionMode === "create-face" ||
+              interactionMode === "delete-vertex-chain" ||
               interactionMode === "merge-faces"
                 ? 7
                 : 4,

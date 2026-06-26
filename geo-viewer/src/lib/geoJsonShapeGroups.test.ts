@@ -4,6 +4,8 @@ import {
   assignShapesToGroup,
   createEmptyGeoJsonShapeGroup,
   createGeoJsonShapeGroup,
+  getLoadedGeoJsonShapeColor,
+  getLoadedGeoJsonFileColor,
   getGroupFeatures,
   getNextGroupColor,
   getShapeKey,
@@ -33,6 +35,24 @@ describe("geoJsonShapeGroups", () => {
 
     expect(first.color).not.toBe(second.color);
     expect(getNextGroupColor([first]).fill).toBe(second.color);
+  });
+
+  it("assigns distinct colors per loaded file index", () => {
+    expect(getLoadedGeoJsonFileColor(0).fill).not.toBe(getLoadedGeoJsonFileColor(1).fill);
+  });
+
+  it("assigns distinct colors per shape in a file", () => {
+    const first = getLoadedGeoJsonShapeColor(0, 0, 4);
+    const second = getLoadedGeoJsonShapeColor(0, 1, 4);
+    const third = getLoadedGeoJsonShapeColor(0, 2, 4);
+
+    expect(first.fill).not.toBe(second.fill);
+    expect(second.fill).not.toBe(third.fill);
+    expect(first.line).not.toBe(second.line);
+  });
+
+  it("uses the file palette color for a single-shape file", () => {
+    expect(getLoadedGeoJsonShapeColor(0, 0, 1)).toEqual(getLoadedGeoJsonFileColor(0));
   });
 
   it("moves multiple shapes into one group", () => {

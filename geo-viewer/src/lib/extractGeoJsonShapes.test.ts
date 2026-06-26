@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildExtractedGeoJsonFilename,
   canCreateGeoShapeFromFeature,
+  listLoadedGeoJsonFeatures,
   extractShapesFromFeature,
   extractShapesFromFeatures,
   getDefaultGeoShapeName,
@@ -103,6 +104,43 @@ describe("extractShapesFromFeature", () => {
   });
 });
 
+describe("listLoadedGeoJsonFeatures", () => {
+  it("keeps a MultiPolygon as one feature", () => {
+    const feature: GeoJSON.Feature<GeoJSON.MultiPolygon> = {
+      type: "Feature",
+      properties: { name: "Archipelago" },
+      geometry: {
+        type: "MultiPolygon",
+        coordinates: [
+          [
+            [
+              [0, 0],
+              [1, 0],
+              [1, 1],
+              [0, 0],
+            ],
+          ],
+          [
+            [
+              [2, 2],
+              [3, 2],
+              [3, 3],
+              [2, 2],
+            ],
+          ],
+        ],
+      },
+    };
+
+    const shapes = listLoadedGeoJsonFeatures([feature]);
+
+    expect(shapes).toHaveLength(1);
+    expect(shapes[0]?.geometryType).toBe("MultiPolygon");
+    expect(shapes[0]?.label).toBe("Archipelago");
+    expect(shapes[0]?.feature.geometry).toEqual(feature.geometry);
+  });
+});
+
 describe("canCreateGeoShapeFromFeature", () => {
   it("allows polygon geometries", () => {
     expect(
@@ -137,6 +175,19 @@ describe("getDefaultGeoShapeName", () => {
         "Feature 1",
       ),
     ).toBe("Södermalm");
+  });
+
+  it("uses PRIMÄRNAMN when present", () => {
+    expect(
+      getDefaultGeoShapeName(
+        {
+          type: "Feature",
+          properties: { "PRIMÄRNAMN": "Kärralund" },
+          geometry: { type: "Polygon", coordinates: [] },
+        },
+        "Feature 1",
+      ),
+    ).toBe("Kärralund");
   });
 });
 

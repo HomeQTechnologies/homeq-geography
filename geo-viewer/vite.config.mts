@@ -24,6 +24,11 @@ export default defineConfig(({ mode }) => {
       ? path.resolve(env.GEO_VIEWER_MESH_DIR)
       : path.resolve(configDir, env.GEO_VIEWER_MESH_DIR)
     : path.resolve(configDir, "workspace/meshes");
+  const individualRoot = env.GEO_VIEWER_INDIVIDUAL_DIR
+    ? path.isAbsolute(env.GEO_VIEWER_INDIVIDUAL_DIR)
+      ? path.resolve(env.GEO_VIEWER_INDIVIDUAL_DIR)
+      : path.resolve(configDir, env.GEO_VIEWER_INDIVIDUAL_DIR)
+    : path.resolve(configDir, "../data/individual");
 
   return {
     base: env.VITE_APP_BASE_URL || "/",
@@ -31,7 +36,11 @@ export default defineConfig(({ mode }) => {
       react(),
       viteTsconfigPaths(),
       tailwindcss(),
-      localFilesPlugin({ meshRootDir: meshRoot }),
+      localFilesPlugin({ meshRootDir: meshRoot, apiPrefix: "/local-files/api" }),
+      localFilesPlugin({
+        meshRootDir: individualRoot,
+        apiPrefix: "/individual-files/api",
+      }),
     ],
     optimizeDeps: {
       include: [

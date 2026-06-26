@@ -1,13 +1,16 @@
-import { extractShapesFromFeatures } from "./extractGeoJsonShapes";
+import { listLoadedGeoJsonFeatures, getDefaultGeoShapeName } from "./extractGeoJsonShapes";
 import {
+  getLoadedGeoJsonShapeColor,
+  getLoadedGeoJsonFileColor,
+  isLegacyDefaultGeoJsonFileColor,
   getShapeGroupMap,
   getShapeKey,
   getUnionShapeKey,
-  UNGROUPED_GEO_JSON_COLOR,
   type GeoJsonShapeGroup,
 } from "./geoJsonShapeGroups";
 import type { ParsedGeoJsonFile } from "./parseGeoJsonFile";
 import { toFeatureCollection } from "./normalizeGeoJson";
+import bbox from "@turf/bbox";
 
 export interface LoadedGeoJsonFile {
   id: string;
@@ -16,9 +19,43 @@ export interface LoadedGeoJsonFile {
   features: GeoJSON.Feature[];
   geometrySummary: Record<string, number>;
   visible: boolean;
+  color: string;
+  lineColor: string;
 }
 
-export function createLoadedGeoJsonFile(fileName: string, parsed: ParsedGeoJsonFile): LoadedGeoJsonFile {
+export function normalizeLoadedGeoJsonFile(file: LoadedGeoJsonFile, fileIndex: number): LoadedGeoJsonFile {
+  const paletteColor = getLoadedGeoJsonFileColor(fileIndex);
+
+  if (!file.color || !file.lineColor) {
+    return {
+      ...file,
+      color: paletteColor.fill,
+      lineColor: paletteColor.line,
+    };
+  }
+
+  if (isLegacyDefaultGeoJsonFileColor(file.color, file.lineColor)) {
+    return {
+      ...file,
+      color: paletteColor.fill,
+      lineColor: paletteColor.line,
+    };
+  }
+
+  return file;
+}
+
+export function normalizeLoadedGeoJsonFiles(files: LoadedGeoJsonFile[]): LoadedGeoJsonFile[] {
+  return files.map((file, index) => normalizeLoadedGeoJsonFile(file, index));
+}
+
+export function createLoadedGeoJsonFile(
+  fileName: string,
+  parsed: ParsedGeoJsonFile,
+  fileIndex = 0,
+): LoadedGeoJsonFile {
+  const paletteColor = getLoadedGeoJsonFileColor(fileIndex);
+
   return {
     id: crypto.randomUUID(),
     fileName,
@@ -26,6 +63,8 @@ export function createLoadedGeoJsonFile(fileName: string, parsed: ParsedGeoJsonF
     features: parsed.features,
     geometrySummary: parsed.geometrySummary,
     visible: true,
+    color: paletteColor.fill,
+    lineColor: paletteColor.line,
   };
 }
 
@@ -41,7 +80,7 @@ export function removeLoadedGeoJsonFile(files: LoadedGeoJsonFile[], fileId: stri
 }
 
 export function getShapeKeysForLoadedFile(file: LoadedGeoJsonFile): string[] {
-  return extractShapesFromFeatures(file.features).map(shape =>
+  return listLoadedGeoJsonFeatures(file.features).map(shape =>
     getShapeKey(file.id, shape.featureIndex, shape.shapeIndex),
   );
 }
@@ -90,17 +129,19 @@ export function buildLoadedGeoJsonStyledCollection(
   const features = files
     .filter(file => file.visible)
     .flatMap(file => {
-      const shapes = extractShapesFromFeatures(file.features);
-      return shapes.flatMap(shape => {
+      const fileIndex = files.findIndex(entry => entry.id === file.id);
+      const shapes = listLoadedGeoJsonFeatures(file.features);
+      return shapes.flatMap((shape, shapeIndex) => {
         const shapeKey = getShapeKey(file.id, shape.featureIndex, shape.shapeIndex);
         if (hiddenMemberShapeKeys.has(shapeKey)) return [];
 
         const group = groupByShapeKey.get(shapeKey);
+        const fileStyle = getLoadedGeoJsonShapeColor(fileIndex, shapeIndex, shapes.length);
         const style = group
           ? { fill: group.color, line: group.lineColor, groupId: group.id }
           : {
-              fill: UNGROUPED_GEO_JSON_COLOR.fill,
-              line: UNGROUPED_GEO_JSON_COLOR.line,
+              fill: fileStyle.fill,
+              line: fileStyle.line,
               groupId: null,
             };
 
@@ -110,6 +151,7 @@ export function buildLoadedGeoJsonStyledCollection(
             properties: {
               ...shape.feature.properties,
               geoJsonShapeKey: shapeKey,
+              featureName: shape.label,
               groupId: style.groupId,
               groupColor: style.fill,
               groupLineColor: style.line,
@@ -133,6 +175,7 @@ export function buildLoadedGeoJsonStyledCollection(
       properties: {
         ...group.unionFeature.properties,
         geoJsonShapeKey: getUnionShapeKey(group.id),
+        featureName: group.name,
         groupId: group.id,
         groupColor: group.color,
         groupLineColor: group.lineColor,
@@ -140,6 +183,43 @@ export function buildLoadedGeoJsonStyledCollection(
       },
     });
   }
+
+  if (features.length === 0) return null;
+
+  return toFeatureCollection(features);
+}
+
+export function buildGeoJsonFeatureLabelCollection(
+  collection: GeoJSON.FeatureCollection | null,
+): GeoJSON.FeatureCollection | null {
+  if (!collection || collection.features.length === 0) return null;
+
+  const features = collection.features.flatMap(feature => {
+    const name =
+      typeof feature.properties?.featureName === "string" && feature.properties.featureName.trim()
+        ? feature.properties.featureName.trim()
+        : getDefaultGeoShapeName(feature, "");
+    if (!name || !feature.geometry) return [];
+
+    try {
+      const bounds = bbox(feature);
+      return [
+        {
+          type: "Feature",
+          properties: {
+            name,
+            geoJsonShapeKey: feature.properties?.geoJsonShapeKey ?? null,
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2],
+          },
+        } satisfies GeoJSON.Feature<GeoJSON.Point>,
+      ];
+    } catch {
+      return [];
+    }
+  });
 
   if (features.length === 0) return null;
 
@@ -158,7 +238,7 @@ export function buildHighlightedGeoJsonShapesCollection(
   const features = files
     .filter(file => file.visible)
     .flatMap(file => {
-      const shapes = extractShapesFromFeatures(file.features);
+      const shapes = listLoadedGeoJsonFeatures(file.features);
       return shapes
         .filter(shape => {
           const shapeKey = getShapeKey(file.id, shape.featureIndex, shape.shapeIndex);

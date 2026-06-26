@@ -21,8 +21,8 @@ import {
 import {
   buildExtractedGeoJsonFilename,
   canCreateGeoShapeFromFeature,
-  extractShapesFromFeatures,
   getDefaultGeoShapeName,
+  listLoadedGeoJsonFeatures,
   type ExtractedGeoJsonShape,
 } from "../lib/extractGeoJsonShapes";
 import {
@@ -32,6 +32,7 @@ import {
   createEmptyGeoJsonShapeGroup,
   getGroupedShapeKeys,
   getGroupFeatures,
+  getLoadedGeoJsonShapeColor,
   getShapeKey,
   getUnionShapeKey,
   pruneGeoJsonShapeGroups,
@@ -85,7 +86,11 @@ interface GeoJsonLoadPanelProps {
   onFitAll: () => void;
 }
 
-type ExtractedShapeEntry = ExtractedGeoJsonShape & { shapeCount: number };
+type ExtractedShapeEntry = ExtractedGeoJsonShape & {
+  colorIndex: number;
+  shapeCount: number;
+  shapeCountByFeature: number;
+};
 
 type CreateTarget =
   | { kind: "shape"; shapeKey: string; feature: GeoJSON.Feature; label: string }
@@ -214,7 +219,7 @@ export function GeoJsonLoadPanel({
   const extractedShapesByFileId = useMemo(() => {
     return new Map(
       files.map(file => {
-        const shapes = extractShapesFromFeatures(file.features);
+        const shapes = listLoadedGeoJsonFeatures(file.features);
         const countByFeature = shapes.reduce<Map<number, number>>((counts, shape) => {
           counts.set(shape.featureIndex, (counts.get(shape.featureIndex) ?? 0) + 1);
           return counts;
@@ -222,9 +227,11 @@ export function GeoJsonLoadPanel({
 
         return [
           file.id,
-          shapes.map(shape => ({
+          shapes.map((shape, colorIndex) => ({
             ...shape,
-            shapeCount: countByFeature.get(shape.featureIndex) ?? 1,
+            colorIndex,
+            shapeCount: shapes.length,
+            shapeCountByFeature: countByFeature.get(shape.featureIndex) ?? 1,
           })),
         ];
       }),
@@ -254,6 +261,18 @@ export function GeoJsonLoadPanel({
     });
     return map;
   }, [shapeEntriesByKey]);
+
+  const getShapeAccentColor = useCallback(
+    (file: LoadedGeoJsonFile, shape: ExtractedShapeEntry) => {
+      const fileIndex = files.findIndex(entry => entry.id === file.id);
+      return getLoadedGeoJsonShapeColor(
+        fileIndex >= 0 ? fileIndex : 0,
+        shape.colorIndex,
+        shape.shapeCount,
+      ).fill;
+    },
+    [files],
+  );
 
   const validShapeKeys = useMemo(() => {
     const keys = new Set(featureByShapeKey.keys());
@@ -360,7 +379,7 @@ export function GeoJsonLoadPanel({
         return;
       }
 
-      const loadedFile = createLoadedGeoJsonFile(file.name, parsed.data);
+      const loadedFile = createLoadedGeoJsonFile(file.name, parsed.data, files.length);
       onGroupsChange(removeLoadedFileShapesFromGroups(groups, loadedFile));
       onShapeMetadataChange(buildShapeMetadataForFile(loadedFile, shapeMetadata));
       onFilesChange([...files, loadedFile]);
@@ -440,7 +459,7 @@ export function GeoJsonLoadPanel({
 
   const handleDownloadShape = (file: LoadedGeoJsonFile, shape: ExtractedShapeEntry) => {
     downloadJsonFile(
-      buildExtractedGeoJsonFilename(file.fileName, shape, shape.shapeCount),
+      buildExtractedGeoJsonFilename(file.fileName, shape, shape.shapeCountByFeature),
       shape.feature,
     );
   };
@@ -719,8 +738,9 @@ export function GeoJsonLoadPanel({
       </div>
 
       <BodyText color="grey-40" type="label-small">
-        Click shapes on the map to select them, then move the selection into a group. Each group gets its own color on
-        the map. Loaded files and groups are kept locally until you clear them.
+        Loaded files keep their features intact (MultiPolygons are not split). Each file gets its own
+        color family on the map, with a slightly different shade per feature. Click features on the map to
+        select them, then move the selection into a group if needed.
       </BodyText>
 
       {restoredFileCount > 0 || restoredGroupCount > 0 ? (
@@ -998,7 +1018,7 @@ export function GeoJsonLoadPanel({
 
       {files.length > 0 ? (
         <div className="flex flex-col gap-2">
-          <BodyText type="label-small">Ungrouped shapes ({ungroupedShapeEntries.length})</BodyText>
+          <BodyText type="label-small">Ungrouped features ({ungroupedShapeEntries.length})</BodyText>
           {ungroupedShapeEntries.length > 0 ? (
             <ul className="flex flex-col gap-1">
               {ungroupedShapeEntries.map(({ shapeKey, file, shape }) => {
@@ -1009,7 +1029,8 @@ export function GeoJsonLoadPanel({
                   <li key={shapeKey}>
                     <ShapeListRow
                       label={shape.label}
-                      subtitle={file.fileName}
+                      subtitle={`${file.fileName} · ${shape.geometryType}`}
+                      accentColor={getShapeAccentColor(file, shape)}
                       isSelected={selectedShapeKeySet.has(shapeKey)}
                       disabled={!file.visible}
                       actions={renderCompactShapeActions(file, shape, shapeKey)}
@@ -1058,14 +1079,20 @@ export function GeoJsonLoadPanel({
                 )}
               >
                 <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0 flex-1">
-                    <BodyText type="label-small" className="truncate font-medium">
-                      {file.fileName}
-                    </BodyText>
-                    <BodyText color="grey-40" type="label-small" className="mt-1">
-                      {file.features.length} feature{file.features.length === 1 ? "" : "s"} ·{" "}
-                      {formatGeometrySummary(file.geometrySummary)}
-                    </BodyText>
+                  <div className="flex min-w-0 flex-1 items-start gap-2">
+                    <span
+                      className="mt-1 h-3 w-3 shrink-0 rounded-full border border-white shadow-sm"
+                      style={{ backgroundColor: file.color }}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <BodyText type="label-small" className="truncate font-medium">
+                        {file.fileName}
+                      </BodyText>
+                      <BodyText color="grey-40" type="label-small" className="mt-1">
+                        {file.features.length} feature{file.features.length === 1 ? "" : "s"} ·{" "}
+                        {formatGeometrySummary(file.geometrySummary)}
+                      </BodyText>
+                    </div>
                   </div>
                   <div className="flex shrink-0 items-center gap-1">
                     <IconButton

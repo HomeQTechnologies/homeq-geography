@@ -15,6 +15,7 @@ help:
 	@echo "  make preview   Preview production build"
 	@echo ""
 	@echo "  Mesh files: geo-viewer/workspace/meshes (GEO_VIEWER_MESH_DIR in .env)"
+	@echo "  Individual shapes: ../data/individual (GEO_VIEWER_INDIVIDUAL_DIR in .env)"
 
 install:
 	$(NPM) install

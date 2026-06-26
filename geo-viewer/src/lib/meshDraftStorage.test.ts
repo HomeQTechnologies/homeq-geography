@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { createEmptyMeshDocument } from "./meshSubdivision";
 import {
   clearMeshDraft,
+  isExternalMeshDraft,
   loadMeshDraft,
   MESH_DRAFT_STORAGE_KEY,
   saveMeshDraft,
@@ -45,7 +46,82 @@ describe("meshDraftStorage", () => {
     );
     saveMeshDraft(draft);
 
-    expect(loadMeshDraft()).toEqual(draft);
+    const loaded = loadMeshDraft();
+    expect(loaded).toMatchObject({
+      ...draft,
+      externalFile: false,
+    });
+    expect(loaded?.savedAt).toBeTypeOf("string");
+  });
+
+  it("stores large drafts as external file references", () => {
+    const content = "x".repeat(5_000_000);
+    const largeDocument = {
+      vertices: {
+        "vertex-a": { id: "vertex-a", position: [18, 59] },
+      },
+      faces: [
+        {
+          id: "face-1",
+          name: "Face 1",
+          vertexIds: ["vertex-a", "vertex-a", "vertex-a"],
+          visible: true,
+        },
+      ],
+    };
+    const draft = toPersistedMeshDraft(
+      {
+        ...largeDocument,
+        faces: [
+          {
+            ...largeDocument.faces[0]!,
+            name: content,
+          },
+        ],
+      },
+      "face-1",
+      null,
+      "edit-vertices",
+      null,
+      null,
+      [],
+      true,
+      null,
+      "goteborg.mesh.json",
+    );
+
+    expect(() => saveMeshDraft(draft)).not.toThrow();
+
+    const loaded = loadMeshDraft();
+    expect(loaded?.externalFile).toBe(true);
+    expect(loaded?.fileName).toBe("goteborg.mesh.json");
+    expect(loaded?.document.faces).toHaveLength(0);
+  });
+
+  it("returns false for a null draft", () => {
+    expect(isExternalMeshDraft(null)).toBe(false);
+  });
+
+  it("reports external drafts as present", () => {
+    localStorage.setItem(
+      MESH_DRAFT_STORAGE_KEY,
+      JSON.stringify({
+        document: { vertices: {}, faces: [] },
+        selectedFaceId: null,
+        selectedEdgeIndex: null,
+        interactionMode: "edit-vertices",
+        reference: null,
+        clipUndo: null,
+        vertexMoveUndo: [],
+        outerVerticesLocked: true,
+        definition: null,
+        fileName: "goteborg.mesh.json",
+        savedAt: new Date().toISOString(),
+        externalFile: true,
+      }),
+    );
+
+    expect(isExternalMeshDraft(loadMeshDraft()!)).toBe(true);
   });
 
   it("defaults fileName to null for older drafts", () => {

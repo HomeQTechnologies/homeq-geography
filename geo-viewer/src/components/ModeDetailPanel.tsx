@@ -8,7 +8,7 @@ import { MeshCompositesPanel } from "./MeshCompositesPanel";
 import { MeshFacesPanel } from "./MeshFacesPanel";
 import { SelectedShapesPanel } from "./SelectedShapesPanel";
 
-export type ViewerMode = "search" | "draw" | "mesh" | "geojson" | "settings";
+export type ViewerMode = "search" | "draw" | "mesh" | "geojson" | "individual" | "settings";
 
 export function modeHasDetailPanel(mode: ViewerMode): boolean {
   return mode !== "settings";

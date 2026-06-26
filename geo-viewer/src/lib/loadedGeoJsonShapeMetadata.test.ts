@@ -50,6 +50,8 @@ const loadedFile: LoadedGeoJsonFile = {
   ],
   geometrySummary: { Polygon: 1 },
   visible: true,
+  color: "#10B981",
+  lineColor: "#047857",
 };
 
 describe("loadedGeoJsonShapeMetadata", () => {

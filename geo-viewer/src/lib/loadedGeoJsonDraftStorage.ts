@@ -1,11 +1,13 @@
 import { normalizeGeoJsonShapeGroup, type GeoJsonShapeGroup } from "./geoJsonShapeGroups";
-import type { LoadedGeoJsonFile } from "./loadedGeoJsonFiles";
+import { normalizeLoadedGeoJsonFiles, type LoadedGeoJsonFile } from "./loadedGeoJsonFiles";
 import {
   isLoadedGeoJsonShapeMetadataByKey,
   type LoadedGeoJsonShapeMetadataByKey,
 } from "./loadedGeoJsonShapeMetadata";
 
 export const LOADED_GEOJSON_DRAFT_STORAGE_KEY = "homeq.geo-viewer.loaded-geojson";
+// Stay below the typical ~5 MB localStorage quota (mesh drafts may share the same origin).
+export const MAX_INLINE_LOADED_GEOJSON_DRAFT_BYTES = 4_000_000;
 
 export interface LoadedGeoJsonDraft {
   files: LoadedGeoJsonFile[];
@@ -58,7 +60,9 @@ function isLoadedGeoJsonFile(value: unknown): value is LoadedGeoJsonFile {
     Array.isArray(file.features) &&
     file.features.every(isGeoJsonFeature) &&
     isGeometrySummary(file.geometrySummary) &&
-    typeof file.visible === "boolean"
+    typeof file.visible === "boolean" &&
+    (file.color === undefined || typeof file.color === "string") &&
+    (file.lineColor === undefined || typeof file.lineColor === "string")
   );
 }
 
@@ -98,6 +102,15 @@ export function toPersistedLoadedGeoJsonDraft(draft: LoadedGeoJsonDraft): Persis
   };
 }
 
+function tryPersistLoadedGeoJsonDraft(draft: PersistedLoadedGeoJsonDraft): boolean {
+  try {
+    localStorage.setItem(LOADED_GEOJSON_DRAFT_STORAGE_KEY, JSON.stringify(draft));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function loadLoadedGeoJsonDraft(): LoadedGeoJsonDraft {
   try {
     const raw = localStorage.getItem(LOADED_GEOJSON_DRAFT_STORAGE_KEY);
@@ -119,7 +132,7 @@ export function loadLoadedGeoJsonDraft(): LoadedGeoJsonDraft {
     }
 
     return {
-      files: parsed.files,
+      files: normalizeLoadedGeoJsonFiles(parsed.files),
       groups: parsed.groups.map((group, index) => normalizeGeoJsonShapeGroup(group, index)),
       shapeMetadata: isLoadedGeoJsonShapeMetadataByKey(parsed.shapeMetadata) ? parsed.shapeMetadata : {},
     };
@@ -134,10 +147,12 @@ export function saveLoadedGeoJsonDraft(draft: LoadedGeoJsonDraft): void {
     return;
   }
 
-  localStorage.setItem(
-    LOADED_GEOJSON_DRAFT_STORAGE_KEY,
-    JSON.stringify(toPersistedLoadedGeoJsonDraft(draft)),
-  );
+  const persisted = toPersistedLoadedGeoJsonDraft(draft);
+  const serialized = JSON.stringify(persisted);
+
+  if (serialized.length <= MAX_INLINE_LOADED_GEOJSON_DRAFT_BYTES) {
+    tryPersistLoadedGeoJsonDraft(persisted);
+  }
 }
 
 export function clearLoadedGeoJsonDraft(): void {

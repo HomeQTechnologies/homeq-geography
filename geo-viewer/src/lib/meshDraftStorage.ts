@@ -1,10 +1,12 @@
 import type { MeshDefinition } from "./meshDefinition";
 import { isMeshDefinition, normalizeMeshDefinition } from "./meshDefinition";
-import type { MeshDocument, MeshInteractionMode } from "./meshSubdivision";
-import type { MeshVertexMoveUndoEntry } from "./meshVertexMoveUndo";
+import { createEmptyMeshDocument, type MeshDocument, type MeshInteractionMode } from "./meshSubdivision";
+import { normalizeMeshUndoEntry, type MeshUndoEntry } from "./meshVertexMoveUndo";
 import type { GeoSearchSuggestion } from "./types";
 
 export const MESH_DRAFT_STORAGE_KEY = "homeq.geo-viewer.mesh-draft";
+// Stay below the typical ~5 MB localStorage quota.
+export const MAX_INLINE_MESH_DRAFT_BYTES = 4_000_000;
 
 export interface MeshClipUndoSnapshot {
   document: MeshDocument;
@@ -19,11 +21,13 @@ export interface PersistedMeshDraft {
   interactionMode: MeshInteractionMode;
   reference: GeoSearchSuggestion | null;
   clipUndo: MeshClipUndoSnapshot | null;
-  vertexMoveUndo: MeshVertexMoveUndoEntry[];
+  vertexMoveUndo: MeshUndoEntry[];
   outerVerticesLocked: boolean;
   definition: MeshDefinition | null;
   fileName: string | null;
   savedAt: string;
+  /** When true, the mesh body is stored in `fileName` and must be reloaded from disk. */
+  externalFile?: boolean;
 }
 
 function isPosition(value: unknown): value is GeoJSON.Position {
@@ -70,6 +74,7 @@ function normalizeMeshInteractionMode(value: unknown): MeshInteractionMode {
   if (value === "subdivide-face") return "subdivide-face";
   if (value === "create-face") return "create-face";
   if (value === "merge-faces") return "merge-faces";
+  if (value === "delete-vertex-chain") return "delete-vertex-chain";
   return "edit-vertices";
 }
 
@@ -85,12 +90,6 @@ function isGeoSearchSuggestion(value: unknown): value is GeoSearchSuggestion {
   );
 }
 
-function isMeshVertexMoveUndoEntry(value: unknown): value is MeshVertexMoveUndoEntry {
-  if (typeof value !== "object" || value === null) return false;
-
-  const entry = value as MeshVertexMoveUndoEntry;
-  return typeof entry.vertexId === "string" && isPosition(entry.position);
-}
 
 function isMeshClipUndoSnapshot(value: unknown): value is MeshClipUndoSnapshot {
   if (typeof value !== "object" || value === null) return false;
@@ -108,6 +107,10 @@ function isPersistedMeshDraft(value: unknown): value is PersistedMeshDraft {
 
   const draft = value as PersistedMeshDraft;
   const reference = (draft as { reference?: unknown }).reference;
+  const externalFile = (draft as { externalFile?: unknown }).externalFile;
+  if (externalFile !== undefined && typeof externalFile !== "boolean") return false;
+  if (externalFile === true && typeof draft.fileName !== "string") return false;
+
   return (
     isMeshDocument(draft.document) &&
     (draft.selectedFaceId === null || typeof draft.selectedFaceId === "string") &&
@@ -117,7 +120,8 @@ function isPersistedMeshDraft(value: unknown): value is PersistedMeshDraft {
       draft.interactionMode === "extrude-edge" ||
       draft.interactionMode === "subdivide-face" ||
       draft.interactionMode === "create-face" ||
-      draft.interactionMode === "merge-faces") &&
+      draft.interactionMode === "merge-faces" ||
+      draft.interactionMode === "delete-vertex-chain") &&
     (reference === null || reference === undefined || isGeoSearchSuggestion(reference)) &&
     ((draft as { definition?: unknown }).definition === null ||
       (draft as { definition?: unknown }).definition === undefined ||
@@ -136,7 +140,7 @@ export function toPersistedMeshDraft(
   interactionMode: MeshInteractionMode,
   reference: GeoSearchSuggestion | null,
   clipUndo: MeshClipUndoSnapshot | null = null,
-  vertexMoveUndo: MeshVertexMoveUndoEntry[] = [],
+  vertexMoveUndo: MeshUndoEntry[] = [],
   outerVerticesLocked = true,
   definition: MeshDefinition | null = null,
   fileName: string | null = null,
@@ -153,7 +157,38 @@ export function toPersistedMeshDraft(
     definition,
     fileName,
     savedAt: new Date().toISOString(),
+    externalFile: false,
   };
+}
+
+export function isExternalMeshDraft(draft: PersistedMeshDraft | null): boolean {
+  return draft?.externalFile === true && typeof draft.fileName === "string" && draft.fileName.length > 0;
+}
+
+function buildExternalMeshDraft(draft: PersistedMeshDraft): PersistedMeshDraft {
+  return {
+    document: createEmptyMeshDocument(),
+    selectedFaceId: draft.selectedFaceId,
+    selectedEdgeIndex: draft.selectedEdgeIndex,
+    interactionMode: draft.interactionMode,
+    reference: null,
+    clipUndo: null,
+    vertexMoveUndo: [],
+    outerVerticesLocked: draft.outerVerticesLocked,
+    definition: draft.definition,
+    fileName: draft.fileName,
+    savedAt: draft.savedAt,
+    externalFile: true,
+  };
+}
+
+function tryPersistDraft(draft: PersistedMeshDraft): boolean {
+  try {
+    localStorage.setItem(MESH_DRAFT_STORAGE_KEY, JSON.stringify(draft));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export function loadMeshDraft(): PersistedMeshDraft | null {
@@ -168,13 +203,16 @@ export function loadMeshDraft(): PersistedMeshDraft | null {
 
     return {
       ...parsed,
+      externalFile: (parsed as { externalFile?: unknown }).externalFile === true,
       interactionMode: normalizeMeshInteractionMode(parsed.interactionMode),
       reference: parsed.reference ?? null,
       clipUndo: isMeshClipUndoSnapshot((parsed as { clipUndo?: unknown }).clipUndo)
         ? (parsed as { clipUndo: MeshClipUndoSnapshot }).clipUndo
         : null,
       vertexMoveUndo: Array.isArray(vertexMoveUndoRaw)
-        ? vertexMoveUndoRaw.filter(isMeshVertexMoveUndoEntry)
+        ? vertexMoveUndoRaw
+            .map(normalizeMeshUndoEntry)
+            .filter((entry): entry is MeshUndoEntry => entry !== null)
         : [],
       outerVerticesLocked: (parsed as { outerVerticesLocked?: unknown }).outerVerticesLocked !== false,
       definition: isMeshDefinition((parsed as { definition?: unknown }).definition)
@@ -191,7 +229,20 @@ export function loadMeshDraft(): PersistedMeshDraft | null {
 }
 
 export function saveMeshDraft(draft: PersistedMeshDraft): void {
-  localStorage.setItem(MESH_DRAFT_STORAGE_KEY, JSON.stringify(draft));
+  const nextDraft: PersistedMeshDraft = {
+    ...draft,
+    savedAt: new Date().toISOString(),
+    externalFile: false,
+  };
+  const serialized = JSON.stringify(nextDraft);
+
+  if (serialized.length <= MAX_INLINE_MESH_DRAFT_BYTES && tryPersistDraft(nextDraft)) {
+    return;
+  }
+
+  if (!nextDraft.fileName) return;
+
+  tryPersistDraft(buildExternalMeshDraft(nextDraft));
 }
 
 export function clearMeshDraft(): void {
@@ -200,5 +251,7 @@ export function clearMeshDraft(): void {
 
 export function hasMeshDraft(): boolean {
   const draft = loadMeshDraft();
-  return draft !== null && draft.document.faces.length > 0;
+  if (!draft) return false;
+  if (isExternalMeshDraft(draft)) return true;
+  return draft.document.faces.length > 0;
 }

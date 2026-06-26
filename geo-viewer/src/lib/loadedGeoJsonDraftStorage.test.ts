@@ -3,6 +3,7 @@ import { createGeoJsonShapeGroup } from "./geoJsonShapeGroups";
 import {
   clearLoadedGeoJsonDraft,
   loadLoadedGeoJsonDraft,
+  MAX_INLINE_LOADED_GEOJSON_DRAFT_BYTES,
   saveLoadedGeoJsonDraft,
   LOADED_GEOJSON_DRAFT_STORAGE_KEY,
 } from "./loadedGeoJsonDraftStorage";
@@ -54,6 +55,8 @@ const loadedFile: LoadedGeoJsonFile = {
   ],
   geometrySummary: { Polygon: 1 },
   visible: true,
+  color: "#10B981",
+  lineColor: "#047857",
 };
 
 afterEach(() => {
@@ -98,5 +101,52 @@ describe("loadedGeoJsonDraftStorage", () => {
     });
     saveLoadedGeoJsonDraft({ files: [], groups: [], shapeMetadata: {} });
     expect(loadLoadedGeoJsonDraft()).toEqual({ files: [], groups: [], shapeMetadata: {} });
+  });
+
+  it("does not throw when the draft exceeds inline storage limits", () => {
+    const largeFile: LoadedGeoJsonFile = {
+      ...loadedFile,
+      geoJson: {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: { note: "x".repeat(MAX_INLINE_LOADED_GEOJSON_DRAFT_BYTES) },
+            geometry: loadedFile.features[0]!.geometry,
+          },
+        ],
+      },
+      features: [
+        {
+          type: "Feature",
+          properties: { note: "x".repeat(MAX_INLINE_LOADED_GEOJSON_DRAFT_BYTES) },
+          geometry: loadedFile.features[0]!.geometry,
+        },
+      ],
+    };
+
+    expect(() =>
+      saveLoadedGeoJsonDraft({ files: [largeFile], groups: [], shapeMetadata: {} }),
+    ).not.toThrow();
+    expect(loadLoadedGeoJsonDraft()).toEqual({ files: [], groups: [], shapeMetadata: {} });
+  });
+
+  it("swallows localStorage quota errors", () => {
+    const setItem = localStorage.setItem.bind(localStorage);
+    localStorage.setItem = () => {
+      throw new DOMException("quota exceeded", "QuotaExceededError");
+    };
+
+    try {
+      expect(() =>
+        saveLoadedGeoJsonDraft({
+          files: [loadedFile],
+          groups: [],
+          shapeMetadata: {},
+        }),
+      ).not.toThrow();
+    } finally {
+      localStorage.setItem = setItem;
+    }
   });
 });

@@ -115,6 +115,29 @@ export function extractShapesFromFeatures(features: GeoJSON.Feature[]): Extracte
   return features.flatMap((feature, featureIndex) => extractShapesFromFeature(feature, featureIndex));
 }
 
+/** One display entry per Feature — MultiPolygon/GeometryCollection stay intact. */
+export function listLoadedGeoJsonFeatures(features: GeoJSON.Feature[]): ExtractedGeoJsonShape[] {
+  return features.flatMap((feature, featureIndex) => {
+    if (!feature.geometry) return [];
+
+    const label = getDefaultGeoShapeName(feature, buildShapeLabel(featureIndex, feature.geometry.type));
+
+    return [
+      {
+        featureIndex,
+        shapeIndex: 0,
+        geometryType: feature.geometry.type,
+        label,
+        feature: {
+          type: "Feature",
+          properties: { ...(feature.properties ?? {}) },
+          geometry: feature.geometry,
+        },
+      },
+    ];
+  });
+}
+
 export function sanitizeGeoJsonFileBaseName(fileName: string): string {
   const withoutExtension = fileName.replace(/\.(geojson|json)$/i, "");
   const sanitized = withoutExtension.replace(/[^a-zA-Z0-9._-]+/g, "-").replace(/-+/g, "-");
@@ -130,7 +153,15 @@ export function getDefaultGeoShapeName(feature: GeoJSON.Feature, fallbackLabel: 
   const properties = feature.properties;
   if (!properties || typeof properties !== "object") return fallbackLabel;
 
-  const candidates = ["name", "NAME", "title", "label"];
+  const candidates = [
+    "name",
+    "NAME",
+    "title",
+    "label",
+    "PRIMÄRNAMN",
+    "NAMN",
+    "individualShapeName",
+  ];
   for (const key of candidates) {
     const value = properties[key];
     if (typeof value === "string" && value.trim()) {

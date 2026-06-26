@@ -1,5 +1,7 @@
 import FitScreenRounded from "@mui/icons-material/FitScreenRounded";
 import FolderOpenRounded from "@mui/icons-material/FolderOpenRounded";
+import LockOpenRounded from "@mui/icons-material/LockOpenRounded";
+import LockRounded from "@mui/icons-material/LockRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
 import ClearRounded from "@mui/icons-material/ClearRounded";
 import { useState } from "react";
@@ -21,6 +23,7 @@ interface MeshSubdividePanelProps {
   showAll: boolean;
   shapeTypes?: string;
   onInteractionModeChange: (mode: MeshInteractionMode) => void;
+  onToggleSelectedFaceLock: () => void;
   outerVerticesLocked: boolean;
   onOuterVerticesLockedChange: (locked: boolean) => void;
   onFocusMesh: () => void;
@@ -49,19 +52,25 @@ interface MeshSubdividePanelProps {
 const INTERACTION_MODES: Array<{ id: MeshInteractionMode; label: string; description: string }> = [
   {
     id: "edit-vertices",
-    label: "Move shared vertices",
+    label: "Move shared vertices (E)",
     description:
-      "Drag any vertex to reshape every connected face at once. Hold Shift and click a yellow edge point to split the edge, or Shift and click a red vertex to remove it. Use Undo move for up to 10 vertex drags. Purple points are on the mesh boundary.",
+      "Drag any vertex to reshape every connected face at once. Hold Shift and click a yellow edge point to split the edge, or Shift and click a red vertex to remove it. Ctrl+Z undoes vertex moves and deletions. Purple points are on the mesh boundary.",
+  },
+  {
+    id: "delete-vertex-chain",
+    label: "Delete vertex chain (D)",
+    description:
+      "Click the first vertex, then a neighbouring vertex to set direction, then a third vertex along that direction to define the full chain. Press D again to delete the chain. Escape clears the selection. Ctrl+Z undoes the deletion.",
   },
   {
     id: "subdivide-face",
-    label: "Split face",
+    label: "Split face (S)",
     description:
       "Click two vertices on the same face to draw a split line and divide it into two new faces. The vertices must not already be connected by an edge.",
   },
   {
     id: "create-face",
-    label: "Create face",
+    label: "Create face (F)",
     description:
       "Click four existing vertices to connect them into a new face. Click a picked vertex again to remove it from the selection.",
   },
@@ -78,6 +87,7 @@ export function MeshSubdividePanel({
   selectedFaceId,
   interactionMode,
   onInteractionModeChange,
+  onToggleSelectedFaceLock,
   outerVerticesLocked,
   onOuterVerticesLockedChange,
   onFocusMesh,
@@ -106,6 +116,7 @@ export function MeshSubdividePanel({
 }: MeshSubdividePanelProps) {
   const [showLoadMeshPanel, setShowLoadMeshPanel] = useState(false);
   const selectedFace = document.faces.find(face => face.id === selectedFaceId) ?? null;
+  const selectedFaceLocked = selectedFace?.locked === true;
   const flowActive = startMeshFlowStep !== null;
   const hasActiveMesh = document.faces.length > 0;
   const canFitMesh = hasActiveMesh && !flowActive;
@@ -231,6 +242,19 @@ export function MeshSubdividePanel({
                 {mode.label}
               </ActionButton>
             ))}
+            <ActionButton
+              className="w-full"
+              type={selectedFaceLocked ? "filled" : "default"}
+              disabled={!selectedFace}
+              onClick={onToggleSelectedFaceLock}
+            >
+              {selectedFaceLocked ? (
+                <LockRounded className="mr-1" fontSize="small" />
+              ) : (
+                <LockOpenRounded className="mr-1" fontSize="small" />
+              )}
+              {selectedFaceLocked ? "Unlock face (L)" : "Lock face (L)"}
+            </ActionButton>
           </div>
           {activeInteractionMode ? (
             <BodyText color="grey-40" type="body-small">

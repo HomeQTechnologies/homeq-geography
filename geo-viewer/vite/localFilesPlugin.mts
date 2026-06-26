@@ -181,9 +181,10 @@ export function createLocalFilesMiddleware(options: LocalFilesPluginOptions): Co
 
 export function localFilesPlugin(options: LocalFilesPluginOptions): Plugin {
   const middleware = createLocalFilesMiddleware(options);
+  const apiPrefix = options.apiPrefix ?? "/local-files/api";
 
   return {
-    name: "local-files",
+    name: `local-files:${apiPrefix}`,
     configureServer(server) {
       server.middlewares.use(middleware);
     },

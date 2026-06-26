@@ -78,23 +78,49 @@ function isMeshFile(value: unknown): value is MeshFile {
   );
 }
 
+function cleanVertexRing(vertexIds: string[]): string[] {
+  const cleaned: string[] = [];
+
+  for (const vertexId of vertexIds) {
+    if (cleaned.length > 0 && cleaned[cleaned.length - 1] === vertexId) {
+      continue;
+    }
+    if (cleaned.length >= 2 && cleaned[cleaned.length - 2] === vertexId) {
+      cleaned.pop();
+      continue;
+    }
+    cleaned.push(vertexId);
+  }
+
+  if (cleaned.length >= 2 && cleaned[0] === cleaned[cleaned.length - 1]) {
+    return cleaned.slice(0, -1);
+  }
+
+  return cleaned;
+}
+
 export function normalizeImportedMeshDocument(document: MeshDocument): MeshDocument | null {
   if (document.faces.length === 0) return null;
 
-  for (const face of document.faces) {
+  const normalizedFaces = document.faces.map(face => ({
+    ...face,
+    vertexIds: cleanVertexRing(face.vertexIds),
+  }));
+
+  for (const face of normalizedFaces) {
     if (face.vertexIds.length < 3) return null;
     if (new Set(face.vertexIds).size !== face.vertexIds.length) return null;
     if (!face.vertexIds.every(vertexId => document.vertices[vertexId])) return null;
   }
 
-  const usedVertexIds = new Set(document.faces.flatMap(face => face.vertexIds));
+  const usedVertexIds = new Set(normalizedFaces.flatMap(face => face.vertexIds));
   const vertices = Object.fromEntries(
     Object.entries(document.vertices).filter(([vertexId]) => usedVertexIds.has(vertexId)),
   );
 
   return cloneMeshDocument({
     vertices,
-    faces: document.faces.map(face => ({
+    faces: normalizedFaces.map(face => ({
       ...face,
       vertexIds: [...face.vertexIds],
     })),

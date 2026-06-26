@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   addSquare,
+  areMeshVerticesAdjacent,
+  buildDeleteChainAlongDirection,
   bringFaceToFront,
   buildCompositeBoundaryCollection,
   buildMeshFaceLabelCollection,
@@ -16,6 +18,9 @@ import {
   getMeshEdgeMidpoint,
   insertVertexOnSharedEdge,
   removeMeshVertex,
+  removeMeshVertices,
+  EMPTY_DELETE_CHAIN_PICK,
+  pickDeleteChainVertex,
   moveVertex,
   subdivideFaceBetweenVertices,
   findSplittableFaceBetweenVertices,
@@ -383,5 +388,71 @@ describe("meshSubdivision", () => {
     expect(combinedBoundary.features.length).toBeLessThan(
       singleBoundary.features.length + singleBoundary.features.length,
     );
+  });
+
+  it("removes multiple vertices in one pass", () => {
+    const square = addSquare(createEmptyMeshDocument(), [18, 59], 0.01);
+    const face = square.document.faces[0]!;
+    const updated = removeMeshVertices(square.document, [face.vertexIds[0]!, face.vertexIds[1]!]);
+
+    expect(updated.faces).toHaveLength(0);
+    expect(Object.keys(updated.vertices)).toHaveLength(0);
+  });
+
+  it("builds a delete chain from start, direction, and end vertices", () => {
+    const square = addSquare(createEmptyMeshDocument(), [18, 59], 0.01);
+    const face = square.document.faces[0]!;
+    const vertexA = face.vertexIds[0]!;
+    const vertexB = face.vertexIds[1]!;
+    const vertexC = face.vertexIds[2]!;
+
+    expect(areMeshVerticesAdjacent(square.document, vertexA, vertexB)).toBe(true);
+    expect(areMeshVerticesAdjacent(square.document, vertexA, vertexC)).toBe(false);
+
+    let pick = pickDeleteChainVertex(square.document, EMPTY_DELETE_CHAIN_PICK, vertexA, false);
+    expect(pick).toEqual({
+      startId: vertexA,
+      directionId: null,
+      chainVertexIds: [vertexA],
+      isComplete: false,
+    });
+
+    pick = pickDeleteChainVertex(square.document, pick!, vertexB, false);
+    expect(pick).toEqual({
+      startId: vertexA,
+      directionId: vertexB,
+      chainVertexIds: [vertexA, vertexB],
+      isComplete: false,
+    });
+
+    pick = pickDeleteChainVertex(square.document, pick!, vertexC, false);
+    expect(pick).toEqual({
+      startId: vertexA,
+      directionId: vertexB,
+      chainVertexIds: [vertexA, vertexB, vertexC],
+      isComplete: true,
+    });
+
+    expect(
+      buildDeleteChainAlongDirection(square.document, vertexA, vertexB, vertexC),
+    ).toEqual([vertexA, vertexB, vertexC]);
+  });
+
+  it("clears delete chain pick when clicking the start vertex again", () => {
+    const square = addSquare(createEmptyMeshDocument(), [18, 59], 0.01);
+    const face = square.document.faces[0]!;
+    const pick = pickDeleteChainVertex(
+      square.document,
+      {
+        startId: face.vertexIds[0]!,
+        directionId: face.vertexIds[1]!,
+        chainVertexIds: [face.vertexIds[0]!, face.vertexIds[1]!],
+        isComplete: false,
+      },
+      face.vertexIds[0]!,
+      false,
+    );
+
+    expect(pick).toEqual(EMPTY_DELETE_CHAIN_PICK);
   });
 });

@@ -23,6 +23,7 @@ import { hasSameDrawFeatureCollection } from "../lib/drawPolygons";
 import { DRAW_POLYGON_FILL_LAYER_ID } from "../lib/drawMapStyles";
 import { getShapeStyle, MapDisplaySettings } from "../lib/mapDisplaySettings";
 import { toFeatureCollection } from "../lib/normalizeGeoJson";
+import { UNGROUPED_GEO_JSON_COLOR } from "../lib/geoJsonShapeGroups";
 import {
   applyDrawEditsToShapeGeoInfo,
   toEditableDrawFeatures,
@@ -71,6 +72,7 @@ interface GeoShapesMapProps {
   drawFeatures?: GeoJSON.FeatureCollection;
   onDrawChange?: (features: GeoJSON.FeatureCollection) => void;
   loadedGeoJsonOverlay?: GeoJSON.FeatureCollection | null;
+  loadedGeoJsonLabelOverlay?: GeoJSON.FeatureCollection | null;
   loadedGeoJsonHighlightOverlay?: GeoJSON.FeatureCollection | null;
   geoJsonShapeSelectionEnabled?: boolean;
   onLoadedGeoJsonShapeClick?: (shapeKey: string) => void;
@@ -86,6 +88,7 @@ interface GeoShapesMapProps {
     onSelectFace: (faceId: string | null) => void;
     onSelectEdge: (faceId: string, edgeIndex: number | null) => void;
     onVertexMoveCommitted?: (entry: MeshVertexMoveUndoEntry) => void;
+    onDeleteMeshVertices?: (vertexIds: string[]) => void;
     onMergeError?: (message: string | null) => void;
   } | null;
   meshReferenceOverlay?: GeoJSON.FeatureCollection | null;
@@ -108,6 +111,7 @@ export const GeoShapesMap = forwardRef<GeoShapesMapHandle, GeoShapesMapProps>(fu
     drawFeatures = EMPTY_FEATURE_COLLECTION,
     onDrawChange,
     loadedGeoJsonOverlay = null,
+    loadedGeoJsonLabelOverlay = null,
     loadedGeoJsonHighlightOverlay = null,
     geoJsonShapeSelectionEnabled = false,
     onLoadedGeoJsonShapeClick,
@@ -513,7 +517,7 @@ export const GeoShapesMap = forwardRef<GeoShapesMapHandle, GeoShapesMapProps>(fu
               type="fill"
               filter={["match", ["geometry-type"], ["Polygon", "MultiPolygon"], true, false]}
               paint={{
-                "fill-color": ["coalesce", ["get", "groupColor"], "#C4B5FD"],
+                "fill-color": ["coalesce", ["get", "groupColor"], UNGROUPED_GEO_JSON_COLOR.fill],
                 "fill-opacity": 0.34,
               }}
             />
@@ -522,7 +526,7 @@ export const GeoShapesMap = forwardRef<GeoShapesMapHandle, GeoShapesMapProps>(fu
               type="line"
               filter={["match", ["geometry-type"], ["Polygon", "MultiPolygon"], true, false]}
               paint={{
-                "line-color": ["coalesce", ["get", "groupLineColor"], "#7C3AED"],
+                "line-color": ["coalesce", ["get", "groupLineColor"], UNGROUPED_GEO_JSON_COLOR.line],
                 "line-width": 2,
               }}
             />
@@ -531,7 +535,7 @@ export const GeoShapesMap = forwardRef<GeoShapesMapHandle, GeoShapesMapProps>(fu
               type="line"
               filter={["match", ["geometry-type"], ["LineString", "MultiLineString"], true, false]}
               paint={{
-                "line-color": ["coalesce", ["get", "groupLineColor"], "#7C3AED"],
+                "line-color": ["coalesce", ["get", "groupLineColor"], UNGROUPED_GEO_JSON_COLOR.line],
                 "line-width": 3,
               }}
             />
@@ -541,9 +545,30 @@ export const GeoShapesMap = forwardRef<GeoShapesMapHandle, GeoShapesMapProps>(fu
               filter={["match", ["geometry-type"], ["Point", "MultiPoint"], true, false]}
               paint={{
                 "circle-radius": 6,
-                "circle-color": ["coalesce", ["get", "groupColor"], "#C4B5FD"],
-                "circle-stroke-color": ["coalesce", ["get", "groupLineColor"], "#7C3AED"],
+                "circle-color": ["coalesce", ["get", "groupColor"], UNGROUPED_GEO_JSON_COLOR.fill],
+                "circle-stroke-color": ["coalesce", ["get", "groupLineColor"], UNGROUPED_GEO_JSON_COLOR.line],
                 "circle-stroke-width": 2,
+              }}
+            />
+          </Source>
+        ) : null}
+        {loadedGeoJsonLabelOverlay && loadedGeoJsonLabelOverlay.features.length > 0 ? (
+          <Source id="geo-json-load-labels" type="geojson" data={loadedGeoJsonLabelOverlay}>
+            <Layer
+              id="geo-json-load-labels"
+              type="symbol"
+              layout={{
+                "text-field": ["get", "name"],
+                "text-size": 12,
+                "text-anchor": "center",
+                "text-justify": "center",
+                "text-allow-overlap": false,
+                "text-ignore-placement": false,
+              }}
+              paint={{
+                "text-color": "#065F46",
+                "text-halo-color": "#FFFFFF",
+                "text-halo-width": 2,
               }}
             />
           </Source>
@@ -615,6 +640,7 @@ export const GeoShapesMap = forwardRef<GeoShapesMapHandle, GeoShapesMapProps>(fu
             onSelectFace={meshSubdivision.onSelectFace}
             onSelectEdge={(faceId, edgeIndex) => meshSubdivision.onSelectEdge(faceId, edgeIndex)}
             onVertexMoveCommitted={meshSubdivision.onVertexMoveCommitted}
+            onDeleteMeshVertices={meshSubdivision.onDeleteMeshVertices}
             onMergeError={meshSubdivision.onMergeError}
             onInsertCursorChange={setMeshInsertCursor}
           />

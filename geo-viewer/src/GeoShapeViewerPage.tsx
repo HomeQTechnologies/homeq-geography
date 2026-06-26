@@ -2,10 +2,10 @@ import MapRounded from "@mui/icons-material/MapRounded";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BodyText, Tab, Tabs } from "@/components/ui";
 import { GeoShapeSearchInput } from "./components/GeoShapeSearchInput";
-import { ZipPrefixBulkAdd } from "./components/ZipPrefixBulkAdd";
 import { GeoShapesMap, type GeoShapesMapHandle } from "./components/GeoShapesMap";
 import { MapDisplaySettingsPanel } from "./components/MapDisplaySettingsPanel";
 import { GeoJsonLoadPanel } from "./components/GeoJsonLoadPanel";
+import { IndividualShapesPanel } from "./components/IndividualShapesPanel";
 import { MeshSubdividePanel, getMeshFocusFeatures } from "./components/MeshSubdividePanel";
 import type { StartMeshFlowStep } from "./components/StartMeshFlow";
 import { ModeDetailPanel, modeHasDetailPanel } from "./components/ModeDetailPanel";
@@ -28,37 +28,49 @@ import { loadLoadedGeoJsonDraft, saveLoadedGeoJsonDraft } from "./lib/loadedGeoJ
 import { buildShapeMetadataForLoadedFiles } from "./lib/loadedGeoJsonShapeMetadata";
 import {
   buildHighlightedGeoJsonShapesCollection,
+  buildGeoJsonFeatureLabelCollection,
   buildLoadedGeoJsonStyledCollection,
   type LoadedGeoJsonFile,
 } from "./lib/loadedGeoJsonFiles";
+import { buildIndividualShapesOverlay } from "./lib/individualShapePackage";
 import type { GeoSearchSuggestion } from "./lib/types";
 import { parseShapeTypeKey } from "./lib/shapeTypes";
 import type { GeoShapeTypeKey } from "./lib/shapeTypes";
 import { getVisibleShapes } from "./lib/selectedShapesStorage";
 import {
   bringFaceToFront,
+  cloneMeshDocument,
   createEmptyMeshDocument,
+  isMeshVertexRemovable,
   moveVertex,
+  removeMeshVertices,
   toggleFaceLock,
   type MeshDocument,
   type MeshInteractionMode,
 } from "./lib/meshSubdivision";
 import {
   clearMeshDraft,
+  isExternalMeshDraft,
   loadMeshDraft,
   saveMeshDraft,
   toPersistedMeshDraft,
+  type PersistedMeshDraft,
 } from "./lib/meshDraftStorage";
 import {
-  popMeshVertexMoveUndo,
+  createMeshDocumentUndoEntry,
+  normalizeMeshUndoEntry,
+  popMeshUndo,
+  pushMeshUndo,
   pushMeshVertexMoveUndo,
+  type MeshUndoEntry,
   type MeshVertexMoveUndoEntry,
 } from "./lib/meshVertexMoveUndo";
 import { fetchShapeGeoJson } from "./lib/geoApi";
-import { writeLocalMeshFile } from "./api/localFilesApi";
+import { writeLocalMeshFile, readLocalMeshFile } from "./api/localFilesApi";
 import {
   buildMeshFileNameFromLabel,
   normalizeMeshWorkspaceFileName,
+  parseMeshFileContent,
   serializeMeshFile,
 } from "./lib/meshFile";
 import {
@@ -72,7 +84,7 @@ import {
 } from "./lib/meshDefinition";
 import { buildMeshReferenceOverlay } from "./lib/meshReferenceOverlay";
 import { createMeshDocumentFromReference } from "./lib/meshFromReference";
-type SidebarMode = "search" | "draw" | "mesh" | "geojson" | "settings";
+type SidebarMode = "search" | "draw" | "mesh" | "geojson" | "individual" | "settings";
 
 export default function GeoShapeViewerPage() {
   const initialLoadedGeoJsonDraftRef = useRef(loadLoadedGeoJsonDraft());
@@ -133,15 +145,19 @@ export default function GeoShapeViewerPage() {
     ),
   );
   const [selectedGeoJsonShapeKeys, setSelectedGeoJsonShapeKeys] = useState<string[]>([]);
+  const [individualLoadedFolder, setIndividualLoadedFolder] = useState<string | null>(null);
+  const [individualLoadedFiles, setIndividualLoadedFiles] = useState<LoadedGeoJsonFile[]>([]);
   const [meshDocument, setMeshDocument] = useState<MeshDocument>(
     () => initialMeshDraftRef.current?.document ?? createEmptyMeshDocument(),
   );
   const [meshDefinition, setMeshDefinition] = useState<MeshDefinition | null>(() => {
     const draft = initialMeshDraftRef.current;
-    if (!draft || draft.document.faces.length === 0) return null;
-    return draft.definition
-      ? cloneMeshDefinition(normalizeMeshDefinition(draft.definition))
-      : buildMeshDefinitionFromDocument(draft.document);
+    if (!draft) return null;
+    if (draft.definition) {
+      return cloneMeshDefinition(normalizeMeshDefinition(draft.definition));
+    }
+    if (draft.document.faces.length === 0) return null;
+    return buildMeshDefinitionFromDocument(draft.document);
   });
   const [meshSelectedFaceId, setMeshSelectedFaceId] = useState<string | null>(
     () => initialMeshDraftRef.current?.selectedFaceId ?? null,
@@ -153,8 +169,10 @@ export default function GeoShapeViewerPage() {
     () => initialMeshDraftRef.current?.interactionMode ?? "edit-vertices",
   );
   const [startMeshFlowReference, setStartMeshFlowReference] = useState<LoadedMeshReference | null>(null);
-  const [meshVertexMoveUndo, setMeshVertexMoveUndo] = useState<MeshVertexMoveUndoEntry[]>(
-    () => initialMeshDraftRef.current?.vertexMoveUndo ?? [],
+  const [meshVertexMoveUndo, setMeshVertexMoveUndo] = useState<MeshUndoEntry[]>(() =>
+    (initialMeshDraftRef.current?.vertexMoveUndo ?? [])
+      .map(normalizeMeshUndoEntry)
+      .filter((entry): entry is MeshUndoEntry => entry !== null),
   );
   const [meshOuterVerticesLocked, setMeshOuterVerticesLocked] = useState(
     () => initialMeshDraftRef.current?.outerVerticesLocked !== false,
@@ -194,6 +212,31 @@ export default function GeoShapeViewerPage() {
   const loadedGeoJsonOverlay = useMemo(
     () => buildLoadedGeoJsonStyledCollection(loadedGeoJsonFiles, geoJsonShapeGroups),
     [geoJsonShapeGroups, loadedGeoJsonFiles],
+  );
+  const individualShapesOverlay = useMemo(
+    () =>
+      individualLoadedFolder
+        ? buildIndividualShapesOverlay(individualLoadedFiles, individualLoadedFolder)
+        : null,
+    [individualLoadedFiles, individualLoadedFolder],
+  );
+  const combinedLocalOverlay = useMemo(() => {
+    const collections = [loadedGeoJsonOverlay, individualShapesOverlay].filter(
+      (collection): collection is GeoJSON.FeatureCollection =>
+        Boolean(collection && collection.features.length > 0),
+    );
+
+    if (collections.length === 0) return null;
+    if (collections.length === 1) return collections[0];
+
+    return {
+      type: "FeatureCollection",
+      features: collections.flatMap(collection => collection.features),
+    };
+  }, [individualShapesOverlay, loadedGeoJsonOverlay]);
+  const loadedGeoJsonLabelOverlay = useMemo(
+    () => buildGeoJsonFeatureLabelCollection(combinedLocalOverlay),
+    [combinedLocalOverlay],
   );
   const loadedGeoJsonHighlightOverlay = useMemo(
     () =>
@@ -384,6 +427,13 @@ export default function GeoShapeViewerPage() {
     mapRef.current?.fitFeatures(features);
   }, [loadedGeoJsonFiles]);
 
+  const handleFitAllIndividualShapes = useCallback(() => {
+    const features = individualLoadedFiles.filter(file => file.visible).flatMap(file => file.features);
+    if (features.length === 0) return;
+
+    mapRef.current?.fitFeatures(features);
+  }, [individualLoadedFiles]);
+
   const handleFitLoadedGeoJsonShape = useCallback((feature: GeoJSON.Feature) => {
     mapRef.current?.fitFeatures([feature]);
   }, []);
@@ -409,25 +459,67 @@ export default function GeoShapeViewerPage() {
   const handleMeshDocumentChange = useCallback((document: MeshDocument) => {
     setMeshDocument(document);
     setMeshVertexMoveUndo([]);
+    setMeshSelectedVertexIds([]);
   }, []);
 
   const handleVertexMoveCommitted = useCallback((entry: MeshVertexMoveUndoEntry) => {
     setMeshVertexMoveUndo(previous => pushMeshVertexMoveUndo(previous, entry));
   }, []);
 
-  const handleUndoVertexMove = useCallback(() => {
+  const handleUndoMeshEdit = useCallback(() => {
     setMeshVertexMoveUndo(previous => {
-      const { stack, entry } = popMeshVertexMoveUndo(previous);
-      if (entry) {
+      const { stack, entry } = popMeshUndo(previous);
+      if (!entry) {
+        return previous;
+      }
+
+      if (entry.kind === "vertex-move") {
         setMeshDocument(current =>
           current.vertices[entry.vertexId]
             ? moveVertex(current, entry.vertexId, entry.position)
             : current,
         );
+      } else {
+        setMeshDocument(cloneMeshDocument(entry.document));
+        setMeshSelectedFaceId(entry.selectedFaceId);
+        setMeshSelectedEdgeIndex(entry.selectedEdgeIndex);
       }
+
       return stack;
     });
   }, []);
+
+  const handleDeleteMeshVertices = useCallback(
+    (vertexIds: string[]) => {
+      if (vertexIds.length === 0) return;
+
+      const removableVertexIds = vertexIds.filter(vertexId =>
+        isMeshVertexRemovable(meshDocument, vertexId, meshOuterVerticesLocked),
+      );
+      if (removableVertexIds.length === 0) return;
+
+      const updated = removeMeshVertices(meshDocument, removableVertexIds);
+
+      setMeshVertexMoveUndo(previous =>
+        pushMeshUndo(
+          previous,
+          createMeshDocumentUndoEntry(meshDocument, meshSelectedFaceId, meshSelectedEdgeIndex),
+        ),
+      );
+      setMeshDocument(updated);
+
+      if (meshSelectedFaceId && !updated.faces.some(face => face.id === meshSelectedFaceId)) {
+        setMeshSelectedFaceId(updated.faces[0]?.id ?? null);
+        setMeshSelectedEdgeIndex(null);
+      }
+    },
+    [
+      meshDocument,
+      meshOuterVerticesLocked,
+      meshSelectedEdgeIndex,
+      meshSelectedFaceId,
+    ],
+  );
 
   const handleToggleSelectedFaceLock = useCallback(() => {
     if (!meshSelectedFaceId) return;
@@ -450,8 +542,34 @@ export default function GeoShapeViewerPage() {
 
       if ((event.ctrlKey || event.metaKey) && key === "z" && !event.shiftKey) {
         event.preventDefault();
-        handleUndoVertexMove();
+        handleUndoMeshEdit();
         return;
+      }
+
+      if (!event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey) {
+        if (key === "e") {
+          event.preventDefault();
+          setMeshInteractionMode("edit-vertices");
+          return;
+        }
+
+        if (key === "s") {
+          event.preventDefault();
+          setMeshInteractionMode("subdivide-face");
+          return;
+        }
+
+        if (key === "f") {
+          event.preventDefault();
+          setMeshInteractionMode("create-face");
+          return;
+        }
+
+        if (key === "d" && meshInteractionMode !== "delete-vertex-chain") {
+          event.preventDefault();
+          setMeshInteractionMode("delete-vertex-chain");
+          return;
+        }
       }
 
       if (key === "l" && !event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey) {
@@ -463,7 +581,7 @@ export default function GeoShapeViewerPage() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleToggleSelectedFaceLock, handleUndoVertexMove, meshSelectedFaceId, sidebarMode]);
+  }, [handleToggleSelectedFaceLock, handleUndoMeshEdit, meshInteractionMode, meshSelectedFaceId, sidebarMode]);
 
   const resetMeshEditingState = useCallback(() => {
     setMeshDocument(createEmptyMeshDocument());
@@ -590,7 +708,15 @@ export default function GeoShapeViewerPage() {
   }, [meshDocument]);
 
   const handleImportMesh = useCallback(
-    (document: MeshDocument, fileName?: string, definition?: MeshDefinition) => {
+    (
+      document: MeshDocument,
+      fileName?: string,
+      definition?: MeshDefinition,
+      restore?: Pick<
+        PersistedMeshDraft,
+        "selectedFaceId" | "selectedEdgeIndex" | "interactionMode" | "outerVerticesLocked" | "vertexMoveUndo"
+      >,
+    ) => {
       setStartMeshFlowStep(null);
       setStartMeshFlowName("");
       setStartMeshFlowError(null);
@@ -600,14 +726,49 @@ export default function GeoShapeViewerPage() {
       setMeshSaveFileName(fileName ? normalizeMeshWorkspaceFileName(fileName) : "");
       setMeshDefinition(definition ? cloneMeshDefinition(normalizeMeshDefinition(definition)) : null);
       setMeshDocument(document);
-    setMeshSelectedFaceId(document.faces[0]?.id ?? null);
-    setMeshSelectedEdgeIndex(null);
-    setMeshInteractionMode("edit-vertices");
-    setMeshVertexMoveUndo([]);
-    mapRef.current?.fitFeatures(getMeshFocusFeatures(document), { maxZoom: 14 });
+      setMeshSelectedFaceId(restore?.selectedFaceId ?? document.faces[0]?.id ?? null);
+      setMeshSelectedEdgeIndex(restore?.selectedEdgeIndex ?? null);
+      setMeshInteractionMode(restore?.interactionMode ?? "edit-vertices");
+      setMeshOuterVerticesLocked(restore?.outerVerticesLocked !== false);
+      setMeshVertexMoveUndo(restore?.vertexMoveUndo ?? []);
+      mapRef.current?.fitFeatures(getMeshFocusFeatures(document), { maxZoom: 14 });
     },
     [],
   );
+
+  const externalDraftRestoreRef = useRef(
+    isExternalMeshDraft(initialMeshDraftRef.current) ? initialMeshDraftRef.current : null,
+  );
+
+  useEffect(() => {
+    const restoreDraft = externalDraftRestoreRef.current;
+    if (!restoreDraft?.fileName) return;
+    externalDraftRestoreRef.current = null;
+
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const { content } = await readLocalMeshFile(restoreDraft.fileName!);
+        const parsed = parseMeshFileContent(content);
+        if (!parsed.ok || cancelled) return;
+
+        handleImportMesh(parsed.document, restoreDraft.fileName!, parsed.definition, {
+          selectedFaceId: restoreDraft.selectedFaceId,
+          selectedEdgeIndex: restoreDraft.selectedEdgeIndex,
+          interactionMode: restoreDraft.interactionMode,
+          outerVerticesLocked: restoreDraft.outerVerticesLocked,
+          vertexMoveUndo: restoreDraft.vertexMoveUndo,
+        });
+      } catch {
+        // Keep the empty mesh state; the user can reload manually.
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [handleImportMesh]);
 
   useEffect(() => {
     if (meshInteractionMode !== "merge-faces") {
@@ -643,10 +804,12 @@ export default function GeoShapeViewerPage() {
         setMeshDocument(prev => bringFaceToFront(prev, faceId));
       },
       onVertexMoveCommitted: handleVertexMoveCommitted,
+      onDeleteMeshVertices: handleDeleteMeshVertices,
       onMergeError: setMeshMergeError,
       outerVerticesLocked: meshOuterVerticesLocked,
     };
   }, [
+    handleDeleteMeshVertices,
     handleMeshDocumentChange,
     handleSelectMeshFace,
     handleVertexMoveCommitted,
@@ -760,6 +923,9 @@ export default function GeoShapeViewerPage() {
             <Tab isActive={sidebarMode === "geojson"} onClick={() => setSidebarMode("geojson")}>
               GeoJSON
             </Tab>
+            <Tab isActive={sidebarMode === "individual"} onClick={() => setSidebarMode("individual")}>
+              Individual
+            </Tab>
             <Tab isActive={sidebarMode === "settings"} onClick={() => setSidebarMode("settings")}>
               Settings
             </Tab>
@@ -776,11 +942,6 @@ export default function GeoShapeViewerPage() {
                 selectedIds={selectedIds}
                 shapeTypes={shapeTypesParam}
                 showAll={settings.showAll}
-              />
-              <ZipPrefixBulkAdd
-                selectedIds={selectedIds}
-                showAll={settings.showAll}
-                onAddMany={addShapes}
               />
             </>
           ) : null}
@@ -813,6 +974,7 @@ export default function GeoShapeViewerPage() {
                 showAll={settings.showAll}
                 shapeTypes={shapeTypesParam}
                 onInteractionModeChange={setMeshInteractionMode}
+                onToggleSelectedFaceLock={handleToggleSelectedFaceLock}
                 outerVerticesLocked={meshOuterVerticesLocked}
                 onOuterVerticesLockedChange={setMeshOuterVerticesLocked}
                 onFocusMesh={handleFocusMesh}
@@ -865,6 +1027,18 @@ export default function GeoShapeViewerPage() {
             </>
           ) : null}
 
+          {sidebarMode === "individual" ? (
+            <>
+              <IndividualShapesPanel
+                loadedFolder={individualLoadedFolder}
+                files={individualLoadedFiles}
+                onLoadedFolderChange={setIndividualLoadedFolder}
+                onFilesChange={setIndividualLoadedFiles}
+                onFitAll={handleFitAllIndividualShapes}
+              />
+            </>
+          ) : null}
+
           {sidebarMode === "settings" ? (
             <MapDisplaySettingsPanel
               settings={settings}
@@ -908,7 +1082,8 @@ export default function GeoShapeViewerPage() {
               isDrawingActive={isDrawingActive}
               drawFeatures={visibleDrawFeatures}
               onDrawChange={handleDrawChange}
-              loadedGeoJsonOverlay={loadedGeoJsonOverlay}
+              loadedGeoJsonOverlay={combinedLocalOverlay}
+              loadedGeoJsonLabelOverlay={loadedGeoJsonLabelOverlay}
               loadedGeoJsonHighlightOverlay={loadedGeoJsonHighlightOverlay}
               geoJsonShapeSelectionEnabled={sidebarMode === "geojson" && Boolean(loadedGeoJsonOverlay)}
               onLoadedGeoJsonShapeClick={handleToggleLoadedGeoJsonShapeSelection}

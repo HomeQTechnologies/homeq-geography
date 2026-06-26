@@ -6,8 +6,8 @@ export interface GeoJsonGroupColor {
 }
 
 export const GEO_JSON_GROUP_COLORS: GeoJsonGroupColor[] = [
-  { fill: "#3B82F6", line: "#1D4ED8" },
   { fill: "#10B981", line: "#047857" },
+  { fill: "#3B82F6", line: "#1D4ED8" },
   { fill: "#F59E0B", line: "#D97706" },
   { fill: "#EF4444", line: "#B91C1C" },
   { fill: "#8B5CF6", line: "#6D28D9" },
@@ -17,9 +17,21 @@ export const GEO_JSON_GROUP_COLORS: GeoJsonGroupColor[] = [
 ];
 
 export const UNGROUPED_GEO_JSON_COLOR: GeoJsonGroupColor = {
-  fill: "#C4B5FD",
-  line: "#7C3AED",
+  fill: "#6EE7B7",
+  line: "#059669",
 };
+
+const LEGACY_DEFAULT_GEO_JSON_FILE_COLOR: GeoJsonGroupColor = {
+  fill: "#3B82F6",
+  line: "#1D4ED8",
+};
+
+export function isLegacyDefaultGeoJsonFileColor(color: string, lineColor: string): boolean {
+  return (
+    color === LEGACY_DEFAULT_GEO_JSON_FILE_COLOR.fill &&
+    lineColor === LEGACY_DEFAULT_GEO_JSON_FILE_COLOR.line
+  );
+}
 
 export interface GeoJsonShapeGroup {
   id: string;
@@ -48,6 +60,25 @@ export function getNextGroupColor(groups: GeoJsonShapeGroup[]): GeoJsonGroupColo
   if (unusedColor) return unusedColor;
 
   return GEO_JSON_GROUP_COLORS[groups.length % GEO_JSON_GROUP_COLORS.length];
+}
+
+export function getLoadedGeoJsonFileColor(fileIndex: number): GeoJsonGroupColor {
+  return GEO_JSON_GROUP_COLORS[fileIndex % GEO_JSON_GROUP_COLORS.length];
+}
+
+/** Assign a distinct palette color to each shape within a loaded file. */
+export function getLoadedGeoJsonShapeColor(
+  fileIndex: number,
+  shapeIndex: number,
+  shapeCount: number,
+): GeoJsonGroupColor {
+  const paletteStart = fileIndex % GEO_JSON_GROUP_COLORS.length;
+
+  if (shapeCount <= 1) {
+    return GEO_JSON_GROUP_COLORS[paletteStart]!;
+  }
+
+  return GEO_JSON_GROUP_COLORS[(paletteStart + shapeIndex) % GEO_JSON_GROUP_COLORS.length]!;
 }
 
 export function normalizeGeoJsonShapeGroup(

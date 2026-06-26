@@ -62,6 +62,31 @@ describe("meshFile", () => {
     });
   });
 
+  it("cleans consecutive duplicate vertices in a face ring", () => {
+    const normalized = normalizeImportedMeshDocument({
+      vertices: meshDocument.vertices,
+      faces: [
+        {
+          ...meshDocument.faces[0]!,
+          vertexIds: [
+            meshDocument.faces[0]!.vertexIds[0]!,
+            meshDocument.faces[0]!.vertexIds[0]!,
+            meshDocument.faces[0]!.vertexIds[1]!,
+            meshDocument.faces[0]!.vertexIds[2]!,
+            meshDocument.faces[0]!.vertexIds[3]!,
+          ],
+        },
+      ],
+    });
+
+    expect(normalized?.faces[0]?.vertexIds).toEqual([
+      meshDocument.faces[0]!.vertexIds[0],
+      meshDocument.faces[0]!.vertexIds[1],
+      meshDocument.faces[0]!.vertexIds[2],
+      meshDocument.faces[0]!.vertexIds[3],
+    ]);
+  });
+
   it("prunes unused vertices on import", () => {
     const normalized = normalizeImportedMeshDocument({
       vertices: {
