@@ -264,7 +264,7 @@ def main() -> int:
     if args.reference_geojson:
         args.reference_geojson.parent.mkdir(parents=True, exist_ok=True)
         args.reference_geojson.write_text(
-            json.dumps(perimeter_geojson(reference_polygon), indent=2),
+            json.dumps(perimeter_geojson(reference_polygon), indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
 
@@ -272,7 +272,7 @@ def main() -> int:
     stats = summarize_topology(mesh_file["document"], reference_polygon)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(mesh_file, indent=2), encoding="utf-8")
+    args.output.write_text(json.dumps(mesh_file, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     print(f"Wrote {args.output}")
     print(

@@ -1,825 +1,825 @@
 {
   "type": "homeq-mesh",
   "version": 1,
-  "exportedAt": "2026-06-26T13:16:22.884Z",
+  "exportedAt": "2026-06-26T13:49:50.010Z",
   "definition": {
-    "id-prefix": 0,
+    "id-prefix": 12800000,
     "faces": [
       {
-        "name": "TYGELSJÖ VÅNG",
+        "name": "Tygelsjö Vång",
         "id": 1,
         "type": "face",
-        "uuid": "480e040ee8c449e6bc678e28bc86bbdd"
+        "uuid": "f66323bab37c4d648c2d6a8d374e16a8"
       },
       {
-        "name": "VÄSTRA KLAGSTORP",
+        "name": "Västra Klagstorp",
         "id": 2,
         "type": "face",
-        "uuid": "5a8af7d82aad42448b721c241ba8ee4c"
+        "uuid": "4fbe63f38a54480387352367a43afa83"
       },
       {
-        "name": "SKUMPARP",
+        "name": "Skumparp",
         "id": 3,
         "type": "face",
-        "uuid": "6eb527806ea84b40b7601b555170fb34"
+        "uuid": "858273fae27342c59bd68fad836c30b4"
       },
       {
-        "name": "LINDEBORG",
+        "name": "Lindeborg",
         "id": 4,
         "type": "face",
-        "uuid": "69d2b3c12fc34f45a6f8f73d1f5f92e1"
+        "uuid": "bbb130f3d87643cfa49d65ce2a10a63f"
       },
       {
-        "name": "ÖSTRA SÖDERKULLA",
+        "name": "Östra Söderkulla",
         "id": 5,
         "type": "face",
-        "uuid": "5b64ab1b8e394db39f4a357ce5048494"
+        "uuid": "9fc574a467e5447e8032fc4bd1c0420d"
       },
       {
-        "name": "FOSIEBY INDUSTRIOMRÅDE",
+        "name": "Fosieby Industriområde",
         "id": 6,
         "type": "face",
-        "uuid": "dd43598df2ec46e59a67fb78629bdb31"
+        "uuid": "5e817aa50ace44ee8b16b3322fd56789"
       },
       {
-        "name": "ELINELUND",
+        "name": "Elinelund",
         "id": 7,
         "type": "face",
-        "uuid": "802f5fb13532485aa9e68aba6e015fbe"
+        "uuid": "364568f9af62423883599d64df4fa6cd"
       },
       {
-        "name": "HYLLIEVÅNG",
+        "name": "Hyllievång",
         "id": 8,
         "type": "face",
-        "uuid": "ed83d93924e5449f89040a5e4a057bcb"
+        "uuid": "2a6f19868089483998e2d281ab7d163d"
       },
       {
-        "name": "VÄSTRA SÖDERKULLA",
+        "name": "Västra Söderkulla",
         "id": 9,
         "type": "face",
-        "uuid": "f4f21ba6b2604b0387119127f66e3d4a"
+        "uuid": "5470666bab914d098a0d76243bc52094"
       },
       {
-        "name": "GULLVIKSBORG",
+        "name": "Gullviksborg",
         "id": 10,
         "type": "face",
-        "uuid": "732aac157f934234b2252a756ba65af8"
+        "uuid": "0b96ab1ad66648e99a2ccdf5635c8c8c"
       },
       {
-        "name": "HYLLIEBY",
+        "name": "Hyllieby",
         "id": 11,
         "type": "face",
-        "uuid": "919355cad70d43f9935b8d9302779ce2"
+        "uuid": "73484e0562b24d4bb9e4a5b72fb2f8f9"
       },
       {
-        "name": "KRISTINEBERG",
+        "name": "Kristineberg",
         "id": 12,
         "type": "face",
-        "uuid": "d829e86625394036aed9a4c02fe24dd2"
+        "uuid": "53b5f8e9fc4a43519c5f3c4f256b8698"
       },
       {
-        "name": "NAFFENTORP",
+        "name": "Naffentorp",
         "id": 13,
         "type": "face",
-        "uuid": "5d11d21c9224476d85bd3aabf7bcd69e"
+        "uuid": "8c25a97ac23b4e34a4c8f7b20f7f1c23"
       },
       {
-        "name": "LOCKARP",
+        "name": "Lockarp",
         "id": 14,
         "type": "face",
-        "uuid": "bcdfac3f05114f2aa7d45924123969aa"
+        "uuid": "f9cb9a58d1e74b6e8df4f7e6508c16a9"
       },
       {
-        "name": "OXIE KYRKBY",
+        "name": "Oxie Kyrkby",
         "id": 15,
         "type": "face",
-        "uuid": "c7b38ce0a65a49f09661c9d71bb60688"
+        "uuid": "4a156238945c4704a574edc0ca212b12"
       },
       {
-        "name": "SVÅGERTORP",
+        "name": "Svågertorp",
         "id": 16,
         "type": "face",
-        "uuid": "8ce42dc4896b464f853e11633311abc4"
+        "uuid": "a71d308c996d4c57afa2721656bf01ab"
       },
       {
-        "name": "KUNGSHÖG",
+        "name": "Kungshög",
         "id": 17,
         "type": "face",
-        "uuid": "85dc8170cf244d2595a6b97f2420bff6"
+        "uuid": "a66887426aef4120be3c8dc419507259"
       },
       {
-        "name": "VINTRIE",
+        "name": "Vintrie",
         "id": 18,
         "type": "face",
-        "uuid": "4f4fc07cf188484eace223e149224f7f"
+        "uuid": "b0e51be5f9134d26b88598d8bbd18c3d"
       },
       {
-        "name": "LINDÄNGEN",
+        "name": "Lindängen",
         "id": 19,
         "type": "face",
-        "uuid": "16885b2b7dda4323a989854f58ad888b"
+        "uuid": "1a8f9acb271443afb8225802cb0b4f83"
       },
       {
-        "name": "KASTANJEGÅRDEN",
+        "name": "Kastanjegården",
         "id": 20,
         "type": "face",
-        "uuid": "4a57cfe30b274b25947d58e6683de7ef"
+        "uuid": "fb133451cb7240bc8160b8a3b1a6dee5"
       },
       {
-        "name": "FOSIEBY",
+        "name": "Fosieby",
         "id": 21,
         "type": "face",
-        "uuid": "e186c9a9cde640fb93376daf1b50721c"
+        "uuid": "503575771db44df48b320025b6cd4fa1"
       },
       {
-        "name": "ALMVIK",
+        "name": "Almvik",
         "id": 22,
         "type": "face",
-        "uuid": "58969cf8e6a54e0f9e605e3956dfeb14"
+        "uuid": "08ef273a0b9041b3b26f3342c4f64541"
       },
       {
-        "name": "FREDRIKSBERG",
+        "name": "Fredriksberg",
         "id": 23,
         "type": "face",
-        "uuid": "1397eb95e78646c4bb25d3e4bc12c684"
+        "uuid": "7e160e816a9b400a98b7c27cd4301135"
       },
       {
-        "name": "HERRGÅRDEN",
+        "name": "Herrgården",
         "id": 24,
         "type": "face",
-        "uuid": "84b62686e42740fbbdb2444e048f43ce"
+        "uuid": "244c2e2029c74a6ebeab37060cc1a071"
       },
       {
-        "name": "STENKÄLLAN",
+        "name": "Stenkällan",
         "id": 25,
         "type": "face",
-        "uuid": "fb7192202cca43f582009250769d51bc"
+        "uuid": "616e1553d86640a88fbc2dca5e7baa0e"
       },
       {
-        "name": "HÖJA",
+        "name": "Höja",
         "id": 26,
         "type": "face",
-        "uuid": "2a85d2cd116c4b0e9ed7ce36613e37f9"
+        "uuid": "365f861eec4a4e4f9835559bb6cbe906"
       },
       {
-        "name": "FLENSBURG",
+        "name": "Flensburg",
         "id": 27,
         "type": "face",
-        "uuid": "7b2db11047e24e74a116ccffcd3b70b5"
+        "uuid": "4aa0fe977dfe4a4bb70cb8041c8dd1f7"
       },
       {
-        "name": "BELLEVUEGÅRDEN",
+        "name": "Bellevuegården",
         "id": 28,
         "type": "face",
-        "uuid": "71fead6db79f4c0c8eb9006d28e3b3b8"
+        "uuid": "a1687ba4351a4803becd8f0ce7bf2d48"
       },
       {
-        "name": "ROSENVÅNG",
+        "name": "Rosenvång",
         "id": 29,
         "type": "face",
-        "uuid": "9dd1824f27744208971a53e0a80b9230"
+        "uuid": "9b02c062ece04329a4009648fa140f65"
       },
       {
-        "name": "SÖDRA SOFIELUND",
+        "name": "Södra Sofielund",
         "id": 30,
         "type": "face",
-        "uuid": "4fb669c3cc7c4351a019de95fa8aba63"
+        "uuid": "8d9eb9aae9fb42ae916baa0b25d058f9"
       },
       {
-        "name": "BORGMÄSTAREGÅRDEN",
+        "name": "Borgmästaregården",
         "id": 31,
         "type": "face",
-        "uuid": "8e84810c13034099b2a98023ad41e7dd"
+        "uuid": "fe8d12228f9941ef8d5b99f54d123b9d"
       },
       {
-        "name": "ROSENGÅRD CENTRUM",
+        "name": "Rosengård Centrum",
         "id": 32,
         "type": "face",
-        "uuid": "b7ab0ef587074568913cbabf9998ade4"
+        "uuid": "3fbd775aa02f4ebc9437abb1637658d1"
       },
       {
-        "name": "STADION",
+        "name": "Stadion",
         "id": 33,
         "type": "face",
-        "uuid": "dc36c752358c4a09b45eabc39c088f8d"
+        "uuid": "36336d17b215404b9c23a3a9371c776e"
       },
       {
-        "name": "ÖRTAGÅRDEN",
+        "name": "Örtagården",
         "id": 34,
         "type": "face",
-        "uuid": "fa4d4aea8240415ab12adbf641c07688"
+        "uuid": "5b27ad2204b54e408ba7346e56db5829"
       },
       {
-        "name": "SOFIELUNDS INDUSTRIOMR.",
+        "name": "Sofielunds Industriomr.",
         "id": 35,
         "type": "face",
-        "uuid": "7cb7f0cc9a384420b5d5181a250b4d22"
+        "uuid": "282e99fc66c04abba7677387d6e99625"
       },
       {
-        "name": "SÖDERVÄRN",
+        "name": "Södervärn",
         "id": 36,
         "type": "face",
-        "uuid": "b4b0f632c82642f9802f12922088f61d"
+        "uuid": "e08f0b842a8d482cb1b2c0bea38d6dd8"
       },
       {
-        "name": "LORENSBORG",
+        "name": "Lorensborg",
         "id": 37,
         "type": "face",
-        "uuid": "eab1b9ced4524473ab78d1ce85230e82"
+        "uuid": "7894af71ef20468da02c3003729f2db7"
       },
       {
-        "name": "TÖRNROSEN",
+        "name": "Törnrosen",
         "id": 38,
         "type": "face",
-        "uuid": "23e85eb36832437286fe810945f6b169"
+        "uuid": "f862e11f4ee24e40a89fa9c117762896"
       },
       {
-        "name": "GAMLA LIMHAMN",
+        "name": "Gamla Limhamn",
         "id": 39,
         "type": "face",
-        "uuid": "9f7efe5b0a75415baa7f3b5753354b94"
+        "uuid": "204c681639ff4af28acaa79d74a8d7ee"
       },
       {
-        "name": "NYA BELLEVUE",
+        "name": "Nya Bellevue",
         "id": 40,
         "type": "face",
-        "uuid": "3bcb728d6ba3460a87d47ca038f491a3"
+        "uuid": "fa6103f5087d4918b961e66fdc58e266"
       },
       {
-        "name": "APELGÅRDEN",
+        "name": "Apelgården",
         "id": 41,
         "type": "face",
-        "uuid": "8fca8d03f2e841e39f416b9f957ec324"
+        "uuid": "41ad0819d0194fa88564490f0789409a"
       },
       {
-        "name": "ANNELUND",
+        "name": "Annelund",
         "id": 42,
         "type": "face",
-        "uuid": "b127b4d1405b4d058a1b51db236c1f02"
+        "uuid": "f7f5945727494accacf5962f4ce48195"
       },
       {
-        "name": "KRYDDGÅRDEN",
+        "name": "Kryddgården",
         "id": 43,
         "type": "face",
-        "uuid": "d1444c196fcb40f4bd9862ab535955e7"
+        "uuid": "2be21aff59b4419b9cc56f3b86239f9f"
       },
       {
-        "name": "SOLBACKEN",
+        "name": "Solbacken",
         "id": 44,
         "type": "face",
-        "uuid": "1407e794f03c455cbef4df3823730fa3"
+        "uuid": "d1d82daca7fa4664a1ee72d999a91390"
       },
       {
-        "name": "NORRA SOFIELUND",
+        "name": "Norra Sofielund",
         "id": 45,
         "type": "face",
-        "uuid": "f8d1364c81e64ac1af1b018d740f0c91"
+        "uuid": "78120711d0884bc2b9970ff5cf154d4a"
       },
       {
-        "name": "ALLMÄNNA SJUKHUSET",
+        "name": "Allmänna Sjukhuset",
         "id": 46,
         "type": "face",
-        "uuid": "b3fd401ebc474a569224b0cc57bf1524"
+        "uuid": "fa1482d5eceb4e38ada23bb629d9fec1"
       },
       {
-        "name": "DAMMFRI",
+        "name": "Dammfri",
         "id": 47,
         "type": "face",
-        "uuid": "56171e1c2a124c798b26fe41a7cba02a"
+        "uuid": "87d6ce7afd6244cfb898ac60521bf327"
       },
       {
-        "name": "BELLEVUE",
+        "name": "Bellevue",
         "id": 48,
         "type": "face",
-        "uuid": "cb6997212601497cb3beddb012cd7345"
+        "uuid": "8a4ab06c3d04436fbd049453e1278ea4"
       },
       {
-        "name": "MELLANHEDEN",
+        "name": "Mellanheden",
         "id": 49,
         "type": "face",
-        "uuid": "192abb41da684343ad24950a63468b65"
+        "uuid": "385b9181b68945b2800b783daec1b3a2"
       },
       {
-        "name": "VIRENTOFTA",
+        "name": "Virentofta",
         "id": 50,
         "type": "face",
-        "uuid": "fe5d0ef11cf24f50b9a9540b0fbbe66f"
+        "uuid": "1ee983445f814302a1dd09a8815fd790"
       },
       {
-        "name": "PILDAMMSPARKEN",
+        "name": "Pildammsparken",
         "id": 51,
         "type": "face",
-        "uuid": "3d795ae407ef43059ace0f465566ff52"
+        "uuid": "3098c4b3fb5d40d69115eefc3d9185ba"
       },
       {
-        "name": "ÖSTRA SKRÄVLINGE",
+        "name": "Östra Skrävlinge",
         "id": 52,
         "type": "face",
-        "uuid": "ef0fe3b56f8147db81b988908e039d9d"
+        "uuid": "0c2467108c09403a9e2d648061b3aa7b"
       },
       {
-        "name": "KRONBORG",
+        "name": "Kronborg",
         "id": 53,
         "type": "face",
-        "uuid": "d4d55456ed3842e0baea9577ad6fcf31"
+        "uuid": "1c892120bc30492b88d70be1ddf16567"
       },
       {
-        "name": "ÖSTRA SORGENFRI",
+        "name": "Östra Sorgenfri",
         "id": 54,
         "type": "face",
-        "uuid": "75695d7a1d0c44c080aac7463844a25d"
+        "uuid": "3828fe86120c4ccf869da93d8727ad98"
       },
       {
-        "name": "VIDEDAL",
+        "name": "Videdal",
         "id": 55,
         "type": "face",
-        "uuid": "1ac8f795807548f4af3c2f8a534c80c5"
+        "uuid": "c9cc3d3777d549d28f5fd731cef9310a"
       },
       {
-        "name": "TEATERN",
+        "name": "Teatern",
         "id": 56,
         "type": "face",
-        "uuid": "2ed1cd37bef84be59a7f4f3ab3b799c5"
+        "uuid": "51ef096054f94f3cb527a00652960091"
       },
       {
-        "name": "FÅGELBACKEN",
+        "name": "Fågelbacken",
         "id": 57,
         "type": "face",
-        "uuid": "9d2a69f517644132be427be6857d4972"
+        "uuid": "7b555468166646628474ab24c6955fa4"
       },
       {
-        "name": "ÖSTRA KYRKOGÅRDEN",
+        "name": "Östra Kyrkogården",
         "id": 58,
         "type": "face",
-        "uuid": "e8d2f3c4370d40b7ba97255f78be2482"
+        "uuid": "f0394cdd1af14e50a08cf97da8eddad3"
       },
       {
-        "name": "NYDALA",
+        "name": "Nydala",
         "id": 59,
         "type": "face",
-        "uuid": "f927f6910e3240f08520d1ae284741c6"
+        "uuid": "9775672bd7e6474c87825e31c607ca18"
       },
       {
-        "name": "HOLMA",
+        "name": "Holma",
         "id": 60,
         "type": "face",
-        "uuid": "84dbcccf47ba44c1a91d1fe65be46461"
+        "uuid": "0366f830edf2476080bb357c985ab24a"
       },
       {
-        "name": "ELISEDAL",
+        "name": "Elisedal",
         "id": 61,
         "type": "face",
-        "uuid": "9fec508d1dcb41e884a63c1ca47eede6"
+        "uuid": "970ad12395f2477db3b8f443ed55d11a"
       },
       {
-        "name": "KALKBROTTET",
+        "name": "Kalkbrottet",
         "id": 62,
         "type": "face",
-        "uuid": "ffb6d90d55164fdb9dea1c79e7d713f9"
+        "uuid": "3b2c440e9d3b4d7890758bf501bca736"
       },
       {
-        "name": "KROKSBÄCKSPARKEN",
+        "name": "Kroksbäcksparken",
         "id": 63,
         "type": "face",
-        "uuid": "a5c36e1ec2544ea680df6796e5417ceb"
+        "uuid": "0a0c67805416469dad4c329ec75e57c4"
       },
       {
-        "name": "JÄGERSRO",
+        "name": "Jägersro",
         "id": 64,
         "type": "face",
-        "uuid": "519d67f6282744f0adaf382f389d660b"
+        "uuid": "48ed4e45ce444e7f9d6f93b4ce3006be"
       },
       {
-        "name": "ERIKSFÄLT",
+        "name": "Eriksfält",
         "id": 65,
         "type": "face",
-        "uuid": "64b593842c284ccfa266364cd47ace40"
+        "uuid": "69e731f9df2048b1b4e1cad4f7102d42"
       },
       {
-        "name": "ALMHÖG",
+        "name": "Almhög",
         "id": 66,
         "type": "face",
-        "uuid": "d59fe012cbe74385ba25618556f69820"
+        "uuid": "0342b32c9bee421ab902df7f66a6d7b7"
       },
       {
-        "name": "KULLADAL",
+        "name": "Kulladal",
         "id": 67,
         "type": "face",
-        "uuid": "945273a44f164c84a3ee59ec152c0691"
+        "uuid": "c7c44d2b5e8142acb8ceb590b7d69743"
       },
       {
-        "name": "JÄGERSRO VILLASTAD",
+        "name": "Jägersro Villastad",
         "id": 68,
         "type": "face",
-        "uuid": "347f03ca937345298519d083008ec706"
+        "uuid": "6093f9b5ce2b4156b54fb20a5376c1fc"
       },
       {
-        "name": "GRÖNDAL",
+        "name": "Gröndal",
         "id": 69,
         "type": "face",
-        "uuid": "f949398bb2024a18a512afed710d3f56"
+        "uuid": "304e8a291c944b9fb0bc7a9ed62ce7b8"
       },
       {
-        "name": "HINDBY",
+        "name": "Hindby",
         "id": 70,
         "type": "face",
-        "uuid": "c24caae13a344961b4613470d83b58f3"
+        "uuid": "87c50a3702c54719ab69a4af4cb6e371"
       },
       {
-        "name": "SÖDERTORP",
+        "name": "Södertorp",
         "id": 71,
         "type": "face",
-        "uuid": "ff57a0ccb9a843ec98d27b6ce4f178ba"
+        "uuid": "adf1ad33857d412dbf51d0fb9cba50a2"
       },
       {
-        "name": "DJUPADAL",
+        "name": "Djupadal",
         "id": 72,
         "type": "face",
-        "uuid": "212f07c1d7214e8fad9807271de756d0"
+        "uuid": "3594f3db21274fe0883d09dd794b5955"
       },
       {
-        "name": "ALMGÅRDEN",
+        "name": "Almgården",
         "id": 73,
         "type": "face",
-        "uuid": "2597206dfa944499bc6f1f61ef1101a7"
+        "uuid": "c5122b2378204655a13d108df52c4707"
       },
       {
-        "name": "ÄRTHOLMEN",
+        "name": "Ärtholmen",
         "id": 74,
         "type": "face",
-        "uuid": "197e365c75484b239fb41e06d80bfaa2"
+        "uuid": "e74bb2f3c6d14d56909ad09619682cee"
       },
       {
-        "name": "KROKSBÄCK",
+        "name": "Kroksbäck",
         "id": 75,
         "type": "face",
-        "uuid": "5a1d0175d65748b0a1bc79dd23d6496b"
+        "uuid": "0f837f8ad67f4015a143eee7901ebaa0"
       },
       {
-        "name": "ANNETORP",
+        "name": "Annetorp",
         "id": 76,
         "type": "face",
-        "uuid": "5d9d6f4e23bf4323aa5be289eccf00b5"
+        "uuid": "dd71d219feae49629c3fd44eb9ce26b0"
       },
       {
-        "name": "VÄSTRA KATTARP",
+        "name": "Västra Kattarp",
         "id": 77,
         "type": "face",
-        "uuid": "b7f47b19fca54f1093cf7695c516779e"
+        "uuid": "642a9d3e822d469c970fcff8f7589ed1"
       },
       {
-        "name": "AUGUSTENBORG",
+        "name": "Augustenborg",
         "id": 78,
         "type": "face",
-        "uuid": "7fcd797bd1844ed79399a3e61c3cfa27"
+        "uuid": "9c73ac67251642019850a599c1b31c36"
       },
       {
-        "name": "HELENEHOLM",
+        "name": "Heleneholm",
         "id": 79,
         "type": "face",
-        "uuid": "77bd553282a74f669ab1e5f176106ed5"
+        "uuid": "740c1ee6691346d8a19f945872750ae9"
       },
       {
-        "name": "PERSBORG",
+        "name": "Persborg",
         "id": 80,
         "type": "face",
-        "uuid": "6e7e2679bbe94842af464aaa4cc89fdc"
+        "uuid": "7bf3d7c34615479fb82a89123bf5bd70"
       },
       {
-        "name": "LÖNNGÅRDEN",
+        "name": "Lönngården",
         "id": 81,
         "type": "face",
-        "uuid": "cad19c843a8a4f49b196d030927702c8"
+        "uuid": "094c79e5eb9b41b997b91ab0d5a60a0e"
       },
       {
-        "name": "MÖLLEVÅNGEN",
+        "name": "Möllevången",
         "id": 82,
         "type": "face",
-        "uuid": "0c8c959fe8cd4ed78ed4d73e99f24f63"
+        "uuid": "66445144ee164027a5de461a9a1bd91d"
       },
       {
-        "name": "RÖNNEHOLM",
+        "name": "Rönneholm",
         "id": 83,
         "type": "face",
-        "uuid": "7c9ae3afe02a4c849685477aded1754d"
+        "uuid": "d99554f5b9c6446ca0bec334fc1b2421"
       },
       {
-        "name": "RÅDMANSVÅNGEN",
+        "name": "Rådmansvången",
         "id": 84,
         "type": "face",
-        "uuid": "2736b19226cb4a8c8d13ed30a54b5a76"
+        "uuid": "1e8fb9ae74c8447bafce02c08fa74d53"
       },
       {
-        "name": "KRONPRINSEN",
+        "name": "Kronprinsen",
         "id": 85,
         "type": "face",
-        "uuid": "dc7b55946abe49d2b2689b11dbedab70"
+        "uuid": "c5b507eab7f84b008fafbb928376fc9a"
       },
       {
-        "name": "HÄSTHAGEN",
+        "name": "Hästhagen",
         "id": 86,
         "type": "face",
-        "uuid": "0fa6d2be3f8742818979c7c25fb99c83"
+        "uuid": "b7090b788fec4d7b8d8bfa8a1b3ccee3"
       },
       {
-        "name": "HÅKANSTORP",
+        "name": "Håkanstorp",
         "id": 87,
         "type": "face",
-        "uuid": "3219a2dc919d4d3e9502fd97953c910f"
+        "uuid": "265d5997b8ca476388ba693469196d8c"
       },
       {
-        "name": "NORRA SORGENFRI",
+        "name": "Norra Sorgenfri",
         "id": 88,
         "type": "face",
-        "uuid": "314441e04bfb41e8a884ca7c5d749f20"
+        "uuid": "0b31c1bc9bea4732b9389fe0aa197349"
       },
       {
-        "name": "DAVIDSHALL",
+        "name": "Davidshall",
         "id": 89,
         "type": "face",
-        "uuid": "823607e623e44cd296e798632fbfd501"
+        "uuid": "8c7d9caa38f444889e090f5180ea9452"
       },
       {
-        "name": "EMILSTORP",
+        "name": "Emilstorp",
         "id": 90,
         "type": "face",
-        "uuid": "9ba81aee1aec41cb9ffbdb6b0abe3a9c"
+        "uuid": "b8f0c731c1624fb19ce8e7f46325dc6d"
       },
       {
-        "name": "FRIDHEM",
+        "name": "Fridhem",
         "id": 91,
         "type": "face",
-        "uuid": "857c35f8a6564af18741020f6eb4e335"
+        "uuid": "1f59588e4dc4451cbcffadc54cd78103"
       },
       {
-        "name": "LUGNET",
+        "name": "Lugnet",
         "id": 92,
         "type": "face",
-        "uuid": "784cfc9f4885484d959aa811222fe7c9"
+        "uuid": "1f3b25d1d8994e8e954f1d3514a53744"
       },
       {
-        "name": "KATRINELUND",
+        "name": "Katrinelund",
         "id": 93,
         "type": "face",
-        "uuid": "71286aaf6fe7454dbaafb9476df8156c"
+        "uuid": "5fb8adeabb7448f7a4271f12cede4de9"
       },
       {
-        "name": "ROSTORP",
+        "name": "Rostorp",
         "id": 94,
         "type": "face",
-        "uuid": "7b2253d67721441c87553b7bac0fa50b"
+        "uuid": "e8c3151df3974d05a7ae1be32105861d"
       },
       {
-        "name": "KIRSEBERGSSTADEN",
+        "name": "Kirsebergsstaden",
         "id": 95,
         "type": "face",
-        "uuid": "92258ec383af48b6b4fa04c15be86858"
+        "uuid": "c2f3fa974dad4b4d86d2ba614e813473"
       },
       {
-        "name": "SEGEVÅNG",
+        "name": "Segevång",
         "id": 96,
         "type": "face",
-        "uuid": "71567a13944947a98206a1fc16de2632"
+        "uuid": "0fafe7e1e422484ba08b3541fb59459d"
       },
       {
-        "name": "RIBERSBORG",
+        "name": "Ribersborg",
         "id": 97,
         "type": "face",
-        "uuid": "89d65fcf1297454b9b335c9835505eb2"
+        "uuid": "15e8aa9c50fa47b9a4ffae9eaebd6c29"
       },
       {
-        "name": "RÖRSJÖSTADEN",
+        "name": "Rörsjöstaden",
         "id": 98,
         "type": "face",
-        "uuid": "2ef25d624b384927a26d6cc694a34066"
+        "uuid": "a3b0c3f19a5744de823017a431828bd6"
       },
       {
-        "name": "MALMÖHUS",
+        "name": "Malmöhus",
         "id": 99,
         "type": "face",
-        "uuid": "dc60d01895d440559e45880f92d0927e"
+        "uuid": "4909a45e8756464997fab56e92de27f8"
       },
       {
-        "name": "ELLSTORP",
+        "name": "Ellstorp",
         "id": 100,
         "type": "face",
-        "uuid": "dfcfbfaa1b9747adb13eb0333e1f42cd"
+        "uuid": "8ebf58eb119c45bfa69c5ab2950bfb5c"
       },
       {
-        "name": "JOHANNESLUST",
+        "name": "Johanneslust",
         "id": 101,
         "type": "face",
-        "uuid": "17f6e44fa77746efa15ff724dc61a748"
+        "uuid": "5f4873f700bd4bd8ba5c0b5c67aceba2"
       },
       {
-        "name": "GAMLA STADEN",
+        "name": "Gamla Staden",
         "id": 102,
         "type": "face",
-        "uuid": "ea239f451de34311899eea61eda9da26"
+        "uuid": "0f087420e376491ab5b965b918a4497e"
       },
       {
-        "name": "SLUSSEN",
+        "name": "Slussen",
         "id": 103,
         "type": "face",
-        "uuid": "5f99a765526b4e28985f7546aff7c91e"
+        "uuid": "0fcba062f24945c0a37333482ec065d7"
       },
       {
-        "name": "ÖSTERVÄRN",
+        "name": "Östervärn",
         "id": 104,
         "type": "face",
-        "uuid": "fe4654960cd74efe942ef6eb3721eaac"
+        "uuid": "0b96756eae9e4af3adf59fcaa7d002dd"
       },
       {
-        "name": "BULLTOFTA",
+        "name": "Bulltofta",
         "id": 105,
         "type": "face",
-        "uuid": "6683681563434aff80322ccbb2da1b90"
+        "uuid": "98f51557b71c4c40bcc5a8eec6e3d582"
       },
       {
-        "name": "KÄGLINGE",
+        "name": "Käglinge",
         "id": 106,
         "type": "face",
-        "uuid": "0c3c7b876cc04b9087e699bbc4d9f7bc"
+        "uuid": "9f767ec9ec5d4bd4be33c209954e00a3"
       },
       {
-        "name": "OXIEVÅNG",
+        "name": "Oxievång",
         "id": 107,
         "type": "face",
-        "uuid": "e3710d70e55747319aae0b2d6c0d9802"
+        "uuid": "a16b25381e984405a3204aa61b0d2315"
       },
       {
-        "name": "TYGELSJÖ BY",
+        "name": "Tygelsjö By",
         "id": 108,
         "type": "face",
-        "uuid": "b9417d42556149d48cd8c83bd0e8cc62"
+        "uuid": "989fc7e112f04eb2b9041ed2e7b51805"
       },
       {
-        "name": "GLOSTORP",
+        "name": "Glostorp",
         "id": 109,
         "type": "face",
-        "uuid": "c05b73bfb989466f951dd731372311d2"
+        "uuid": "afbbd3bfe45143b9a7c7f8cb3363425f"
       },
       {
-        "name": "VÄSTRA SORGENFRI",
+        "name": "Västra Sorgenfri",
         "id": 110,
         "type": "face",
-        "uuid": "440c386c54a045dca3aad015e0b2f4c2"
+        "uuid": "492c552cdcbd47d6872a2b92f76f4b3c"
       },
       {
-        "name": "VÄRNHEM",
+        "name": "Värnhem",
         "id": 111,
         "type": "face",
-        "uuid": "62af351bb1454674918d021e0722e58d"
+        "uuid": "2e09f9a7d0074ab98da59fdab7328343"
       },
       {
-        "name": "VÄSTERVÅNG",
+        "name": "Västervång",
         "id": 112,
         "type": "face",
-        "uuid": "2d65b9ffe51e40b2998f9db027967cbc"
+        "uuid": "ca11051904a14af1a30b7db9bcf34982"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A A",
+        "name": "Hermodsdal",
         "id": 113,
         "type": "face",
-        "uuid": "14aec6ba6b204d95a26d2b853f9b3699"
+        "uuid": "b28c4f89f9164b76bcbaaf2804d0d9b0"
       },
       {
-        "name": "Face 130 A + LIMHAMNS HAMNOMRÅDE",
+        "name": "Gullvik",
         "id": 114,
         "type": "face",
-        "uuid": "702dc6c94ba24125be45d9061b3382c9"
+        "uuid": "efd151613fba4d91ab0ff78577b943e9"
       },
       {
-        "name": "HERMODSDAL",
+        "name": "Kvarnby",
         "id": 115,
         "type": "face",
-        "uuid": "10023b8caccb4aab80205a3ad0b12a27"
+        "uuid": "13e5172c63ec49ccb9d58e7f4a9b0ff8"
       },
       {
-        "name": "GULLVIK",
+        "name": "Fortuna Hemgården",
         "id": 116,
         "type": "face",
-        "uuid": "2739bd4f5e9d4a8bb5ef42306f49ae72"
+        "uuid": "58576d5612894afa962ba3c2897634c9"
       },
       {
-        "name": "KVARNBY",
+        "name": "Södra Sallerup",
         "id": 117,
         "type": "face",
-        "uuid": "b18a6c4527494485aa3234a6e90d4dad"
+        "uuid": "cfe7c7a4615c4fd2b7e34326330d972c"
       },
       {
-        "name": "FORTUNA HEMGÅRDEN",
+        "name": "Valdemarsro",
         "id": 118,
         "type": "face",
-        "uuid": "56b7f7a179c2415ebfdc633586821acd"
+        "uuid": "5c3a0da42642437c99f1ee05117e36bf"
       },
       {
-        "name": "SÖDRA SALLERUP",
+        "name": "Segemölla",
         "id": 119,
         "type": "face",
-        "uuid": "b5fffa4ecd3648ff9924545fde2ce1f0"
+        "uuid": "26781d555cb4480cac4fce69f3a7bef8"
       },
       {
-        "name": "VALDEMARSRO",
+        "name": "Sege Industriområde",
         "id": 120,
         "type": "face",
-        "uuid": "cdde2c63bd784f6d9060852c17f84378"
+        "uuid": "db640bbd7d4c48fe9e3efb1eed817bba"
       },
       {
-        "name": "SEGEMÖLLA",
+        "name": "Toarp",
         "id": 121,
         "type": "face",
-        "uuid": "892999056f6c4049b6e542b81b978cc9"
+        "uuid": "934dfadfeee44a2dba8a38458061139a"
       },
       {
-        "name": "SEGE INDUSTRIOMRÅDE",
+        "name": "Riseberga",
         "id": 122,
         "type": "face",
-        "uuid": "0169e2367c9840649d4d7bb42afee1e8"
+        "uuid": "07f4b5619f2f4338b5846f92cdc239ee"
       },
       {
-        "name": "TOARP",
+        "name": "Toftanäs",
         "id": 123,
         "type": "face",
-        "uuid": "c1fcc20cd7384f1392bb4b25d2aa4fd3"
+        "uuid": "3bd31203f9c44248946c0fd815916bb0"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A B",
+        "name": "Klagshamn",
         "id": 124,
         "type": "face",
-        "uuid": "4b7c869a66e745538380f1e2f205b692"
+        "uuid": "5edc0ce0f5f9424892d8fa76904bdeb8"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A B A",
+        "name": "Bunkeflostrand",
         "id": 125,
         "type": "face",
-        "uuid": "5fb9f46bb3ea43bb9e951cd49de3e54f"
+        "uuid": "e15dd86cc7414bfbba236fdeaece4d0e"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A B B B",
+        "name": "Sibbarp",
         "id": 126,
         "type": "face",
-        "uuid": "adef4deaa6944249a4c4a708f233e95c"
+        "uuid": "99c8d16feeb8465eb155d1a299bf5601"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A B B A",
+        "name": "Limhamns Hamnområde",
         "id": 127,
         "type": "face",
-        "uuid": "9630bfed9fcd49b2a43a3e57a526e23e"
+        "uuid": "a7ffdbd86249406d8bd2f92155b3ef61"
       },
       {
-        "name": "RISEBERGA",
+        "name": "Ribersborgsstranden",
         "id": 128,
         "type": "face",
-        "uuid": "1a3a944a11484862b9d2e141547778a1"
+        "uuid": "3e914cb5d5fe403eb41d26254547c7b1"
       },
       {
-        "name": "TOFTANÄS",
+        "name": "Västra Hamnen",
         "id": 129,
         "type": "face",
-        "uuid": "3f05a6b2fc2e4e5a8dcb0c24d5edb9cc"
+        "uuid": "4700d9a9387b4cfcb4b881050f1949a7"
       },
       {
-        "name": "KLAGSHAMN",
+        "name": "Frihamnen",
         "id": 130,
         "type": "face",
-        "uuid": "a3f70fe3918f44f0b2200374d9b4bc97"
+        "uuid": "7a051e11feac43d2afa0b4a72c7adadf"
       },
       {
-        "name": "BUNKEFLOSTRAND",
+        "name": "Mellersta Hamnen",
         "id": 131,
         "type": "face",
-        "uuid": "abb50b32776e40b581c3f3fec5378964"
+        "uuid": "95c8cae871e84e268f5fd80acf7d555e"
       },
       {
-        "name": "SIBBARP",
+        "name": "Norra Hamnen",
         "id": 132,
         "type": "face",
-        "uuid": "6b6a8e4f6a5d47c3b84371da1c6477c1"
+        "uuid": "20ed8fb4b66e4643b340361e688a0e78"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 B",
+        "name": "Östra Hamnen",
         "id": 133,
         "type": "face",
-        "uuid": "d7e53747c41a45d5bf44a440ad8bd51f"
+        "uuid": "afca9a460f5f4415b26379a5794de053"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A B",
+        "name": "Oljehamnen",
         "id": 134,
         "type": "face",
-        "uuid": "a9ee126e55454d71be5c91993cbeb718"
+        "uuid": "5e1e02581364459dbd3e773cdabc2941"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A B A + Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A B B",
+        "name": "Spillepengen",
         "id": 135,
         "type": "face",
-        "uuid": "6c0543d859794880a82f55f1f243883f"
+        "uuid": "cbf4442834ca4961b6c164bcdb8b1081"
       },
       {
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A B + SPILLEPENGEN",
+        "name": "Inre Hamnen",
         "id": 136,
         "type": "face",
-        "uuid": "8ada3872d1a04f3eb2482675f593534d"
+        "uuid": "d75afcdc4a2d4d68bfe3c3d37fb6c717"
       }
     ],
     "composites": []
@@ -80601,8 +80601,8 @@
     },
     "faces": [
       {
-        "id": "480e040e-e8c4-49e6-bc67-8e28bc86bbdd",
-        "name": "TYGELSJÖ VÅNG",
+        "id": "f66323bab37c4d648c2d6a8d374e16a8",
+        "name": "Tygelsjö Vång",
         "vertexIds": [
           "fbaae625-62d5-4047-96ba-7d6a9dd13b00",
           "2568965c-4fab-4636-89d9-1001c47d7a78",
@@ -80722,8 +80722,8 @@
         "visible": true
       },
       {
-        "id": "5a8af7d8-2aad-4244-8b72-1c241ba8ee4c",
-        "name": "VÄSTRA KLAGSTORP",
+        "id": "4fbe63f38a54480387352367a43afa83",
+        "name": "Västra Klagstorp",
         "vertexIds": [
           "9f7217b6-d44c-4ec2-9457-b91adcd847b2",
           "01c9a738-c99f-4c06-8648-96e959c535d7",
@@ -80994,8 +80994,8 @@
         "visible": true
       },
       {
-        "id": "6eb52780-6ea8-4b40-b760-1b555170fb34",
-        "name": "SKUMPARP",
+        "id": "858273fae27342c59bd68fad836c30b4",
+        "name": "Skumparp",
         "vertexIds": [
           "5ceee579-123a-4a0e-9dd5-ba182b375d4d",
           "90a6d7dd-6310-4e6b-8f40-106ed8dd29c7",
@@ -81062,8 +81062,8 @@
         "visible": true
       },
       {
-        "id": "69d2b3c1-2fc3-4f45-a6f8-f73d1f5f92e1",
-        "name": "LINDEBORG",
+        "id": "bbb130f3d87643cfa49d65ce2a10a63f",
+        "name": "Lindeborg",
         "vertexIds": [
           "f278db12-884e-49da-bd99-c30ad0b125d3",
           "0becd952-2746-4eb3-8d18-77c01e7de06a",
@@ -81248,8 +81248,8 @@
         "visible": true
       },
       {
-        "id": "5b64ab1b-8e39-4db3-9f4a-357ce5048494",
-        "name": "ÖSTRA SÖDERKULLA",
+        "id": "9fc574a467e5447e8032fc4bd1c0420d",
+        "name": "Östra Söderkulla",
         "vertexIds": [
           "6d82e147-d723-42bb-97b1-a55573566548",
           "3ffc5fd8-81e6-4156-a95e-9f154d82fc49",
@@ -81297,8 +81297,8 @@
         "visible": true
       },
       {
-        "id": "dd43598d-f2ec-46e5-9a67-fb78629bdb31",
-        "name": "FOSIEBY INDUSTRIOMRÅDE",
+        "id": "5e817aa50ace44ee8b16b3322fd56789",
+        "name": "Fosieby Industriområde",
         "vertexIds": [
           "4f798abb-e618-4b0e-8679-a3671d95bf5b",
           "eccb17af-b021-49ef-8233-7160a0f98aca",
@@ -81653,8 +81653,8 @@
         "visible": true
       },
       {
-        "id": "802f5fb1-3532-485a-a9e6-8aba6e015fbe",
-        "name": "ELINELUND",
+        "id": "364568f9af62423883599d64df4fa6cd",
+        "name": "Elinelund",
         "vertexIds": [
           "3663ecb6-7688-4139-a003-a49f0a270f49",
           "bf0a0c3f-6367-4318-b1ba-daf60863ca1e",
@@ -81877,8 +81877,8 @@
         "visible": true
       },
       {
-        "id": "ed83d939-24e5-449f-8904-0a5e4a057bcb",
-        "name": "HYLLIEVÅNG",
+        "id": "2a6f19868089483998e2d281ab7d163d",
+        "name": "Hyllievång",
         "vertexIds": [
           "802f1f62-2b7d-4749-bfe5-c7203ce82cca",
           "01714e26-b047-4c16-8814-3ec5f1606736",
@@ -82190,8 +82190,8 @@
         "visible": true
       },
       {
-        "id": "f4f21ba6-b260-4b03-8711-9127f66e3d4a",
-        "name": "VÄSTRA SÖDERKULLA",
+        "id": "5470666bab914d098a0d76243bc52094",
+        "name": "Västra Söderkulla",
         "vertexIds": [
           "71582c12-5c9f-46a5-b163-8280329f4720",
           "b8a1cd75-911b-4f9a-80c9-c698777ee8a1",
@@ -82389,8 +82389,8 @@
         "visible": true
       },
       {
-        "id": "732aac15-7f93-4234-b225-2a756ba65af8",
-        "name": "GULLVIKSBORG",
+        "id": "0b96ab1ad66648e99a2ccdf5635c8c8c",
+        "name": "Gullviksborg",
         "vertexIds": [
           "c9db1210-8e56-4342-bae4-722107a5b5f4",
           "2a3e5024-4c10-406d-ab49-9b50fee4add2",
@@ -82857,8 +82857,8 @@
         "visible": true
       },
       {
-        "id": "919355ca-d70d-43f9-935b-8d9302779ce2",
-        "name": "HYLLIEBY",
+        "id": "73484e0562b24d4bb9e4a5b72fb2f8f9",
+        "name": "Hyllieby",
         "vertexIds": [
           "4ea96773-69a1-4d53-90db-45b3b37ad5e7",
           "51f47a8b-db8e-4be9-a63b-7e32f4514db6",
@@ -83246,8 +83246,8 @@
         "visible": true
       },
       {
-        "id": "d829e866-2539-4036-aed9-a4c02fe24dd2",
-        "name": "KRISTINEBERG",
+        "id": "53b5f8e9fc4a43519c5f3c4f256b8698",
+        "name": "Kristineberg",
         "vertexIds": [
           "8bfe4f5a-bf2a-4692-bd22-515f960c3f0a",
           "02e70525-17a7-403b-9aea-b7b14cb0bfed",
@@ -83488,8 +83488,8 @@
         "visible": true
       },
       {
-        "id": "5d11d21c-9224-476d-85bd-3aabf7bcd69e",
-        "name": "NAFFENTORP",
+        "id": "8c25a97ac23b4e34a4c8f7b20f7f1c23",
+        "name": "Naffentorp",
         "vertexIds": [
           "ae90ae01-0ebc-4385-a142-a2d8037f5a26",
           "abc59b04-9fa9-4f17-9b94-bbfabab15fa2",
@@ -83649,8 +83649,8 @@
         "visible": true
       },
       {
-        "id": "bcdfac3f-0511-4f2a-a7d4-5924123969aa",
-        "name": "LOCKARP",
+        "id": "f9cb9a58d1e74b6e8df4f7e6508c16a9",
+        "name": "Lockarp",
         "vertexIds": [
           "70198d1f-2c04-459b-9bc0-161ca913d5b6",
           "d8b5750f-6a9c-477a-b440-78451470ede2",
@@ -83909,8 +83909,8 @@
         "visible": true
       },
       {
-        "id": "c7b38ce0-a65a-49f0-9661-c9d71bb60688",
-        "name": "OXIE KYRKBY",
+        "id": "4a156238945c4704a574edc0ca212b12",
+        "name": "Oxie Kyrkby",
         "vertexIds": [
           "4c158b50-4255-4873-b9c0-b1ff2dc85868",
           "12600247-6ee5-4fdc-b3af-76f0b2f295b7",
@@ -84121,8 +84121,8 @@
         "visible": true
       },
       {
-        "id": "8ce42dc4-896b-464f-853e-11633311abc4",
-        "name": "SVÅGERTORP",
+        "id": "a71d308c996d4c57afa2721656bf01ab",
+        "name": "Svågertorp",
         "vertexIds": [
           "118fab9d-3825-4ef0-8712-45b553eb1bea",
           "896af4d6-a859-4a31-8e68-13e2f5ba4640",
@@ -84177,8 +84177,8 @@
         "visible": true
       },
       {
-        "id": "85dc8170-cf24-4d25-95a6-b97f2420bff6",
-        "name": "KUNGSHÖG",
+        "id": "a66887426aef4120be3c8dc419507259",
+        "name": "Kungshög",
         "vertexIds": [
           "02e70525-17a7-403b-9aea-b7b14cb0bfed",
           "8bfe4f5a-bf2a-4692-bd22-515f960c3f0a",
@@ -84367,8 +84367,8 @@
         "visible": true
       },
       {
-        "id": "4f4fc07c-f188-484e-ace2-23e149224f7f",
-        "name": "VINTRIE",
+        "id": "b0e51be5f9134d26b88598d8bbd18c3d",
+        "name": "Vintrie",
         "vertexIds": [
           "6f70ab9e-4bd5-4774-83d8-691c448d55d6",
           "17d4c462-d5a9-420c-98c7-36b7e52be82c",
@@ -84461,8 +84461,8 @@
         "visible": true
       },
       {
-        "id": "16885b2b-7dda-4323-a989-854f58ad888b",
-        "name": "LINDÄNGEN",
+        "id": "1a8f9acb271443afb8225802cb0b4f83",
+        "name": "Lindängen",
         "vertexIds": [
           "06c89bc6-c611-41ce-aecd-e2d1cec00081",
           "b1e80209-0bb8-4c7a-a48a-7a7f97a3de8e",
@@ -84688,8 +84688,8 @@
         "visible": true
       },
       {
-        "id": "4a57cfe3-0b27-4b25-947d-58e6683de7ef",
-        "name": "KASTANJEGÅRDEN",
+        "id": "fb133451cb7240bc8160b8a3b1a6dee5",
+        "name": "Kastanjegården",
         "vertexIds": [
           "af0d9b34-921b-451a-9146-9cde5a0ae827",
           "2d026727-0eb4-4fbb-8ae5-b9126724242e",
@@ -84784,8 +84784,8 @@
         "visible": true
       },
       {
-        "id": "e186c9a9-cde6-40fb-9337-6daf1b50721c",
-        "name": "FOSIEBY",
+        "id": "503575771db44df48b320025b6cd4fa1",
+        "name": "Fosieby",
         "vertexIds": [
           "622952e0-99fb-4fcf-a7af-ea22dc2751bf",
           "6003b781-8a7f-4084-9cbb-47912517bdae",
@@ -85008,8 +85008,8 @@
         "visible": true
       },
       {
-        "id": "58969cf8-e6a5-4e0f-9e60-5e3956dfeb14",
-        "name": "ALMVIK",
+        "id": "08ef273a0b9041b3b26f3342c4f64541",
+        "name": "Almvik",
         "vertexIds": [
           "90cd68c6-d0bf-434d-983d-476992884caf",
           "a18f95f3-3675-4e20-8840-2656f053fa11",
@@ -85188,8 +85188,8 @@
         "visible": true
       },
       {
-        "id": "1397eb95-e786-46c4-bb25-d3e4bc12c684",
-        "name": "FREDRIKSBERG",
+        "id": "7e160e816a9b400a98b7c27cd4301135",
+        "name": "Fredriksberg",
         "vertexIds": [
           "2bcb7ebf-8c0f-4062-ab5d-911531ac183c",
           "e0f86755-e444-4373-83e7-fef6185c67ab",
@@ -85360,8 +85360,8 @@
         "visible": true
       },
       {
-        "id": "84b62686-e427-40fb-bdb2-444e048f43ce",
-        "name": "HERRGÅRDEN",
+        "id": "244c2e2029c74a6ebeab37060cc1a071",
+        "name": "Herrgården",
         "vertexIds": [
           "5b0e4166-d3a4-4f4b-aec8-93da107d330c",
           "61e541cf-9c33-4985-9972-9e29b0e67170",
@@ -85471,8 +85471,8 @@
         "visible": true
       },
       {
-        "id": "fb719220-2cca-43f5-8200-9250769d51bc",
-        "name": "STENKÄLLAN",
+        "id": "616e1553d86640a88fbc2dca5e7baa0e",
+        "name": "Stenkällan",
         "vertexIds": [
           "52b4ef36-bf57-47d9-9ded-582e415f77db",
           "8bd17acf-0f73-4967-9c0a-efef6d9cb1df",
@@ -85694,8 +85694,8 @@
         "visible": true
       },
       {
-        "id": "2a85d2cd-116c-4b0e-9ed7-ce36613e37f9",
-        "name": "HÖJA",
+        "id": "365f861eec4a4e4f9835559bb6cbe906",
+        "name": "Höja",
         "vertexIds": [
           "80ea903d-9c5a-463e-a4df-ea7fedeaad9f",
           "61e541cf-9c33-4985-9972-9e29b0e67170",
@@ -85963,8 +85963,8 @@
         "visible": true
       },
       {
-        "id": "7b2db110-47e2-4e74-a116-ccffcd3b70b5",
-        "name": "FLENSBURG",
+        "id": "4aa0fe977dfe4a4bb70cb8041c8dd1f7",
+        "name": "Flensburg",
         "vertexIds": [
           "8c6fb2c0-be23-469d-a9e4-992d4e97062a",
           "e1c68292-a6f1-4902-9180-92fd885718b7",
@@ -86076,8 +86076,8 @@
         "visible": true
       },
       {
-        "id": "71fead6d-b79f-4c0c-8eb9-006d28e3b3b8",
-        "name": "BELLEVUEGÅRDEN",
+        "id": "a1687ba4351a4803becd8f0ce7bf2d48",
+        "name": "Bellevuegården",
         "vertexIds": [
           "1191f6d2-8a33-4b49-8ed9-9406153a8874",
           "c5588ac2-4147-4181-8318-507fd67ba89b",
@@ -86127,8 +86127,8 @@
         "visible": true
       },
       {
-        "id": "9dd1824f-2774-4208-971a-53e0a80b9230",
-        "name": "ROSENVÅNG",
+        "id": "9b02c062ece04329a4009648fa140f65",
+        "name": "Rosenvång",
         "vertexIds": [
           "280ec9b1-2020-4e82-b85e-057478acf9a1",
           "cf0e9be5-ecf4-4bf3-977f-faea3ccb3b82",
@@ -86246,8 +86246,8 @@
         "visible": true
       },
       {
-        "id": "4fb669c3-cc7c-4351-a019-de95fa8aba63",
-        "name": "SÖDRA SOFIELUND",
+        "id": "8d9eb9aae9fb42ae916baa0b25d058f9",
+        "name": "Södra Sofielund",
         "vertexIds": [
           "a3031b04-32d4-4f95-b75e-a0d30049c30b",
           "c25e1e8f-cfbc-4e6f-b5b1-13464c3fdffc",
@@ -86296,8 +86296,8 @@
         "visible": true
       },
       {
-        "id": "8e84810c-1303-4099-b2a9-8023ad41e7dd",
-        "name": "BORGMÄSTAREGÅRDEN",
+        "id": "fe8d12228f9941ef8d5b99f54d123b9d",
+        "name": "Borgmästaregården",
         "vertexIds": [
           "c042569d-519a-4535-86f4-aef6b761c9b5",
           "49fff09b-120c-4942-96b7-4dec5b900f1d",
@@ -86370,8 +86370,8 @@
         "visible": true
       },
       {
-        "id": "b7ab0ef5-8707-4568-913c-babf9998ade4",
-        "name": "ROSENGÅRD CENTRUM",
+        "id": "3fbd775aa02f4ebc9437abb1637658d1",
+        "name": "Rosengård Centrum",
         "vertexIds": [
           "5f1a7b6e-7cc0-4181-a4da-cc4a0c22840b",
           "4b29f577-f1b1-48c8-8c71-4366ab1a3eb1",
@@ -86394,8 +86394,8 @@
         "visible": true
       },
       {
-        "id": "dc36c752-358c-4a09-b45e-abc39c088f8d",
-        "name": "STADION",
+        "id": "36336d17b215404b9c23a3a9371c776e",
+        "name": "Stadion",
         "vertexIds": [
           "6415f3af-f01d-4680-a174-e0560d5dd366",
           "5f502a31-027a-4e10-8723-111b02557caf",
@@ -86466,8 +86466,8 @@
         "visible": true
       },
       {
-        "id": "fa4d4aea-8240-415a-b12a-dbf641c07688",
-        "name": "ÖRTAGÅRDEN",
+        "id": "5b27ad2204b54e408ba7346e56db5829",
+        "name": "Örtagården",
         "vertexIds": [
           "a3606d65-198c-49be-80c9-eefb8cf6e3f0",
           "29f3ca53-ffce-4ee0-819d-6d19620ae787",
@@ -86593,8 +86593,8 @@
         "visible": true
       },
       {
-        "id": "7cb7f0cc-9a38-4420-b5d5-181a250b4d22",
-        "name": "SOFIELUNDS INDUSTRIOMR.",
+        "id": "282e99fc66c04abba7677387d6e99625",
+        "name": "Sofielunds Industriomr.",
         "vertexIds": [
           "fc31b5eb-c117-43dd-827e-7781dc92cf9f",
           "9f026855-65e0-410d-8799-4e13661510d8",
@@ -86630,8 +86630,8 @@
         "visible": true
       },
       {
-        "id": "b4b0f632-c826-42f9-802f-12922088f61d",
-        "name": "SÖDERVÄRN",
+        "id": "e08f0b842a8d482cb1b2c0bea38d6dd8",
+        "name": "Södervärn",
         "vertexIds": [
           "a60f3cc1-1380-474b-bf92-25260d8a5177",
           "1d485a94-cf51-4342-bcc6-ce2df6aafbc5",
@@ -86702,8 +86702,8 @@
         "visible": true
       },
       {
-        "id": "eab1b9ce-d452-4473-ab78-d1ce85230e82",
-        "name": "LORENSBORG",
+        "id": "7894af71ef20468da02c3003729f2db7",
+        "name": "Lorensborg",
         "vertexIds": [
           "af1d0328-baf7-498c-af2b-891aea1eed3f",
           "9f49582e-288c-4c98-b6ee-0ea9b944382f",
@@ -86744,8 +86744,8 @@
         "visible": true
       },
       {
-        "id": "23e85eb3-6832-4372-86fe-810945f6b169",
-        "name": "TÖRNROSEN",
+        "id": "f862e11f4ee24e40a89fa9c117762896",
+        "name": "Törnrosen",
         "vertexIds": [
           "2bc99431-a69b-42ab-ac51-5b4165feb6ba",
           "0d94fedd-e346-4071-8f08-75b3a4ea88da",
@@ -86794,8 +86794,8 @@
         "visible": true
       },
       {
-        "id": "9f7efe5b-0a75-415b-aa7f-3b5753354b94",
-        "name": "GAMLA LIMHAMN",
+        "id": "204c681639ff4af28acaa79d74a8d7ee",
+        "name": "Gamla Limhamn",
         "vertexIds": [
           "ab097a4d-033e-4de1-a1fb-da9c31ec436a",
           "f7c28040-51f7-4112-ad0c-593782970344",
@@ -87067,8 +87067,8 @@
         "visible": true
       },
       {
-        "id": "3bcb728d-6ba3-460a-87d4-7ca038f491a3",
-        "name": "NYA BELLEVUE",
+        "id": "fa6103f5087d4918b961e66fdc58e266",
+        "name": "Nya Bellevue",
         "vertexIds": [
           "44a866d7-d212-448c-a673-f301035dcbe9",
           "3401cbd9-7839-4cac-a3ae-116c248ee276",
@@ -87168,8 +87168,8 @@
         "visible": true
       },
       {
-        "id": "8fca8d03-f2e8-41e3-9f41-6b9f957ec324",
-        "name": "APELGÅRDEN",
+        "id": "41ad0819d0194fa88564490f0789409a",
+        "name": "Apelgården",
         "vertexIds": [
           "22404e74-cecb-4529-b05a-94b2adddf1ba",
           "74e48f6d-1028-4af8-a383-e9ffbedf7afd",
@@ -87204,8 +87204,8 @@
         "visible": true
       },
       {
-        "id": "b127b4d1-405b-4d05-8a1b-51db236c1f02",
-        "name": "ANNELUND",
+        "id": "f7f5945727494accacf5962f4ce48195",
+        "name": "Annelund",
         "vertexIds": [
           "9f026855-65e0-410d-8799-4e13661510d8",
           "fc31b5eb-c117-43dd-827e-7781dc92cf9f",
@@ -87283,8 +87283,8 @@
         "visible": true
       },
       {
-        "id": "d1444c19-6fcb-40f4-bd98-62ab535955e7",
-        "name": "KRYDDGÅRDEN",
+        "id": "2be21aff59b4419b9cc56f3b86239f9f",
+        "name": "Kryddgården",
         "vertexIds": [
           "61e541cf-9c33-4985-9972-9e29b0e67170",
           "5b0e4166-d3a4-4f4b-aec8-93da107d330c",
@@ -87501,8 +87501,8 @@
         "visible": true
       },
       {
-        "id": "1407e794-f03c-455c-bef4-df3823730fa3",
-        "name": "SOLBACKEN",
+        "id": "d1d82daca7fa4664a1ee72d999a91390",
+        "name": "Solbacken",
         "vertexIds": [
           "c5588ac2-4147-4181-8318-507fd67ba89b",
           "1191f6d2-8a33-4b49-8ed9-9406153a8874",
@@ -87558,8 +87558,8 @@
         "visible": true
       },
       {
-        "id": "f8d1364c-81e6-4ac1-af1b-018d740f0c91",
-        "name": "NORRA SOFIELUND",
+        "id": "78120711d0884bc2b9970ff5cf154d4a",
+        "name": "Norra Sofielund",
         "vertexIds": [
           "c25e1e8f-cfbc-4e6f-b5b1-13464c3fdffc",
           "a3031b04-32d4-4f95-b75e-a0d30049c30b",
@@ -87606,8 +87606,8 @@
         "visible": true
       },
       {
-        "id": "b3fd401e-bc47-4a56-9224-b0cc57bf1524",
-        "name": "ALLMÄNNA SJUKHUSET",
+        "id": "fa1482d5eceb4e38ada23bb629d9fec1",
+        "name": "Allmänna Sjukhuset",
         "vertexIds": [
           "e1c68292-a6f1-4902-9180-92fd885718b7",
           "8c6fb2c0-be23-469d-a9e4-992d4e97062a",
@@ -87689,8 +87689,8 @@
         "visible": true
       },
       {
-        "id": "56171e1c-2a12-4c79-8b26-fe41a7cba02a",
-        "name": "DAMMFRI",
+        "id": "87d6ce7afd6244cfb898ac60521bf327",
+        "name": "Dammfri",
         "vertexIds": [
           "4be36bae-7f14-4d03-9db7-964d5bf48a58",
           "0b3e097d-6c1f-4f9f-be52-a2a0b5eedbf8",
@@ -87800,8 +87800,8 @@
         "visible": true
       },
       {
-        "id": "cb699721-2601-497c-b3be-ddb012cd7345",
-        "name": "BELLEVUE",
+        "id": "8a4ab06c3d04436fbd049453e1278ea4",
+        "name": "Bellevue",
         "vertexIds": [
           "a94605e8-4638-45bf-b783-21c09a3bab45",
           "bc01a797-c782-417c-98fc-77a43651484e",
@@ -87881,8 +87881,8 @@
         "visible": true
       },
       {
-        "id": "192abb41-da68-4343-ad24-950a63468b65",
-        "name": "MELLANHEDEN",
+        "id": "385b9181b68945b2800b783daec1b3a2",
+        "name": "Mellanheden",
         "vertexIds": [
           "7dea1db1-610a-4122-9818-c80e34bf0e48",
           "219a0dc0-a2ed-4a7d-a44c-653842dc1112",
@@ -87994,8 +87994,8 @@
         "visible": true
       },
       {
-        "id": "fe5d0ef1-1cf2-4f50-b9a9-540b0fbbe66f",
-        "name": "VIRENTOFTA",
+        "id": "1ee983445f814302a1dd09a8815fd790",
+        "name": "Virentofta",
         "vertexIds": [
           "8bd17acf-0f73-4967-9c0a-efef6d9cb1df",
           "52b4ef36-bf57-47d9-9ded-582e415f77db",
@@ -88317,8 +88317,8 @@
         "visible": true
       },
       {
-        "id": "3d795ae4-07ef-4305-9ace-0f465566ff52",
-        "name": "PILDAMMSPARKEN",
+        "id": "3098c4b3fb5d40d69115eefc3d9185ba",
+        "name": "Pildammsparken",
         "vertexIds": [
           "5c4c26d3-dd5c-459a-b4ed-31b281a157bc",
           "46877da4-04ee-4efc-9fb1-c90f3bd76ebb",
@@ -88418,8 +88418,8 @@
         "visible": true
       },
       {
-        "id": "ef0fe3b5-6f81-47db-81b9-88908e039d9d",
-        "name": "ÖSTRA SKRÄVLINGE",
+        "id": "0c2467108c09403a9e2d648061b3aa7b",
+        "name": "Östra Skrävlinge",
         "vertexIds": [
           "b71574f1-3ceb-466b-acc5-c19dad07ce1d",
           "e74f6e99-db26-448a-b0fa-f08cc038513b",
@@ -88911,8 +88911,8 @@
         "visible": true
       },
       {
-        "id": "d4d55456-ed38-42e0-baea-9577ad6fcf31",
-        "name": "KRONBORG",
+        "id": "1c892120bc30492b88d70be1ddf16567",
+        "name": "Kronborg",
         "vertexIds": [
           "8232627d-96f0-4ff5-9851-f2e57147cca1",
           "4be36bae-7f14-4d03-9db7-964d5bf48a58",
@@ -89011,8 +89011,8 @@
         "visible": true
       },
       {
-        "id": "75695d7a-1d0c-44c0-80aa-c7463844a25d",
-        "name": "ÖSTRA SORGENFRI",
+        "id": "3828fe86120c4ccf869da93d8727ad98",
+        "name": "Östra Sorgenfri",
         "vertexIds": [
           "69ce6bbe-1156-40d2-a384-bb8ab1bef952",
           "6e3e9751-ca54-494f-bfe4-77a5f0959ac6",
@@ -89090,8 +89090,8 @@
         "visible": true
       },
       {
-        "id": "1ac8f795-8075-48f4-af3c-2f8a534c80c5",
-        "name": "VIDEDAL",
+        "id": "c9cc3d3777d549d28f5fd731cef9310a",
+        "name": "Videdal",
         "vertexIds": [
           "a6ad5599-3fd0-4e22-9c0a-5ac597138753",
           "9be4016a-d5de-44b9-bf02-c5579d6d0dc0",
@@ -89294,8 +89294,8 @@
         "visible": true
       },
       {
-        "id": "2ed1cd37-bef8-4be5-9a7f-4f3ab3b799c5",
-        "name": "TEATERN",
+        "id": "51ef096054f94f3cb527a00652960091",
+        "name": "Teatern",
         "vertexIds": [
           "b96d70f0-b226-4d6c-bc49-200680682b51",
           "d5fb2589-914e-4d36-a1ce-30bf099a9535",
@@ -89329,8 +89329,8 @@
         "visible": true
       },
       {
-        "id": "9d2a69f5-1764-4132-be42-7be6857d4972",
-        "name": "FÅGELBACKEN",
+        "id": "7b555468166646628474ab24c6955fa4",
+        "name": "Fågelbacken",
         "vertexIds": [
           "bab933db-3273-45f7-aa99-c09f88980a60",
           "2138e9cb-177a-41da-b65b-8b08be8624a7",
@@ -89365,8 +89365,8 @@
         "visible": true
       },
       {
-        "id": "e8d2f3c4-370d-40b7-ba97-255f78be2482",
-        "name": "ÖSTRA KYRKOGÅRDEN",
+        "id": "f0394cdd1af14e50a08cf97da8eddad3",
+        "name": "Östra Kyrkogården",
         "vertexIds": [
           "44518092-04e6-459a-a260-05f2741d4690",
           "e6b77496-c841-4f25-af5b-d9b40b4f96b2",
@@ -89503,8 +89503,8 @@
         "visible": true
       },
       {
-        "id": "f927f691-0e32-40f0-8520-d1ae284741c6",
-        "name": "NYDALA",
+        "id": "9775672bd7e6474c87825e31c607ca18",
+        "name": "Nydala",
         "vertexIds": [
           "3ffc5fd8-81e6-4156-a95e-9f154d82fc49",
           "6d82e147-d723-42bb-97b1-a55573566548",
@@ -89985,8 +89985,8 @@
         "visible": true
       },
       {
-        "id": "84dbcccf-47ba-44c1-a91d-1fe65be46461",
-        "name": "HOLMA",
+        "id": "0366f830edf2476080bb357c985ab24a",
+        "name": "Holma",
         "vertexIds": [
           "5048f179-caf2-4e0a-8add-e95faa1c57b8",
           "efc44d65-14c7-4ee6-9050-a5574c79afe1",
@@ -90110,8 +90110,8 @@
         "visible": true
       },
       {
-        "id": "9fec508d-1dcb-41e8-84a6-3c1ca47eede6",
-        "name": "ELISEDAL",
+        "id": "970ad12395f2477db3b8f443ed55d11a",
+        "name": "Elisedal",
         "vertexIds": [
           "7aaa2b93-777d-4be5-9d11-6b1e91ba4bc4",
           "e0f86755-e444-4373-83e7-fef6185c67ab",
@@ -90418,8 +90418,8 @@
         "visible": true
       },
       {
-        "id": "ffb6d90d-5516-4fdb-9dea-1c79e7d713f9",
-        "name": "KALKBROTTET",
+        "id": "3b2c440e9d3b4d7890758bf501bca736",
+        "name": "Kalkbrottet",
         "vertexIds": [
           "b6670ae6-0a35-4cb4-8600-9c238417f9c2",
           "f932a60d-3788-4a7b-9488-74c61f25d3f4",
@@ -90845,8 +90845,8 @@
         "visible": true
       },
       {
-        "id": "a5c36e1e-c254-4ea6-80df-6796e5417ceb",
-        "name": "KROKSBÄCKSPARKEN",
+        "id": "0a0c67805416469dad4c329ec75e57c4",
+        "name": "Kroksbäcksparken",
         "vertexIds": [
           "119dce96-b2cd-43ba-9571-6de7aef8c63f",
           "825e4406-5973-416e-86ea-c379d968cdb9",
@@ -90897,8 +90897,8 @@
         "visible": true
       },
       {
-        "id": "519d67f6-2827-44f0-adaf-382f389d660b",
-        "name": "JÄGERSRO",
+        "id": "48ed4e45ce444e7f9d6f93b4ce3006be",
+        "name": "Jägersro",
         "vertexIds": [
           "eccb17af-b021-49ef-8233-7160a0f98aca",
           "4f798abb-e618-4b0e-8679-a3671d95bf5b",
@@ -91114,8 +91114,8 @@
         "visible": true
       },
       {
-        "id": "64b59384-2c28-4ccf-a266-364cd47ace40",
-        "name": "ERIKSFÄLT",
+        "id": "69e731f9df2048b1b4e1cad4f7102d42",
+        "name": "Eriksfält",
         "vertexIds": [
           "687bd07a-ec1c-46dd-a75d-e293d73deda2",
           "e5de2139-d61d-4a62-92ea-afa3926f1100",
@@ -91300,8 +91300,8 @@
         "visible": true
       },
       {
-        "id": "d59fe012-cbe7-4385-ba25-618556f69820",
-        "name": "ALMHÖG",
+        "id": "0342b32c9bee421ab902df7f66a6d7b7",
+        "name": "Almhög",
         "vertexIds": [
           "e3ae3b42-dbc5-45b6-883d-f8ed19c138ac",
           "b4a46e3a-3382-41cf-bc70-47da1dcdce93",
@@ -91598,8 +91598,8 @@
         "visible": true
       },
       {
-        "id": "945273a4-4f16-4c84-a3ee-59ec152c0691",
-        "name": "KULLADAL",
+        "id": "c7c44d2b5e8142acb8ceb590b7d69743",
+        "name": "Kulladal",
         "vertexIds": [
           "0becd952-2746-4eb3-8d18-77c01e7de06a",
           "f278db12-884e-49da-bd99-c30ad0b125d3",
@@ -92032,8 +92032,8 @@
         "visible": true
       },
       {
-        "id": "347f03ca-9373-4529-8519-d083008ec706",
-        "name": "JÄGERSRO VILLASTAD",
+        "id": "6093f9b5ce2b4156b54fb20a5376c1fc",
+        "name": "Jägersro Villastad",
         "vertexIds": [
           "6f5bfbb8-4266-4168-a3cb-883787d490e0",
           "e48079dd-09a7-4fc0-9d4a-7aee4c9952bc",
@@ -92157,8 +92157,8 @@
         "visible": true
       },
       {
-        "id": "f949398b-b202-4a18-a512-afed710d3f56",
-        "name": "GRÖNDAL",
+        "id": "304e8a291c944b9fb0bc7a9ed62ce7b8",
+        "name": "Gröndal",
         "vertexIds": [
           "20abb7e2-67e7-4ebf-a58b-012ccf3eebc0",
           "3f686cdc-a85f-4925-b6d3-153525085c9e",
@@ -92296,8 +92296,8 @@
         "visible": true
       },
       {
-        "id": "c24caae1-3a34-4961-b461-3470d83b58f3",
-        "name": "HINDBY",
+        "id": "87c50a3702c54719ab69a4af4cb6e371",
+        "name": "Hindby",
         "vertexIds": [
           "fa9f57c4-8839-4b31-9ab1-b9f0fe6ecd81",
           "3f977cb2-38fa-46d8-8c9a-2fdb3733a87f",
@@ -92459,8 +92459,8 @@
         "visible": true
       },
       {
-        "id": "ff57a0cc-b9a8-43ec-98d2-7b6ce4f178ba",
-        "name": "SÖDERTORP",
+        "id": "adf1ad33857d412dbf51d0fb9cba50a2",
+        "name": "Södertorp",
         "vertexIds": [
           "c88c95f8-a972-4ccb-9112-a750a5832de6",
           "49fff09b-120c-4942-96b7-4dec5b900f1d",
@@ -92577,8 +92577,8 @@
         "visible": true
       },
       {
-        "id": "212f07c1-d721-4e8f-ad98-07271de756d0",
-        "name": "DJUPADAL",
+        "id": "3594f3db21274fe0883d09dd794b5955",
+        "name": "Djupadal",
         "vertexIds": [
           "bf0a0c3f-6367-4318-b1ba-daf60863ca1e",
           "3663ecb6-7688-4139-a003-a49f0a270f49",
@@ -93326,8 +93326,8 @@
         "visible": true
       },
       {
-        "id": "2597206d-fa94-4499-bc6f-1f61ef1101a7",
-        "name": "ALMGÅRDEN",
+        "id": "c5122b2378204655a13d108df52c4707",
+        "name": "Almgården",
         "vertexIds": [
           "0216cd4e-8b30-4d0b-8ae0-0a029be3652f",
           "80ea903d-9c5a-463e-a4df-ea7fedeaad9f",
@@ -93408,8 +93408,8 @@
         "visible": true
       },
       {
-        "id": "197e365c-7548-4b23-9fb4-1e06d80bfaa2",
-        "name": "ÄRTHOLMEN",
+        "id": "e74bb2f3c6d14d56909ad09619682cee",
+        "name": "Ärtholmen",
         "vertexIds": [
           "a589f8c5-f84c-4a4c-ba0d-2bf0e8472bb9",
           "3feab48f-cf09-49fc-8c46-6f3b0ce2f63c",
@@ -93481,8 +93481,8 @@
         "visible": true
       },
       {
-        "id": "5a1d0175-d657-48b0-a1bc-79dd23d6496b",
-        "name": "KROKSBÄCK",
+        "id": "0f837f8ad67f4015a143eee7901ebaa0",
+        "name": "Kroksbäck",
         "vertexIds": [
           "ddddf2ee-9203-4b86-9ec7-8e37967139e4",
           "68b898ab-3ca6-40a5-8f20-658bec422d52",
@@ -93863,8 +93863,8 @@
         "visible": true
       },
       {
-        "id": "5d9d6f4e-23bf-4323-aa5b-e289eccf00b5",
-        "name": "ANNETORP",
+        "id": "dd71d219feae49629c3fd44eb9ce26b0",
+        "name": "Annetorp",
         "vertexIds": [
           "de1120c9-46a8-4883-b045-811484f07f9d",
           "b40324a1-3ab1-471d-b0da-8c9088295729",
@@ -94221,8 +94221,8 @@
         "visible": true
       },
       {
-        "id": "b7f47b19-fca5-4f10-93cf-7695c516779e",
-        "name": "VÄSTRA KATTARP",
+        "id": "642a9d3e822d469c970fcff8f7589ed1",
+        "name": "Västra Kattarp",
         "vertexIds": [
           "7a7b41ca-203c-410f-a5d6-f8164453f44b",
           "97c828fe-90bd-43d5-9b20-8aa1b637086a",
@@ -94294,8 +94294,8 @@
         "visible": true
       },
       {
-        "id": "7fcd797b-d184-4ed7-9399-a3e61c3cfa27",
-        "name": "AUGUSTENBORG",
+        "id": "9c73ac67251642019850a599c1b31c36",
+        "name": "Augustenborg",
         "vertexIds": [
           "71fcd620-0710-4e41-862e-2e2e99ac1446",
           "7accd126-ddcf-46b8-95e3-e2aa5ad0e4cd",
@@ -94350,8 +94350,8 @@
         "visible": true
       },
       {
-        "id": "77bd5532-82a7-4f66-9ab1-e5f176106ed5",
-        "name": "HELENEHOLM",
+        "id": "740c1ee6691346d8a19f945872750ae9",
+        "name": "Heleneholm",
         "vertexIds": [
           "84357fa2-956d-4811-b27f-bb735363caba",
           "4c85a053-294e-44e5-9275-00f75a1b2eb6",
@@ -94429,8 +94429,8 @@
         "visible": true
       },
       {
-        "id": "6e7e2679-bbe9-4842-af46-4aaa4cc89fdc",
-        "name": "PERSBORG",
+        "id": "7bf3d7c34615479fb82a89123bf5bd70",
+        "name": "Persborg",
         "vertexIds": [
           "213daf68-ef9b-443b-b644-9443d3788948",
           "b8480434-771f-4b4b-b6a1-90060ddf3a17",
@@ -94456,8 +94456,8 @@
         "visible": true
       },
       {
-        "id": "cad19c84-3a8a-4f49-b196-d030927702c8",
-        "name": "LÖNNGÅRDEN",
+        "id": "094c79e5eb9b41b997b91ab0d5a60a0e",
+        "name": "Lönngården",
         "vertexIds": [
           "e39a9baf-f9c5-4ffe-8f50-9fe3f48532af",
           "df8fa128-6fdc-4a73-98d0-10a5fe82b4eb",
@@ -94486,8 +94486,8 @@
         "visible": true
       },
       {
-        "id": "0c8c959f-e8cd-4ed7-8ed4-d73e99f24f63",
-        "name": "MÖLLEVÅNGEN",
+        "id": "66445144ee164027a5de461a9a1bd91d",
+        "name": "Möllevången",
         "vertexIds": [
           "eb2f0e76-d656-4d2b-9f6b-ce8c738701d7",
           "3458ae77-73cf-4479-a459-a8c831555761",
@@ -94569,8 +94569,8 @@
         "visible": true
       },
       {
-        "id": "7c9ae3af-e02a-4c84-9685-477aded1754d",
-        "name": "RÖNNEHOLM",
+        "id": "d99554f5b9c6446ca0bec334fc1b2421",
+        "name": "Rönneholm",
         "vertexIds": [
           "fc892f35-a105-4b2c-9565-abd0aa5725c2",
           "c9a8f53f-5430-4081-9135-15a57f84c45d",
@@ -94625,8 +94625,8 @@
         "visible": true
       },
       {
-        "id": "2736b192-26cb-4a8c-8d13-ed30a54b5a76",
-        "name": "RÅDMANSVÅNGEN",
+        "id": "1e8fb9ae74c8447bafce02c08fa74d53",
+        "name": "Rådmansvången",
         "vertexIds": [
           "06a0f325-6930-44f6-8f86-afcaeb853f74",
           "8bc58fa2-12e0-4e10-b50e-400e28bd1f6a",
@@ -94712,8 +94712,8 @@
         "visible": true
       },
       {
-        "id": "dc7b5594-6abe-49d2-b268-9b11dbedab70",
-        "name": "KRONPRINSEN",
+        "id": "c5b507eab7f84b008fafbb928376fc9a",
+        "name": "Kronprinsen",
         "vertexIds": [
           "070eeb1f-c225-41ec-a1be-aa873499a64e",
           "f09afd23-5dc9-4b55-a445-3128bd5fad65",
@@ -94737,8 +94737,8 @@
         "visible": true
       },
       {
-        "id": "0fa6d2be-3f87-4281-8979-c7c25fb99c83",
-        "name": "HÄSTHAGEN",
+        "id": "b7090b788fec4d7b8d8bfa8a1b3ccee3",
+        "name": "Hästhagen",
         "vertexIds": [
           "b24b3ef9-2415-4b82-916d-a4f7e567c222",
           "5bf8d804-66ea-4d65-bc8e-2ea3302d9a0a",
@@ -94774,8 +94774,8 @@
         "visible": true
       },
       {
-        "id": "3219a2dc-919d-4d3e-9502-fd97953c910f",
-        "name": "HÅKANSTORP",
+        "id": "265d5997b8ca476388ba693469196d8c",
+        "name": "Håkanstorp",
         "vertexIds": [
           "27be12fe-b636-4118-9c7e-cfb3d4f1644a",
           "5a386e2c-b613-424c-91da-2303cc91e5bf",
@@ -94830,8 +94830,8 @@
         "visible": true
       },
       {
-        "id": "314441e0-4bfb-41e8-a884-ca7c5d749f20",
-        "name": "NORRA SORGENFRI",
+        "id": "0b31c1bc9bea4732b9389fe0aa197349",
+        "name": "Norra Sorgenfri",
         "vertexIds": [
           "3c4eed27-af2e-40b9-9b26-259239cfe765",
           "04c3f208-42bd-4d8c-b801-c2a107568da6",
@@ -94871,8 +94871,8 @@
         "visible": true
       },
       {
-        "id": "823607e6-23e4-4cd2-96e7-98632fbfd501",
-        "name": "DAVIDSHALL",
+        "id": "8c7d9caa38f444889e090f5180ea9452",
+        "name": "Davidshall",
         "vertexIds": [
           "efa3c0b5-23fc-46f9-9e26-ffc6dd896311",
           "7bdca4b4-9aec-476c-8276-2424cd6b1d44",
@@ -94909,8 +94909,8 @@
         "visible": true
       },
       {
-        "id": "9ba81aee-1aec-41cb-9ffb-db6b0abe3a9c",
-        "name": "EMILSTORP",
+        "id": "b8f0c731c1624fb19ce8e7f46325dc6d",
+        "name": "Emilstorp",
         "vertexIds": [
           "2a740bde-b267-4c89-b1e5-c6d4e310a311",
           "c1b4ffba-b7fc-40df-9a0b-3f5df98dfeb1",
@@ -95025,8 +95025,8 @@
         "visible": true
       },
       {
-        "id": "857c35f8-a656-4af1-8741-020f6eb4e335",
-        "name": "FRIDHEM",
+        "id": "1f59588e4dc4451cbcffadc54cd78103",
+        "name": "Fridhem",
         "vertexIds": [
           "d81c9273-4491-4f7a-8945-31f47e04dcf5",
           "67a19a2a-fc9e-4504-b7da-848c49844183",
@@ -95094,8 +95094,8 @@
         "visible": true
       },
       {
-        "id": "784cfc9f-4885-484d-959a-a811222fe7c9",
-        "name": "LUGNET",
+        "id": "1f3b25d1d8994e8e954f1d3514a53744",
+        "name": "Lugnet",
         "vertexIds": [
           "1381b744-b07f-42fa-b277-c0a225091222",
           "2aab3828-d25d-412a-88f0-0d1c00ec9b6a",
@@ -95144,8 +95144,8 @@
         "visible": true
       },
       {
-        "id": "71286aaf-6fe7-454d-baaf-b9476df8156c",
-        "name": "KATRINELUND",
+        "id": "5fb8adeabb7448f7a4271f12cede4de9",
+        "name": "Katrinelund",
         "vertexIds": [
           "9895ccb6-111e-4a56-a886-1b065f16e804",
           "e54efd87-8786-4ceb-9b4b-70af9ba1310f",
@@ -95180,8 +95180,8 @@
         "visible": true
       },
       {
-        "id": "7b2253d6-7721-441c-8755-3b7bac0fa50b",
-        "name": "ROSTORP",
+        "id": "e8c3151df3974d05a7ae1be32105861d",
+        "name": "Rostorp",
         "vertexIds": [
           "80b805cf-020c-48e4-8f3f-ef66f6825681",
           "938233ea-b22c-44dd-8379-398cc6a1a82b",
@@ -95219,8 +95219,8 @@
         "visible": true
       },
       {
-        "id": "92258ec3-83af-48b6-b4fa-04c15be86858",
-        "name": "KIRSEBERGSSTADEN",
+        "id": "c2f3fa974dad4b4d86d2ba614e813473",
+        "name": "Kirsebergsstaden",
         "vertexIds": [
           "a35d0607-492d-4c81-84d5-17cf78ca12dd",
           "84a7240c-443e-4190-a8b1-e8cd96aa5e8b",
@@ -95435,8 +95435,8 @@
         "visible": true
       },
       {
-        "id": "71567a13-9449-47a9-8206-a1fc16de2632",
-        "name": "SEGEVÅNG",
+        "id": "0fafe7e1e422484ba08b3541fb59459d",
+        "name": "Segevång",
         "vertexIds": [
           "938233ea-b22c-44dd-8379-398cc6a1a82b",
           "80b805cf-020c-48e4-8f3f-ef66f6825681",
@@ -95757,8 +95757,8 @@
         "visible": true
       },
       {
-        "id": "89d65fcf-1297-454b-9b33-5c9835505eb2",
-        "name": "RIBERSBORG",
+        "id": "15e8aa9c50fa47b9a4ffae9eaebd6c29",
+        "name": "Ribersborg",
         "vertexIds": [
           "8aa41238-a661-4d44-9693-70908fd835d9",
           "c910a249-f1b4-4884-91b4-e6c6a5da8978",
@@ -96085,8 +96085,8 @@
         "visible": true
       },
       {
-        "id": "2ef25d62-4b38-4927-a26d-6cc694a34066",
-        "name": "RÖRSJÖSTADEN",
+        "id": "a3b0c3f19a5744de823017a431828bd6",
+        "name": "Rörsjöstaden",
         "vertexIds": [
           "c65ccca4-f4a6-4c8d-bd25-4d82596af5e8",
           "33e786ea-e1a5-4baa-8eba-b540e08b1d3a",
@@ -96260,8 +96260,8 @@
         "visible": true
       },
       {
-        "id": "dc60d018-95d4-4055-9e45-880f92d0927e",
-        "name": "MALMÖHUS",
+        "id": "4909a45e8756464997fab56e92de27f8",
+        "name": "Malmöhus",
         "vertexIds": [
           "6386cdf6-e5b6-4c41-9a10-9fcc9b3a783d",
           "7c392fbd-679e-40d0-b2ab-a7ca34a008ac",
@@ -96339,8 +96339,8 @@
         "visible": true
       },
       {
-        "id": "dfcfbfaa-1b97-47ad-b13e-b0333e1f42cd",
-        "name": "ELLSTORP",
+        "id": "8ebf58eb119c45bfa69c5ab2950bfb5c",
+        "name": "Ellstorp",
         "vertexIds": [
           "ff2c6642-8657-4f83-a7b2-ff851a3bcfd3",
           "1704c2e0-a8ab-4d73-a575-ec7c3b1c0159",
@@ -96469,8 +96469,8 @@
         "visible": true
       },
       {
-        "id": "17f6e44f-a777-46ef-a15f-f724dc61a748",
-        "name": "JOHANNESLUST",
+        "id": "5f4873f700bd4bd8ba5c0b5c67aceba2",
+        "name": "Johanneslust",
         "vertexIds": [
           "fc16002c-f8f7-40b0-8d68-f0f3a5338e52",
           "64846af8-d063-4a3a-8e4f-f4402e9a8bbd",
@@ -96687,8 +96687,8 @@
         "visible": true
       },
       {
-        "id": "ea239f45-1de3-4311-899e-ea61eda9da26",
-        "name": "GAMLA STADEN",
+        "id": "0f087420e376491ab5b965b918a4497e",
+        "name": "Gamla Staden",
         "vertexIds": [
           "d8dc0881-6902-4c97-a54a-6872918b8a39",
           "ea279818-684c-45b2-9bec-ff479d255163",
@@ -96861,8 +96861,8 @@
         "visible": true
       },
       {
-        "id": "5f99a765-526b-4e28-985f-7546aff7c91e",
-        "name": "SLUSSEN",
+        "id": "0fcba062f24945c0a37333482ec065d7",
+        "name": "Slussen",
         "vertexIds": [
           "d6c764b8-8856-4609-b749-79d201a249fe",
           "582424c1-0988-422d-9cf9-b5fa9de27535",
@@ -96930,8 +96930,8 @@
         "visible": true
       },
       {
-        "id": "fe465496-0cd7-4efe-942e-f6eb3721eaac",
-        "name": "ÖSTERVÄRN",
+        "id": "0b96756eae9e4af3adf59fcaa7d002dd",
+        "name": "Östervärn",
         "vertexIds": [
           "71e4a925-8cda-4d1e-8b12-16721310694d",
           "de533e27-49a9-47d4-8906-7b3a94f1e3e1",
@@ -97097,8 +97097,8 @@
         "visible": true
       },
       {
-        "id": "66836815-6343-4aff-8032-2ccbb2da1b90",
-        "name": "BULLTOFTA",
+        "id": "98f51557b71c4c40bcc5a8eec6e3d582",
+        "name": "Bulltofta",
         "vertexIds": [
           "f948d456-03a0-4c1b-8be9-9a13a704c257",
           "8ed6d6d4-4cbe-4945-93d2-b3d4e6d67dd0",
@@ -97567,8 +97567,8 @@
         "visible": true
       },
       {
-        "id": "0c3c7b87-6cc0-4b90-87e6-99bbc4d9f7bc",
-        "name": "KÄGLINGE",
+        "id": "9f767ec9ec5d4bd4be33c209954e00a3",
+        "name": "Käglinge",
         "vertexIds": [
           "93986f39-f1d8-4415-8e32-b2550bb6871d",
           "082ecbc6-3851-4e32-8c29-1c0607d80ca5",
@@ -97780,8 +97780,8 @@
         "visible": true
       },
       {
-        "id": "e3710d70-e557-4731-9aae-0b2d6c0d9802",
-        "name": "OXIEVÅNG",
+        "id": "a16b25381e984405a3204aa61b0d2315",
+        "name": "Oxievång",
         "vertexIds": [
           "4d0a5d95-7a40-4c8b-b67c-559addd9d60e",
           "60c98493-54fb-4bce-aca0-bb83c07e4d34",
@@ -97903,8 +97903,8 @@
         "visible": true
       },
       {
-        "id": "b9417d42-5561-49d4-8cd8-c83bd0e8cc62",
-        "name": "TYGELSJÖ BY",
+        "id": "989fc7e112f04eb2b9041ed2e7b51805",
+        "name": "Tygelsjö By",
         "vertexIds": [
           "cca066d8-c45a-481a-b64a-6475fe47ab5d",
           "8a188b20-1e77-4206-b1c0-a11f4b14c95e",
@@ -98020,8 +98020,8 @@
         "visible": true
       },
       {
-        "id": "c05b73bf-b989-466f-951d-d731372311d2",
-        "name": "GLOSTORP",
+        "id": "afbbd3bfe45143b9a7c7f8cb3363425f",
+        "name": "Glostorp",
         "vertexIds": [
           "cb7d1712-98a0-448e-89d9-70fd8316dac5",
           "935e3a3b-db5c-46f4-8a0a-211eb6fd7baf",
@@ -98122,8 +98122,8 @@
         "visible": true
       },
       {
-        "id": "440c386c-54a0-45dc-a3aa-d015e0b2f4c2",
-        "name": "VÄSTRA SORGENFRI",
+        "id": "492c552cdcbd47d6872a2b92f76f4b3c",
+        "name": "Västra Sorgenfri",
         "vertexIds": [
           "8b0515bb-bab4-4709-b04d-37cc18ecab7d",
           "6422e0fd-9b3d-4fb2-acfd-a74f664de2c1",
@@ -98191,8 +98191,8 @@
         "visible": true
       },
       {
-        "id": "62af351b-b145-4674-918d-021e0722e58d",
-        "name": "VÄRNHEM",
+        "id": "2e09f9a7d0074ab98da59fdab7328343",
+        "name": "Värnhem",
         "vertexIds": [
           "c8e59d74-8b36-4e29-988f-67cd1e1ed096",
           "04c3f208-42bd-4d8c-b801-c2a107568da6",
@@ -98243,8 +98243,8 @@
         "visible": true
       },
       {
-        "id": "2d65b9ff-e51e-40b2-998f-9db027967cbc",
-        "name": "VÄSTERVÅNG",
+        "id": "ca11051904a14af1a30b7db9bcf34982",
+        "name": "Västervång",
         "vertexIds": [
           "7784504d-e237-4ef6-8ad2-78c4301c8f09",
           "e124d3af-f452-41f8-8162-feeacc704462",
@@ -98274,153 +98274,8 @@
         "visible": true
       },
       {
-        "id": "14aec6ba-6b20-4d95-a26d-2b853f9b3699",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A A",
-        "vertexIds": [
-          "3e79d42e-f4b4-4294-ac04-de38859c1354",
-          "56d18f3e-9948-4513-8259-35e1cc871b85",
-          "395c858b-359b-4009-86ba-02b6365de564",
-          "816ea951-cc72-4817-9bb2-129071f1940e",
-          "e1a9e2db-dcd8-455f-bf09-be4b73021e6f",
-          "1cb7b014-b9eb-41ff-b127-52d9632f66fe",
-          "11d35f78-45e0-4548-922b-a50f9090c198",
-          "5419e25b-b4fd-4746-b18a-a872b9dad2e6",
-          "9d838502-e4c5-45e5-9004-1908d89cdbdb",
-          "7cd20b74-08d4-4154-b74a-c00a9ca980f9",
-          "7872f3fb-38d7-479f-8109-2cd3a1871066",
-          "dc4f32dd-1bc4-4611-a7de-baaf74f12ec0",
-          "2ba226c1-d88f-4d30-a204-27d770939bf9",
-          "f312404f-e782-4888-886b-f06bd759ad48",
-          "66a9536c-05d0-4411-a4c3-1a92ae223f21",
-          "96f17a87-de5a-40c7-9253-91d5268a85fb",
-          "b6720168-8f2a-40fb-9134-74985c9e2456",
-          "15819aa8-8f8c-4b3c-8bf3-536b6886abe5",
-          "4719fc72-da51-4247-b13f-476e359f02d2",
-          "17b107db-ea70-4f94-b4d4-4c670968aa02",
-          "7a621140-6cc9-4386-9c04-0f22e8e4c5b6",
-          "ea6364d4-8a64-45a7-8b7c-2c0d4e8a6232",
-          "0d57731d-78cc-49b0-a5c4-11d057913f70",
-          "2cc8d04f-abec-4bae-8c26-4c269168b722",
-          "f51bded8-6a41-44a7-a7c3-7be93ca72223",
-          "34e2f9bc-c905-4bdc-b05d-ead1c987373a",
-          "e6d9b1a8-6ed3-47da-b8ff-331bd2dfbc2c",
-          "00359956-2561-4548-915d-ab595134fa22",
-          "b0c996b8-2138-4d83-ab16-4afdab045c1e",
-          "bdfcbe08-39e8-4a09-8f38-87278c8a1a94",
-          "83b627bc-a162-460f-a42d-339cae9044ab",
-          "d6f10bdd-af28-41b0-b169-d412682a3aa4",
-          "12d79467-f53e-4a33-b4e1-ab4a946ebf32",
-          "e6b72c99-711d-465a-8a15-897b5898d68a",
-          "9bd91874-868b-4dd8-8251-2cd865067094",
-          "0a1e6325-f854-470d-a2d5-83bf5ab9b9d9",
-          "da5388ed-baee-4804-b633-fffb9ecd3baf",
-          "246ca252-34f1-4982-b744-8a495f113430",
-          "fe990d69-faa7-4ddf-acc7-d3ea4605999f",
-          "47e759df-8d83-4c46-9d66-6fd9709987cb",
-          "dac44182-cc55-4150-bd25-a83b708edf00",
-          "e8abcea4-7026-4a19-8e0c-baa6ad841a7f",
-          "25a14fbb-f72b-4469-899c-c19f699fabe2",
-          "71cd1499-7aba-40ea-85c1-5f61c241ad96",
-          "d8b03674-33de-41ab-9c18-64f940c5ad96",
-          "00546b28-421b-4c65-b975-ede5bea5a29f",
-          "57cf3dc9-874b-4f42-bb68-26055da8903b",
-          "d9427665-e681-4841-90d7-ab9341e978b2",
-          "cff2f50f-7884-49a6-8346-e0ef3390d8bf",
-          "20019cc2-f280-42a0-bdbe-1ad87740f6dd",
-          "8c9f07b7-2b37-48ec-bea7-9fa6b6d96d6a",
-          "fa41d179-83ce-4caf-9f33-0186fe8fef58",
-          "98d81ac2-b97e-463a-a50a-c2af4481c12d",
-          "177c62c5-40a4-4e66-8b1e-30e5900e33d8",
-          "9559b359-40c4-42ca-8f83-124ea5d03663",
-          "ccdfcfb2-0a20-4c0d-a62f-3cd79ad50e21",
-          "1292a1b4-4ce1-43c8-87ed-4454eef91395",
-          "c77a729a-eef6-46a6-81a8-efd37d15a326",
-          "5ddd16d6-efd7-4f98-a506-aae0fd34132e",
-          "b54c769f-bfc9-41fe-a221-4ceb87cfbec9",
-          "2ee37209-cd2d-4a63-94d1-a5bcfc259b59",
-          "a098010f-649c-409d-8fed-0335e536d658",
-          "06638e36-8cc5-4566-bb2f-9c9de467256d",
-          "df4cce7f-e1fa-41c2-bc3c-06a3fefb5664",
-          "d872152e-5ef4-4948-9aef-52d0855edbdd",
-          "95ccf627-5827-4bf7-a341-6675dda45205",
-          "43a17cba-9388-4bbc-98e7-1a01a2e24a7b",
-          "292896a7-4211-4f7e-9816-a60cddced57a",
-          "7f2758ef-e657-4e09-a799-d03d4be1a782",
-          "a4836a1a-3832-4faf-95a7-2e0743644935",
-          "168c178d-f36b-4f0e-b0d4-9faaa659afd5",
-          "978b49dd-0c35-4a61-bb5c-8f3c44aa9640",
-          "b8b16482-b10b-429b-82a4-ec00a0073ae8",
-          "57431e54-425c-4569-b3d1-b59feb722194",
-          "f20de231-627f-4af0-81f0-a1f7e1eaa304",
-          "225173e6-7468-4216-9ac3-c7fd4c501496",
-          "d94ce273-a130-4512-b41a-83c6afbf147a",
-          "705997f3-a9fe-4d61-9235-f64d64d2aeae",
-          "bad6f2bd-c2a5-430b-966b-1d2f60f610ab"
-        ],
-        "visible": true
-      },
-      {
-        "id": "702dc6c9-4ba2-4125-be45-d9061b3382c9",
-        "name": "Face 130 A + LIMHAMNS HAMNOMRÅDE",
-        "vertexIds": [
-          "cdfc11a8-6bb3-4916-852e-d0755bda2c90",
-          "b4a74732-2b01-44b8-b06d-47161b53b74a",
-          "5281dcdd-4030-4006-8072-e791453fdef7",
-          "d85d1887-eb30-4568-9dfd-c452503478de",
-          "a0ccc757-523d-4d0e-8db3-64b8be5812b5",
-          "846ddbd0-9f68-47de-b0db-25fd1c3b983d",
-          "19bd0f0d-86e4-4339-92ef-4fb52264ac7d",
-          "d8995950-7978-4b62-9328-f1497eb72cf9",
-          "ff050a73-2443-477a-8bb8-200d8b443880",
-          "ae176043-8811-434e-a855-8aa8914c7839",
-          "023684b2-a1f6-4356-9b0f-3c0ce95fdfb7",
-          "7f9992e5-82ae-481c-9184-825f0d584bfb",
-          "c0831496-19e0-49c9-a44d-c18d5b56394e",
-          "f6a3cb05-2589-45ef-8b79-c784f3898c43",
-          "a9cada4e-fb5b-403a-8abd-fc6778a2d242",
-          "027f23fa-59f5-4c4d-9138-fa04a29b1005",
-          "7870f2fc-9daa-4085-9f32-e2f00339ffe3",
-          "34d966be-ccff-4000-a72c-fe8c3dbf30df",
-          "cbb601db-72fd-401e-ab15-88d570c3fab2",
-          "0a0f0a18-fb81-422a-994b-27a8a85e5d8e",
-          "b56759f0-3acd-4cb9-8bf9-f506e3398b58",
-          "e4b95912-7cc2-4f1e-a6e5-0bb125819d3e",
-          "aed7e251-22a9-4ec2-94ed-1f94dd638092",
-          "d58e7843-5d58-42d9-a6a1-7b33abd10dda",
-          "04875cfd-5ec7-4993-a53f-ffdd6eed897b",
-          "f420cc82-8178-4d9e-93c5-c5f9aeac980a",
-          "8d3c24e2-49f8-4883-9d11-af56e2964d51",
-          "bc01a797-c782-417c-98fc-77a43651484e",
-          "a17eaa96-49bf-4b79-b5bf-89f35d1389f8",
-          "2920739d-0e05-4058-b71c-8a3bc6b81849",
-          "3df895ef-67b6-438a-b537-c6ffc153ffcf",
-          "4213e6f9-11c8-46dd-9c9b-b735d0dc80c9",
-          "43bf1ea2-cdef-4c00-b11b-4d2b5bf7bd7d",
-          "c5787cfc-09d5-4f28-802f-4be43fd605a9",
-          "094dc887-a0d2-4117-a0ce-5ed3458ee27d",
-          "dea4610f-cb6b-43ce-8f65-fbc3cc0d47ed",
-          "46ef20e7-b22e-4efd-afa3-73add2752a56",
-          "46df3aae-bd6f-49d6-b125-4a241235f4a1",
-          "4a942513-5cc7-4069-a013-2dbc685144b9",
-          "846cbd29-793a-4747-9c2e-8b15b4d5c48e",
-          "c1128346-4e13-49d5-9655-d19a6e219e6c",
-          "a690f3e2-c1b8-4e1e-aac2-e3a86caf71c1",
-          "30f18efd-c210-4be9-89ff-a7818f09c407",
-          "2941ca6a-b021-4aa2-81af-23b6b79e0653",
-          "7d3d68cf-89c9-45bc-87c8-457c4808d17a",
-          "15f16eea-d9de-4768-a1aa-5e4ae4628518",
-          "346200da-b60a-4e0e-bee1-3f9d69db9a7a",
-          "05198e67-c01e-42b5-89bb-947d0ad20515",
-          "0a2a2995-9089-4795-a931-c3ba696cbe76",
-          "63717445-e189-4584-b1ca-14962ccabecc",
-          "733271dc-f293-46a7-b932-478944e97df1",
-          "8908a562-4631-426b-a6c2-9787c2290cd5"
-        ],
-        "visible": true
-      },
-      {
-        "id": "10023b8c-accb-4aab-8020-5a3ad0b12a27",
-        "name": "HERMODSDAL",
+        "id": "b28c4f89f9164b76bcbaaf2804d0d9b0",
+        "name": "Hermodsdal",
         "vertexIds": [
           "a070f31e-3989-4981-b898-931685d7e4b5",
           "bda471c1-daee-4eb3-abce-5c28b2509408",
@@ -98498,8 +98353,8 @@
         "visible": true
       },
       {
-        "id": "2739bd4f-5e9d-4a8b-b5ef-42306f49ae72",
-        "name": "GULLVIK",
+        "id": "efd151613fba4d91ab0ff78577b943e9",
+        "name": "Gullvik",
         "vertexIds": [
           "7748aee5-a55d-4b34-acea-04cd7271fd67",
           "ed9bc92b-a12e-4623-ab26-233835969ce6",
@@ -98675,8 +98530,8 @@
         "visible": true
       },
       {
-        "id": "b18a6c45-2749-4485-aa32-34a6e90d4dad",
-        "name": "KVARNBY",
+        "id": "13e5172c63ec49ccb9d58e7f4a9b0ff8",
+        "name": "Kvarnby",
         "vertexIds": [
           "c9db5d4f-b49b-479e-b01a-ebb97831dfe9",
           "583a3900-9fd6-4949-a663-879576ae4c1c",
@@ -99103,8 +98958,8 @@
         "visible": true
       },
       {
-        "id": "56b7f7a1-79c2-415e-bfdc-633586821acd",
-        "name": "FORTUNA HEMGÅRDEN",
+        "id": "58576d5612894afa962ba3c2897634c9",
+        "name": "Fortuna Hemgården",
         "vertexIds": [
           "f67105fd-64bc-49db-ad27-16f665ddc3a6",
           "534cdd5a-7e5b-4fa5-9c12-a16d94d52e97",
@@ -99184,8 +99039,8 @@
         "visible": true
       },
       {
-        "id": "b5fffa4e-cd36-48ff-9924-545fde2ce1f0",
-        "name": "SÖDRA SALLERUP",
+        "id": "cfe7c7a4615c4fd2b7e34326330d972c",
+        "name": "Södra Sallerup",
         "vertexIds": [
           "e587f0ec-f71b-4ae0-9651-397f5e189400",
           "40f88fec-ab8d-4119-bc33-897023bd8b79",
@@ -99582,8 +99437,8 @@
         "visible": true
       },
       {
-        "id": "cdde2c63-bd78-4f6d-9060-852c17f84378",
-        "name": "VALDEMARSRO",
+        "id": "5c3a0da42642437c99f1ee05117e36bf",
+        "name": "Valdemarsro",
         "vertexIds": [
           "4b2f196e-226a-4b5c-abc3-ef012815b9eb",
           "2cfff226-3333-4446-8c4b-57b7120d716f",
@@ -100117,8 +99972,8 @@
         "visible": true
       },
       {
-        "id": "89299905-6f6c-4049-b6e5-42b81b978cc9",
-        "name": "SEGEMÖLLA",
+        "id": "26781d555cb4480cac4fce69f3a7bef8",
+        "name": "Segemölla",
         "vertexIds": [
           "67bdcf2b-35ec-4b5a-a272-770dc28dbb47",
           "89610f95-ac83-42fa-b5b9-c258f087c4e8",
@@ -100434,8 +100289,8 @@
         "visible": true
       },
       {
-        "id": "0169e236-7c98-4064-9d4d-7bb42afee1e8",
-        "name": "SEGE INDUSTRIOMRÅDE",
+        "id": "db640bbd7d4c48fe9e3efb1eed817bba",
+        "name": "Sege Industriområde",
         "vertexIds": [
           "47ffb417-caaf-4227-a609-c71ad7606caf",
           "25a14fbb-f72b-4469-899c-c19f699fabe2",
@@ -100512,8 +100367,8 @@
         "visible": true
       },
       {
-        "id": "c1fcc20c-d738-4f13-92bb-4b25d2aa4fd3",
-        "name": "TOARP",
+        "id": "934dfadfeee44a2dba8a38458061139a",
+        "name": "Toarp",
         "vertexIds": [
           "cfe7df1d-a1c4-4e19-8b33-707e2a8f3baa",
           "2ab19471-afa1-41dc-a1b4-c8d533dd8367",
@@ -100869,258 +100724,8 @@
         "visible": true
       },
       {
-        "id": "4b7c869a-66e7-4553-8380-f1e2f205b692",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A B",
-        "vertexIds": [
-          "4f332b53-e40a-4ca2-ac72-2254f0715d07",
-          "5a2a2cb4-121a-41d3-be08-87874b6b3cc1",
-          "fec69c55-adfc-4367-a4ee-708e1ee19890",
-          "22288bc0-f088-4c17-9f8a-91146ca493fd",
-          "eea4bf62-66fe-4966-9257-af4aca692e4d",
-          "91b51315-e4f8-47f4-b6b4-40d302c19b63",
-          "3648a693-b4cd-4597-8a27-e89e51ace403",
-          "ea6364d4-8a64-45a7-8b7c-2c0d4e8a6232",
-          "7a621140-6cc9-4386-9c04-0f22e8e4c5b6",
-          "17b107db-ea70-4f94-b4d4-4c670968aa02",
-          "4719fc72-da51-4247-b13f-476e359f02d2"
-        ],
-        "visible": true
-      },
-      {
-        "id": "5fb9f46b-b3ea-43bb-9e95-1cd49de3e54f",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A B A",
-        "vertexIds": [
-          "04b4d159-c469-4ca2-86ab-31bf22af9cd5",
-          "78694e49-623c-4c3e-9aa9-199cb45c8c1e",
-          "25032807-5fb1-4ce4-8a4c-5bfd978efb90",
-          "8bd6fd74-1999-4276-b4f2-28d201db651f",
-          "9ad6000e-c470-4218-8280-154cd2bb196d",
-          "2840e671-ceb9-4d10-ae3e-a63f59c9bb79",
-          "d3430c16-5b29-4bf9-babc-9bb5942abe0d",
-          "98254f7e-100c-427e-b505-7834a3224d5c",
-          "31f8bd5d-2ab3-4ea7-8ab6-b7ff1fc06eb2",
-          "d6e3400e-c531-4037-9788-8a2028cd091f",
-          "7d79db98-bf77-4976-90ae-9e7d2bb765c0",
-          "71dc40e9-cf95-4f84-b683-0e75f541f977",
-          "011832b2-e528-475e-a5a2-6a08b8e67056",
-          "7a9101e3-7c1f-4ce6-8e74-53e734bdbeb8",
-          "f9b8710f-fe4f-48e5-904d-72d0f806faf6",
-          "c1c51a51-abb8-4955-8dce-2a00abef0594",
-          "52354675-2c39-43f4-a626-e4580d5afd2f",
-          "f7cc709c-0f0b-4c16-9c0a-b7af1c6c2112",
-          "9d838502-e4c5-45e5-9004-1908d89cdbdb",
-          "5419e25b-b4fd-4746-b18a-a872b9dad2e6",
-          "59531dd2-2811-440a-a7fd-c0f075ba5a39",
-          "f4e4fd48-fc9b-414a-9d70-183ca59ba70b",
-          "2dbb5efc-0f96-4a15-9962-11d1200e7105",
-          "3d124a40-2334-4898-b65a-89e79e685ff6",
-          "331c377b-507d-4e29-8a8e-7bd298eebfc1",
-          "c5a87582-4f40-49ee-b599-dc1534cc1bd7",
-          "5cf3bfe2-04c8-449d-8be3-c6ade467b1d1",
-          "af01f8d2-f961-43b1-9f86-48de9bbe0a48",
-          "4542b2c1-d723-4ea1-bab0-643a4c1f03f0",
-          "caf768d4-e83f-4608-9a38-c0784d06cf52",
-          "ca475fd8-27a1-4c2b-8b5b-e6cd17cb7675",
-          "8d58c114-f868-4365-b01e-8ecf611436d4",
-          "d9d5f810-9e99-4a5e-a895-9c1a7c416454",
-          "4470aad2-7abc-4d6f-8a91-338400fdb222",
-          "48b87728-a984-4a20-8c28-6e55c613cb4c",
-          "611fef20-6fc8-47d0-b5eb-1c2ffe5ce625",
-          "80794b89-2868-4554-853b-8bf07af9ad7f",
-          "55df45e0-9671-4e34-be4b-59035ff6de0c",
-          "6768c8d9-724f-4f08-9a8e-d3dc8ebab2b7",
-          "7ee901f4-b8bb-4421-805d-ef21a65d024c",
-          "6880974c-c6d6-4b5c-9f77-636e52a184bc",
-          "26201688-8310-4dac-ba89-0604d1d4cd79",
-          "66abd0d7-3534-4516-beff-cfa049a1a9bc",
-          "0cfb40fc-9917-4462-b3bc-6c2381571224",
-          "b65d0608-a483-418c-970a-afa6b5bb0504",
-          "c7a59e10-f2c7-4a6b-9ef0-f0c075d86f1f",
-          "b839875e-c78f-44b8-9589-88fc513874dc",
-          "9a279204-f928-44bb-b335-ee83eb58d97c",
-          "0108709c-a046-4e65-9994-5390800815b5",
-          "debdb88f-5967-4a4c-83d1-7b07c9281365",
-          "35c1c3c3-41c8-4a43-9760-058ace438837",
-          "6b3df422-09a2-4e06-8420-823ce7f249b6",
-          "af3ef550-528d-4a1d-aac6-d16059d9f782",
-          "f2f41b96-5361-4f54-9e37-364cc697f9d8",
-          "96de8523-4725-4159-af2c-84c912c7294a",
-          "75313d9c-e745-431b-9198-ee89c72a95c3",
-          "c56e757a-8831-4e4b-b663-ddb455c23f45",
-          "3d0d34af-bab1-4034-a1f0-0ccccefbd2aa",
-          "0f87bfef-df64-4e92-b15f-763b24ef1074",
-          "cae37257-744c-443a-ad9a-b13d4bfc653e",
-          "50366d8a-6b52-4e14-b3f8-05bf9bd9a15b",
-          "bcd1d76b-d331-46e3-b298-73f14c0826a4",
-          "4910d85f-f6cb-41d8-ab6b-776eb7f4f271",
-          "289c7d1f-7173-4dcb-b873-b4771dfc412f",
-          "a7460262-620c-4995-a63b-a8bf0c0ec187",
-          "332f2780-c9a1-4679-bb0e-7af68eeb0549",
-          "fdaa0880-1d14-4d3f-bfd0-627f4b3471de",
-          "5a96f5ff-ae5f-4a9e-9936-ee3efca9a3bd",
-          "05bf1095-5670-412c-aa8d-808ec8020459",
-          "485c4322-d71f-422f-b22b-35408b1e41b8",
-          "d5a3feb0-ddde-4280-85f9-00447734d450",
-          "5ca53703-3564-4cb5-a772-8a626395fb8a",
-          "898bde3e-e521-4d1c-8643-3e869a7b4c9b",
-          "436e6258-bba2-4e2d-86b8-2c5fdafbedab",
-          "44e690ce-e88c-4a25-bb4e-a8d899fcdfc0",
-          "f883a8fc-2f16-47b7-8fb6-8d0ce30bb860",
-          "f4fb6e85-52b3-4f4e-b1e0-2e68fa10dde2",
-          "0d5a5545-96d2-4a21-8e50-62c51e18b1ff",
-          "fdc1488e-e86e-4e95-b04c-cf5b07ffd6d4",
-          "26b5c594-4366-4fc3-ba1d-ca534c258885",
-          "5cb5176f-0eb5-4226-9079-63b73c5119a2",
-          "0e39b1e3-0cd0-48bb-b950-2257a85dc417",
-          "41d38f64-e7cc-4b8f-a888-94850eafaa70",
-          "aaf85d4f-ba3c-4c3b-8a05-db0290d906d8",
-          "2df76deb-0a72-4ce3-992d-97c6c01e5c46",
-          "b29859c9-aa19-485a-93f0-7627bc935572",
-          "f731b8f4-ba78-4f9d-bb21-4b3edf396cbb",
-          "5c4e023d-c2f6-4def-b045-c9f97baa86fd",
-          "71f84010-f97d-4fe4-84de-3901c18599b5",
-          "84d837c8-2f3a-4a5f-b82f-910d5a0e1440",
-          "348313f6-3f33-4a35-b217-79bee2652315",
-          "f2aef63e-4268-4437-95c2-7678da4f92cf",
-          "4740ec9b-4762-4bad-be83-a306e8938791",
-          "7cc525e7-4a9e-4159-9143-d4c856927b5d",
-          "6aa156aa-af9b-4765-b7b4-d2c89eb6a86b",
-          "3981efce-28db-40e2-a5f1-00b83a0e6c06",
-          "3d7ee2cd-5788-49f0-a1d9-c120bb0015b9",
-          "d82d8900-aa58-48a0-a036-59cce5d45fdd",
-          "db783a6e-6a5a-49da-94fc-85409a3945b2",
-          "07c75eb5-c993-4b89-8d08-feb4aa241e35",
-          "c2628f89-b609-4337-afea-cacae0d57af3",
-          "0be7c51f-b9e7-4f73-b64b-3364e8eff5e4",
-          "7967028e-d1a7-4171-827b-fddc788e565c",
-          "ae1eeb7f-f71a-4749-a10e-f05947183479",
-          "d582744d-2812-43d8-8379-19503b56c81a",
-          "043f8336-4687-4ce7-ad36-fe721d4d4cb5",
-          "568f0abb-49b7-49da-bc5f-2adc886940ef",
-          "d5dc4aae-f66e-4b01-9670-29e0f2468238",
-          "f4973d0d-a124-434d-9512-06c0e02d2e54",
-          "f1ff1370-b7d1-4fb4-8cf5-4a5554325969",
-          "b8aecd12-9b31-4876-8535-703c83bb1f78",
-          "400385c4-b06a-4943-9e26-1b03a4237e67",
-          "65d5fc7f-f8a9-4bf3-8e29-798a8b64413e",
-          "017ef130-64db-4636-890c-c6375787c8e4",
-          "659f2c65-b0a3-4d31-9709-338af3aba2f6",
-          "e43e2073-a0f5-43c1-bcc1-d69dca8e73c3",
-          "ff67e738-eb8b-4312-ae59-44f236df45c8",
-          "0a20693d-c5ba-435c-b983-8c7af28f105e",
-          "b9f4eb13-c60a-43a6-8ee4-c0ee3951b3a0",
-          "490dd029-6014-44bc-93b0-51c17cf2bbf2",
-          "378ff5fb-b56d-464f-9a41-9269d22dbe63",
-          "0fc94c5d-2eb5-4b5b-bc74-87eab6a0ac64",
-          "c2b404a3-e2b4-43ce-8f6d-dddcb7b301db",
-          "a4fee956-f59e-4b7f-b60c-c88ff4e4f1ad",
-          "30d15412-bc6b-4dc5-aa76-69ce1b74e68c",
-          "8c205de6-e45d-4346-a1d6-aeda97cc1bf3",
-          "ebbfb111-9b29-44d3-8d0e-d5a5ea31f1d6",
-          "cb09701c-197a-469e-a48f-73ce83062ec2",
-          "ed482acd-c5bd-4098-8e67-87d01b24041b",
-          "c2599d13-2aac-4cd4-bf8b-3097daf2c2d0",
-          "5857496d-03d5-4787-a025-89f4580be852",
-          "88604800-77f8-4ec3-ab9a-d1c72a8e16f5",
-          "d6705705-2b0b-4bd7-b7bb-8fc5465afdf4",
-          "f1d11fcb-304b-4cfd-8e6c-73c6ada53d13",
-          "59e01da0-55de-430d-94a6-e3569961ccd6",
-          "cf7ece3f-5661-4035-b0d5-142a57af73b4",
-          "d74d74cb-5f63-453f-b859-e34f10529e2e",
-          "bab6a556-5fed-4fe8-ad31-f5ca1e8c819b",
-          "bc796058-cb3d-427d-897d-6e56676f7984",
-          "ca456562-cd55-46b0-b03e-4ea1babaef12",
-          "e377de91-6bbd-47af-85e3-8efc2829b00f",
-          "47f143b3-58ec-4450-8c63-7270bd8f491d",
-          "fdfd7751-29eb-40f9-9bf7-d1045a156604",
-          "ffd3b584-1e8d-4075-876f-de854d1113ae",
-          "9c0eee20-c331-4f3d-be67-91fb2b4779f9",
-          "2bb8a046-3e31-46c0-8875-b89d2d1112c4"
-        ],
-        "visible": true
-      },
-      {
-        "id": "adef4dea-a694-4249-a4c4-a708f233e95c",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A B B B",
-        "vertexIds": [
-          "8bd6fd74-1999-4276-b4f2-28d201db651f",
-          "4f332b53-e40a-4ca2-ac72-2254f0715d07",
-          "4719fc72-da51-4247-b13f-476e359f02d2",
-          "15819aa8-8f8c-4b3c-8bf3-536b6886abe5",
-          "b6720168-8f2a-40fb-9134-74985c9e2456",
-          "96f17a87-de5a-40c7-9253-91d5268a85fb",
-          "66a9536c-05d0-4411-a4c3-1a92ae223f21",
-          "f312404f-e782-4888-886b-f06bd759ad48",
-          "2ba226c1-d88f-4d30-a204-27d770939bf9",
-          "dc4f32dd-1bc4-4611-a7de-baaf74f12ec0",
-          "7872f3fb-38d7-479f-8109-2cd3a1871066",
-          "7cd20b74-08d4-4154-b74a-c00a9ca980f9",
-          "9d838502-e4c5-45e5-9004-1908d89cdbdb",
-          "f7cc709c-0f0b-4c16-9c0a-b7af1c6c2112",
-          "52354675-2c39-43f4-a626-e4580d5afd2f",
-          "c1c51a51-abb8-4955-8dce-2a00abef0594",
-          "5fbd889d-fb9d-4b07-9ade-3c3c87ef1ed3",
-          "057b720e-dcd1-4c14-81e1-0756fee4489a",
-          "e45cdf47-1100-476e-8fb5-e030f89d30e6",
-          "a9f10ff8-fbf7-4a84-a708-9e4c613e9cb1",
-          "650c6ce1-e17d-41a6-8a9f-72d8baeb19fc",
-          "b35ff659-4db9-473e-b56b-e66ccd4a428b",
-          "d31668b3-90d8-45a2-9767-d2af341910c0",
-          "a92d22c9-bef7-4844-b5f8-7d69037bd349",
-          "6f86bf93-67aa-4966-804d-cfd6ba5549f9",
-          "de336e92-ca40-4d47-b3ac-355678daafbe",
-          "9424c5b0-d4ce-481e-9ea1-684bf2659a4c",
-          "d5b1dcbe-a9c8-4e07-ae4d-c3561e19dd96",
-          "22c4289d-56cf-4583-aab5-c4847c5b2b6a",
-          "6dd261be-4725-43e4-97da-c9359eb035e8",
-          "22581148-f357-4897-99f1-0faffb6a2eeb",
-          "405190ca-11d3-4ee2-85a1-cedc4b1dfd98",
-          "ff7d0422-7bed-408e-8cc4-5dff15fa9652",
-          "d10189b8-a880-4c56-9afc-280c2fd9b630",
-          "7d79db98-bf77-4976-90ae-9e7d2bb765c0",
-          "d6e3400e-c531-4037-9788-8a2028cd091f",
-          "31f8bd5d-2ab3-4ea7-8ab6-b7ff1fc06eb2",
-          "98254f7e-100c-427e-b505-7834a3224d5c",
-          "d3430c16-5b29-4bf9-babc-9bb5942abe0d",
-          "2840e671-ceb9-4d10-ae3e-a63f59c9bb79",
-          "9ad6000e-c470-4218-8280-154cd2bb196d"
-        ],
-        "visible": true
-      },
-      {
-        "id": "9630bfed-9fcd-49b2-a43a-3e57a526e23e",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A A B B A",
-        "vertexIds": [
-          "c1c51a51-abb8-4955-8dce-2a00abef0594",
-          "f9b8710f-fe4f-48e5-904d-72d0f806faf6",
-          "7a9101e3-7c1f-4ce6-8e74-53e734bdbeb8",
-          "011832b2-e528-475e-a5a2-6a08b8e67056",
-          "71dc40e9-cf95-4f84-b683-0e75f541f977",
-          "7d79db98-bf77-4976-90ae-9e7d2bb765c0",
-          "d10189b8-a880-4c56-9afc-280c2fd9b630",
-          "ff7d0422-7bed-408e-8cc4-5dff15fa9652",
-          "405190ca-11d3-4ee2-85a1-cedc4b1dfd98",
-          "22581148-f357-4897-99f1-0faffb6a2eeb",
-          "6dd261be-4725-43e4-97da-c9359eb035e8",
-          "22c4289d-56cf-4583-aab5-c4847c5b2b6a",
-          "d5b1dcbe-a9c8-4e07-ae4d-c3561e19dd96",
-          "9424c5b0-d4ce-481e-9ea1-684bf2659a4c",
-          "de336e92-ca40-4d47-b3ac-355678daafbe",
-          "6f86bf93-67aa-4966-804d-cfd6ba5549f9",
-          "a92d22c9-bef7-4844-b5f8-7d69037bd349",
-          "d31668b3-90d8-45a2-9767-d2af341910c0",
-          "b35ff659-4db9-473e-b56b-e66ccd4a428b",
-          "650c6ce1-e17d-41a6-8a9f-72d8baeb19fc",
-          "a9f10ff8-fbf7-4a84-a708-9e4c613e9cb1",
-          "e45cdf47-1100-476e-8fb5-e030f89d30e6",
-          "057b720e-dcd1-4c14-81e1-0756fee4489a",
-          "5fbd889d-fb9d-4b07-9ade-3c3c87ef1ed3"
-        ],
-        "visible": true
-      },
-      {
-        "id": "1a3a944a-1148-4862-b9d2-e141547778a1",
-        "name": "RISEBERGA",
+        "id": "07f4b5619f2f4338b5846f92cdc239ee",
+        "name": "Riseberga",
         "vertexIds": [
           "f9fa4428-41de-4950-92d3-bf93c2fbb0b2",
           "9880643d-9243-4c26-aa9e-259cc0f70a67",
@@ -102225,8 +101830,8 @@
         "visible": true
       },
       {
-        "id": "3f05a6b2-fc2e-4e5a-8dcb-0c24d5edb9cc",
-        "name": "TOFTANÄS",
+        "id": "3bd31203f9c44248946c0fd815916bb0",
+        "name": "Toftanäs",
         "vertexIds": [
           "bd77a60f-3674-43a4-9010-a468d97bf71f",
           "86f8d56c-840d-45a1-9d9d-a0a5a511f3c1",
@@ -102850,8 +102455,8 @@
         "visible": true
       },
       {
-        "id": "a3f70fe3-918f-44f0-b220-0374d9b4bc97",
-        "name": "KLAGSHAMN",
+        "id": "5edc0ce0f5f9424892d8fa76904bdeb8",
+        "name": "Klagshamn",
         "vertexIds": [
           "2568965c-4fab-4636-89d9-1001c47d7a78",
           "fbaae625-62d5-4047-96ba-7d6a9dd13b00",
@@ -102972,8 +102577,8 @@
         "visible": true
       },
       {
-        "id": "abb50b32-776e-40b5-81c3-f3fec5378964",
-        "name": "BUNKEFLOSTRAND",
+        "id": "e15dd86cc7414bfbba236fdeaece4d0e",
+        "name": "Bunkeflostrand",
         "vertexIds": [
           "09d101f9-c496-47d4-a284-a46b0cf17747",
           "e9fcb505-008f-4ef9-9fb9-9537d6f086fa",
@@ -103074,8 +102679,8 @@
         "visible": true
       },
       {
-        "id": "6b6a8e4f-6a5d-47c3-b843-71da1c6477c1",
-        "name": "SIBBARP",
+        "id": "99c8d16feeb8465eb155d1a299bf5601",
+        "name": "Sibbarp",
         "vertexIds": [
           "ea9e6cdf-62d3-4707-906d-36d9adb083d5",
           "56469ae1-e3d5-4cee-b1bb-b78e7070bdc9",
@@ -103206,8 +102811,67 @@
         "visible": true
       },
       {
-        "id": "d7e53747-c41a-45d5-bf44-a440ad8bd51f",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 B",
+        "id": "a7ffdbd86249406d8bd2f92155b3ef61",
+        "name": "Limhamns Hamnområde",
+        "vertexIds": [
+          "cdfc11a8-6bb3-4916-852e-d0755bda2c90",
+          "b4a74732-2b01-44b8-b06d-47161b53b74a",
+          "5281dcdd-4030-4006-8072-e791453fdef7",
+          "d85d1887-eb30-4568-9dfd-c452503478de",
+          "a0ccc757-523d-4d0e-8db3-64b8be5812b5",
+          "846ddbd0-9f68-47de-b0db-25fd1c3b983d",
+          "19bd0f0d-86e4-4339-92ef-4fb52264ac7d",
+          "d8995950-7978-4b62-9328-f1497eb72cf9",
+          "ff050a73-2443-477a-8bb8-200d8b443880",
+          "ae176043-8811-434e-a855-8aa8914c7839",
+          "023684b2-a1f6-4356-9b0f-3c0ce95fdfb7",
+          "7f9992e5-82ae-481c-9184-825f0d584bfb",
+          "c0831496-19e0-49c9-a44d-c18d5b56394e",
+          "f6a3cb05-2589-45ef-8b79-c784f3898c43",
+          "a9cada4e-fb5b-403a-8abd-fc6778a2d242",
+          "027f23fa-59f5-4c4d-9138-fa04a29b1005",
+          "7870f2fc-9daa-4085-9f32-e2f00339ffe3",
+          "34d966be-ccff-4000-a72c-fe8c3dbf30df",
+          "cbb601db-72fd-401e-ab15-88d570c3fab2",
+          "0a0f0a18-fb81-422a-994b-27a8a85e5d8e",
+          "b56759f0-3acd-4cb9-8bf9-f506e3398b58",
+          "e4b95912-7cc2-4f1e-a6e5-0bb125819d3e",
+          "aed7e251-22a9-4ec2-94ed-1f94dd638092",
+          "d58e7843-5d58-42d9-a6a1-7b33abd10dda",
+          "04875cfd-5ec7-4993-a53f-ffdd6eed897b",
+          "f420cc82-8178-4d9e-93c5-c5f9aeac980a",
+          "8d3c24e2-49f8-4883-9d11-af56e2964d51",
+          "bc01a797-c782-417c-98fc-77a43651484e",
+          "a17eaa96-49bf-4b79-b5bf-89f35d1389f8",
+          "2920739d-0e05-4058-b71c-8a3bc6b81849",
+          "3df895ef-67b6-438a-b537-c6ffc153ffcf",
+          "4213e6f9-11c8-46dd-9c9b-b735d0dc80c9",
+          "43bf1ea2-cdef-4c00-b11b-4d2b5bf7bd7d",
+          "c5787cfc-09d5-4f28-802f-4be43fd605a9",
+          "094dc887-a0d2-4117-a0ce-5ed3458ee27d",
+          "dea4610f-cb6b-43ce-8f65-fbc3cc0d47ed",
+          "46ef20e7-b22e-4efd-afa3-73add2752a56",
+          "46df3aae-bd6f-49d6-b125-4a241235f4a1",
+          "4a942513-5cc7-4069-a013-2dbc685144b9",
+          "846cbd29-793a-4747-9c2e-8b15b4d5c48e",
+          "c1128346-4e13-49d5-9655-d19a6e219e6c",
+          "a690f3e2-c1b8-4e1e-aac2-e3a86caf71c1",
+          "30f18efd-c210-4be9-89ff-a7818f09c407",
+          "2941ca6a-b021-4aa2-81af-23b6b79e0653",
+          "7d3d68cf-89c9-45bc-87c8-457c4808d17a",
+          "15f16eea-d9de-4768-a1aa-5e4ae4628518",
+          "346200da-b60a-4e0e-bee1-3f9d69db9a7a",
+          "05198e67-c01e-42b5-89bb-947d0ad20515",
+          "0a2a2995-9089-4795-a931-c3ba696cbe76",
+          "63717445-e189-4584-b1ca-14962ccabecc",
+          "733271dc-f293-46a7-b932-478944e97df1",
+          "8908a562-4631-426b-a6c2-9787c2290cd5"
+        ],
+        "visible": true
+      },
+      {
+        "id": "3e914cb5d5fe403eb41d26254547c7b1",
+        "name": "Ribersborgsstranden",
         "vertexIds": [
           "940d3bb4-1d6b-4d37-84f3-a5bba75ffa27",
           "e59e4044-d182-4c31-885f-c23a59e78548",
@@ -103551,8 +103215,8 @@
         "visible": true
       },
       {
-        "id": "a9ee126e-5545-4d71-be5c-91993cbeb718",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A B",
+        "id": "4700d9a9387b4cfcb4b881050f1949a7",
+        "name": "Västra Hamnen",
         "vertexIds": [
           "0d583865-b816-42e5-9e37-b17b172155e8",
           "a8d6be0a-3717-4534-9660-b1bcb6c03b85",
@@ -103615,8 +103279,191 @@
         "visible": true
       },
       {
-        "id": "6c0543d8-5979-4880-a82f-55f1f243883f",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A B A + Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A A B B",
+        "id": "7a051e11feac43d2afa0b4a72c7adadf",
+        "name": "Frihamnen",
+        "vertexIds": [
+          "c1c51a51-abb8-4955-8dce-2a00abef0594",
+          "f9b8710f-fe4f-48e5-904d-72d0f806faf6",
+          "7a9101e3-7c1f-4ce6-8e74-53e734bdbeb8",
+          "011832b2-e528-475e-a5a2-6a08b8e67056",
+          "71dc40e9-cf95-4f84-b683-0e75f541f977",
+          "7d79db98-bf77-4976-90ae-9e7d2bb765c0",
+          "d10189b8-a880-4c56-9afc-280c2fd9b630",
+          "ff7d0422-7bed-408e-8cc4-5dff15fa9652",
+          "405190ca-11d3-4ee2-85a1-cedc4b1dfd98",
+          "22581148-f357-4897-99f1-0faffb6a2eeb",
+          "6dd261be-4725-43e4-97da-c9359eb035e8",
+          "22c4289d-56cf-4583-aab5-c4847c5b2b6a",
+          "d5b1dcbe-a9c8-4e07-ae4d-c3561e19dd96",
+          "9424c5b0-d4ce-481e-9ea1-684bf2659a4c",
+          "de336e92-ca40-4d47-b3ac-355678daafbe",
+          "6f86bf93-67aa-4966-804d-cfd6ba5549f9",
+          "a92d22c9-bef7-4844-b5f8-7d69037bd349",
+          "d31668b3-90d8-45a2-9767-d2af341910c0",
+          "b35ff659-4db9-473e-b56b-e66ccd4a428b",
+          "650c6ce1-e17d-41a6-8a9f-72d8baeb19fc",
+          "a9f10ff8-fbf7-4a84-a708-9e4c613e9cb1",
+          "e45cdf47-1100-476e-8fb5-e030f89d30e6",
+          "057b720e-dcd1-4c14-81e1-0756fee4489a",
+          "5fbd889d-fb9d-4b07-9ade-3c3c87ef1ed3"
+        ],
+        "visible": true
+      },
+      {
+        "id": "95c8cae871e84e268f5fd80acf7d555e",
+        "name": "Mellersta Hamnen",
+        "vertexIds": [
+          "8bd6fd74-1999-4276-b4f2-28d201db651f",
+          "4f332b53-e40a-4ca2-ac72-2254f0715d07",
+          "4719fc72-da51-4247-b13f-476e359f02d2",
+          "15819aa8-8f8c-4b3c-8bf3-536b6886abe5",
+          "b6720168-8f2a-40fb-9134-74985c9e2456",
+          "96f17a87-de5a-40c7-9253-91d5268a85fb",
+          "66a9536c-05d0-4411-a4c3-1a92ae223f21",
+          "f312404f-e782-4888-886b-f06bd759ad48",
+          "2ba226c1-d88f-4d30-a204-27d770939bf9",
+          "dc4f32dd-1bc4-4611-a7de-baaf74f12ec0",
+          "7872f3fb-38d7-479f-8109-2cd3a1871066",
+          "7cd20b74-08d4-4154-b74a-c00a9ca980f9",
+          "9d838502-e4c5-45e5-9004-1908d89cdbdb",
+          "f7cc709c-0f0b-4c16-9c0a-b7af1c6c2112",
+          "52354675-2c39-43f4-a626-e4580d5afd2f",
+          "c1c51a51-abb8-4955-8dce-2a00abef0594",
+          "5fbd889d-fb9d-4b07-9ade-3c3c87ef1ed3",
+          "057b720e-dcd1-4c14-81e1-0756fee4489a",
+          "e45cdf47-1100-476e-8fb5-e030f89d30e6",
+          "a9f10ff8-fbf7-4a84-a708-9e4c613e9cb1",
+          "650c6ce1-e17d-41a6-8a9f-72d8baeb19fc",
+          "b35ff659-4db9-473e-b56b-e66ccd4a428b",
+          "d31668b3-90d8-45a2-9767-d2af341910c0",
+          "a92d22c9-bef7-4844-b5f8-7d69037bd349",
+          "6f86bf93-67aa-4966-804d-cfd6ba5549f9",
+          "de336e92-ca40-4d47-b3ac-355678daafbe",
+          "9424c5b0-d4ce-481e-9ea1-684bf2659a4c",
+          "d5b1dcbe-a9c8-4e07-ae4d-c3561e19dd96",
+          "22c4289d-56cf-4583-aab5-c4847c5b2b6a",
+          "6dd261be-4725-43e4-97da-c9359eb035e8",
+          "22581148-f357-4897-99f1-0faffb6a2eeb",
+          "405190ca-11d3-4ee2-85a1-cedc4b1dfd98",
+          "ff7d0422-7bed-408e-8cc4-5dff15fa9652",
+          "d10189b8-a880-4c56-9afc-280c2fd9b630",
+          "7d79db98-bf77-4976-90ae-9e7d2bb765c0",
+          "d6e3400e-c531-4037-9788-8a2028cd091f",
+          "31f8bd5d-2ab3-4ea7-8ab6-b7ff1fc06eb2",
+          "98254f7e-100c-427e-b505-7834a3224d5c",
+          "d3430c16-5b29-4bf9-babc-9bb5942abe0d",
+          "2840e671-ceb9-4d10-ae3e-a63f59c9bb79",
+          "9ad6000e-c470-4218-8280-154cd2bb196d"
+        ],
+        "visible": true
+      },
+      {
+        "id": "20ed8fb4b66e4643b340361e688a0e78",
+        "name": "Norra Hamnen",
+        "vertexIds": [
+          "4f332b53-e40a-4ca2-ac72-2254f0715d07",
+          "5a2a2cb4-121a-41d3-be08-87874b6b3cc1",
+          "fec69c55-adfc-4367-a4ee-708e1ee19890",
+          "22288bc0-f088-4c17-9f8a-91146ca493fd",
+          "eea4bf62-66fe-4966-9257-af4aca692e4d",
+          "91b51315-e4f8-47f4-b6b4-40d302c19b63",
+          "3648a693-b4cd-4597-8a27-e89e51ace403",
+          "ea6364d4-8a64-45a7-8b7c-2c0d4e8a6232",
+          "7a621140-6cc9-4386-9c04-0f22e8e4c5b6",
+          "17b107db-ea70-4f94-b4d4-4c670968aa02",
+          "4719fc72-da51-4247-b13f-476e359f02d2"
+        ],
+        "visible": true
+      },
+      {
+        "id": "afca9a460f5f4415b26379a5794de053",
+        "name": "Östra Hamnen",
+        "vertexIds": [
+          "3e79d42e-f4b4-4294-ac04-de38859c1354",
+          "56d18f3e-9948-4513-8259-35e1cc871b85",
+          "395c858b-359b-4009-86ba-02b6365de564",
+          "816ea951-cc72-4817-9bb2-129071f1940e",
+          "e1a9e2db-dcd8-455f-bf09-be4b73021e6f",
+          "1cb7b014-b9eb-41ff-b127-52d9632f66fe",
+          "11d35f78-45e0-4548-922b-a50f9090c198",
+          "5419e25b-b4fd-4746-b18a-a872b9dad2e6",
+          "9d838502-e4c5-45e5-9004-1908d89cdbdb",
+          "7cd20b74-08d4-4154-b74a-c00a9ca980f9",
+          "7872f3fb-38d7-479f-8109-2cd3a1871066",
+          "dc4f32dd-1bc4-4611-a7de-baaf74f12ec0",
+          "2ba226c1-d88f-4d30-a204-27d770939bf9",
+          "f312404f-e782-4888-886b-f06bd759ad48",
+          "66a9536c-05d0-4411-a4c3-1a92ae223f21",
+          "96f17a87-de5a-40c7-9253-91d5268a85fb",
+          "b6720168-8f2a-40fb-9134-74985c9e2456",
+          "15819aa8-8f8c-4b3c-8bf3-536b6886abe5",
+          "4719fc72-da51-4247-b13f-476e359f02d2",
+          "17b107db-ea70-4f94-b4d4-4c670968aa02",
+          "7a621140-6cc9-4386-9c04-0f22e8e4c5b6",
+          "ea6364d4-8a64-45a7-8b7c-2c0d4e8a6232",
+          "0d57731d-78cc-49b0-a5c4-11d057913f70",
+          "2cc8d04f-abec-4bae-8c26-4c269168b722",
+          "f51bded8-6a41-44a7-a7c3-7be93ca72223",
+          "34e2f9bc-c905-4bdc-b05d-ead1c987373a",
+          "e6d9b1a8-6ed3-47da-b8ff-331bd2dfbc2c",
+          "00359956-2561-4548-915d-ab595134fa22",
+          "b0c996b8-2138-4d83-ab16-4afdab045c1e",
+          "bdfcbe08-39e8-4a09-8f38-87278c8a1a94",
+          "83b627bc-a162-460f-a42d-339cae9044ab",
+          "d6f10bdd-af28-41b0-b169-d412682a3aa4",
+          "12d79467-f53e-4a33-b4e1-ab4a946ebf32",
+          "e6b72c99-711d-465a-8a15-897b5898d68a",
+          "9bd91874-868b-4dd8-8251-2cd865067094",
+          "0a1e6325-f854-470d-a2d5-83bf5ab9b9d9",
+          "da5388ed-baee-4804-b633-fffb9ecd3baf",
+          "246ca252-34f1-4982-b744-8a495f113430",
+          "fe990d69-faa7-4ddf-acc7-d3ea4605999f",
+          "47e759df-8d83-4c46-9d66-6fd9709987cb",
+          "dac44182-cc55-4150-bd25-a83b708edf00",
+          "e8abcea4-7026-4a19-8e0c-baa6ad841a7f",
+          "25a14fbb-f72b-4469-899c-c19f699fabe2",
+          "71cd1499-7aba-40ea-85c1-5f61c241ad96",
+          "d8b03674-33de-41ab-9c18-64f940c5ad96",
+          "00546b28-421b-4c65-b975-ede5bea5a29f",
+          "57cf3dc9-874b-4f42-bb68-26055da8903b",
+          "d9427665-e681-4841-90d7-ab9341e978b2",
+          "cff2f50f-7884-49a6-8346-e0ef3390d8bf",
+          "20019cc2-f280-42a0-bdbe-1ad87740f6dd",
+          "8c9f07b7-2b37-48ec-bea7-9fa6b6d96d6a",
+          "fa41d179-83ce-4caf-9f33-0186fe8fef58",
+          "98d81ac2-b97e-463a-a50a-c2af4481c12d",
+          "177c62c5-40a4-4e66-8b1e-30e5900e33d8",
+          "9559b359-40c4-42ca-8f83-124ea5d03663",
+          "ccdfcfb2-0a20-4c0d-a62f-3cd79ad50e21",
+          "1292a1b4-4ce1-43c8-87ed-4454eef91395",
+          "c77a729a-eef6-46a6-81a8-efd37d15a326",
+          "5ddd16d6-efd7-4f98-a506-aae0fd34132e",
+          "b54c769f-bfc9-41fe-a221-4ceb87cfbec9",
+          "2ee37209-cd2d-4a63-94d1-a5bcfc259b59",
+          "a098010f-649c-409d-8fed-0335e536d658",
+          "06638e36-8cc5-4566-bb2f-9c9de467256d",
+          "df4cce7f-e1fa-41c2-bc3c-06a3fefb5664",
+          "d872152e-5ef4-4948-9aef-52d0855edbdd",
+          "95ccf627-5827-4bf7-a341-6675dda45205",
+          "43a17cba-9388-4bbc-98e7-1a01a2e24a7b",
+          "292896a7-4211-4f7e-9816-a60cddced57a",
+          "7f2758ef-e657-4e09-a799-d03d4be1a782",
+          "a4836a1a-3832-4faf-95a7-2e0743644935",
+          "168c178d-f36b-4f0e-b0d4-9faaa659afd5",
+          "978b49dd-0c35-4a61-bb5c-8f3c44aa9640",
+          "b8b16482-b10b-429b-82a4-ec00a0073ae8",
+          "57431e54-425c-4569-b3d1-b59feb722194",
+          "f20de231-627f-4af0-81f0-a1f7e1eaa304",
+          "225173e6-7468-4216-9ac3-c7fd4c501496",
+          "d94ce273-a130-4512-b41a-83c6afbf147a",
+          "705997f3-a9fe-4d61-9235-f64d64d2aeae",
+          "bad6f2bd-c2a5-430b-966b-1d2f60f610ab"
+        ],
+        "visible": true
+      },
+      {
+        "id": "5e1e02581364459dbd3e773cdabc2941",
+        "name": "Oljehamnen",
         "vertexIds": [
           "f72371df-e266-4c3b-b1d3-906dab5a3917",
           "146ee0db-6b81-41a0-8322-28f839ffd1e0",
@@ -103637,8 +103484,8 @@
         "visible": true
       },
       {
-        "id": "8ada3872-d1a0-4f3e-b248-2675f593534d",
-        "name": "Face 130 B + ÖSTRA HAMNEN + Face 131 + RIBERSBORGSSTRANDEN + INRE HAMNEN + VÄSTRA HAMNEN + MELLERSTA HAMNEN + Face 131 A A A B + SPILLEPENGEN",
+        "id": "cbf4442834ca4961b6c164bcdb8b1081",
+        "name": "Spillepengen",
         "vertexIds": [
           "0ffb7aa4-acc9-4447-9782-53641d17c38c",
           "86fd811a-2d57-48e5-a314-1a99b5884a7a",
@@ -103679,6 +103526,159 @@
           "f51bded8-6a41-44a7-a7c3-7be93ca72223",
           "2cc8d04f-abec-4bae-8c26-4c269168b722",
           "0d57731d-78cc-49b0-a5c4-11d057913f70"
+        ],
+        "visible": true
+      },
+      {
+        "id": "d75afcdc4a2d4d68bfe3c3d37fb6c717",
+        "name": "Inre Hamnen",
+        "vertexIds": [
+          "04b4d159-c469-4ca2-86ab-31bf22af9cd5",
+          "78694e49-623c-4c3e-9aa9-199cb45c8c1e",
+          "25032807-5fb1-4ce4-8a4c-5bfd978efb90",
+          "8bd6fd74-1999-4276-b4f2-28d201db651f",
+          "9ad6000e-c470-4218-8280-154cd2bb196d",
+          "2840e671-ceb9-4d10-ae3e-a63f59c9bb79",
+          "d3430c16-5b29-4bf9-babc-9bb5942abe0d",
+          "98254f7e-100c-427e-b505-7834a3224d5c",
+          "31f8bd5d-2ab3-4ea7-8ab6-b7ff1fc06eb2",
+          "d6e3400e-c531-4037-9788-8a2028cd091f",
+          "7d79db98-bf77-4976-90ae-9e7d2bb765c0",
+          "71dc40e9-cf95-4f84-b683-0e75f541f977",
+          "011832b2-e528-475e-a5a2-6a08b8e67056",
+          "7a9101e3-7c1f-4ce6-8e74-53e734bdbeb8",
+          "f9b8710f-fe4f-48e5-904d-72d0f806faf6",
+          "c1c51a51-abb8-4955-8dce-2a00abef0594",
+          "52354675-2c39-43f4-a626-e4580d5afd2f",
+          "f7cc709c-0f0b-4c16-9c0a-b7af1c6c2112",
+          "9d838502-e4c5-45e5-9004-1908d89cdbdb",
+          "5419e25b-b4fd-4746-b18a-a872b9dad2e6",
+          "59531dd2-2811-440a-a7fd-c0f075ba5a39",
+          "f4e4fd48-fc9b-414a-9d70-183ca59ba70b",
+          "2dbb5efc-0f96-4a15-9962-11d1200e7105",
+          "3d124a40-2334-4898-b65a-89e79e685ff6",
+          "331c377b-507d-4e29-8a8e-7bd298eebfc1",
+          "c5a87582-4f40-49ee-b599-dc1534cc1bd7",
+          "5cf3bfe2-04c8-449d-8be3-c6ade467b1d1",
+          "af01f8d2-f961-43b1-9f86-48de9bbe0a48",
+          "4542b2c1-d723-4ea1-bab0-643a4c1f03f0",
+          "caf768d4-e83f-4608-9a38-c0784d06cf52",
+          "ca475fd8-27a1-4c2b-8b5b-e6cd17cb7675",
+          "8d58c114-f868-4365-b01e-8ecf611436d4",
+          "d9d5f810-9e99-4a5e-a895-9c1a7c416454",
+          "4470aad2-7abc-4d6f-8a91-338400fdb222",
+          "48b87728-a984-4a20-8c28-6e55c613cb4c",
+          "611fef20-6fc8-47d0-b5eb-1c2ffe5ce625",
+          "80794b89-2868-4554-853b-8bf07af9ad7f",
+          "55df45e0-9671-4e34-be4b-59035ff6de0c",
+          "6768c8d9-724f-4f08-9a8e-d3dc8ebab2b7",
+          "7ee901f4-b8bb-4421-805d-ef21a65d024c",
+          "6880974c-c6d6-4b5c-9f77-636e52a184bc",
+          "26201688-8310-4dac-ba89-0604d1d4cd79",
+          "66abd0d7-3534-4516-beff-cfa049a1a9bc",
+          "0cfb40fc-9917-4462-b3bc-6c2381571224",
+          "b65d0608-a483-418c-970a-afa6b5bb0504",
+          "c7a59e10-f2c7-4a6b-9ef0-f0c075d86f1f",
+          "b839875e-c78f-44b8-9589-88fc513874dc",
+          "9a279204-f928-44bb-b335-ee83eb58d97c",
+          "0108709c-a046-4e65-9994-5390800815b5",
+          "debdb88f-5967-4a4c-83d1-7b07c9281365",
+          "35c1c3c3-41c8-4a43-9760-058ace438837",
+          "6b3df422-09a2-4e06-8420-823ce7f249b6",
+          "af3ef550-528d-4a1d-aac6-d16059d9f782",
+          "f2f41b96-5361-4f54-9e37-364cc697f9d8",
+          "96de8523-4725-4159-af2c-84c912c7294a",
+          "75313d9c-e745-431b-9198-ee89c72a95c3",
+          "c56e757a-8831-4e4b-b663-ddb455c23f45",
+          "3d0d34af-bab1-4034-a1f0-0ccccefbd2aa",
+          "0f87bfef-df64-4e92-b15f-763b24ef1074",
+          "cae37257-744c-443a-ad9a-b13d4bfc653e",
+          "50366d8a-6b52-4e14-b3f8-05bf9bd9a15b",
+          "bcd1d76b-d331-46e3-b298-73f14c0826a4",
+          "4910d85f-f6cb-41d8-ab6b-776eb7f4f271",
+          "289c7d1f-7173-4dcb-b873-b4771dfc412f",
+          "a7460262-620c-4995-a63b-a8bf0c0ec187",
+          "332f2780-c9a1-4679-bb0e-7af68eeb0549",
+          "fdaa0880-1d14-4d3f-bfd0-627f4b3471de",
+          "5a96f5ff-ae5f-4a9e-9936-ee3efca9a3bd",
+          "05bf1095-5670-412c-aa8d-808ec8020459",
+          "485c4322-d71f-422f-b22b-35408b1e41b8",
+          "d5a3feb0-ddde-4280-85f9-00447734d450",
+          "5ca53703-3564-4cb5-a772-8a626395fb8a",
+          "898bde3e-e521-4d1c-8643-3e869a7b4c9b",
+          "436e6258-bba2-4e2d-86b8-2c5fdafbedab",
+          "44e690ce-e88c-4a25-bb4e-a8d899fcdfc0",
+          "f883a8fc-2f16-47b7-8fb6-8d0ce30bb860",
+          "f4fb6e85-52b3-4f4e-b1e0-2e68fa10dde2",
+          "0d5a5545-96d2-4a21-8e50-62c51e18b1ff",
+          "fdc1488e-e86e-4e95-b04c-cf5b07ffd6d4",
+          "26b5c594-4366-4fc3-ba1d-ca534c258885",
+          "5cb5176f-0eb5-4226-9079-63b73c5119a2",
+          "0e39b1e3-0cd0-48bb-b950-2257a85dc417",
+          "41d38f64-e7cc-4b8f-a888-94850eafaa70",
+          "aaf85d4f-ba3c-4c3b-8a05-db0290d906d8",
+          "2df76deb-0a72-4ce3-992d-97c6c01e5c46",
+          "b29859c9-aa19-485a-93f0-7627bc935572",
+          "f731b8f4-ba78-4f9d-bb21-4b3edf396cbb",
+          "5c4e023d-c2f6-4def-b045-c9f97baa86fd",
+          "71f84010-f97d-4fe4-84de-3901c18599b5",
+          "84d837c8-2f3a-4a5f-b82f-910d5a0e1440",
+          "348313f6-3f33-4a35-b217-79bee2652315",
+          "f2aef63e-4268-4437-95c2-7678da4f92cf",
+          "4740ec9b-4762-4bad-be83-a306e8938791",
+          "7cc525e7-4a9e-4159-9143-d4c856927b5d",
+          "6aa156aa-af9b-4765-b7b4-d2c89eb6a86b",
+          "3981efce-28db-40e2-a5f1-00b83a0e6c06",
+          "3d7ee2cd-5788-49f0-a1d9-c120bb0015b9",
+          "d82d8900-aa58-48a0-a036-59cce5d45fdd",
+          "db783a6e-6a5a-49da-94fc-85409a3945b2",
+          "07c75eb5-c993-4b89-8d08-feb4aa241e35",
+          "c2628f89-b609-4337-afea-cacae0d57af3",
+          "0be7c51f-b9e7-4f73-b64b-3364e8eff5e4",
+          "7967028e-d1a7-4171-827b-fddc788e565c",
+          "ae1eeb7f-f71a-4749-a10e-f05947183479",
+          "d582744d-2812-43d8-8379-19503b56c81a",
+          "043f8336-4687-4ce7-ad36-fe721d4d4cb5",
+          "568f0abb-49b7-49da-bc5f-2adc886940ef",
+          "d5dc4aae-f66e-4b01-9670-29e0f2468238",
+          "f4973d0d-a124-434d-9512-06c0e02d2e54",
+          "f1ff1370-b7d1-4fb4-8cf5-4a5554325969",
+          "b8aecd12-9b31-4876-8535-703c83bb1f78",
+          "400385c4-b06a-4943-9e26-1b03a4237e67",
+          "65d5fc7f-f8a9-4bf3-8e29-798a8b64413e",
+          "017ef130-64db-4636-890c-c6375787c8e4",
+          "659f2c65-b0a3-4d31-9709-338af3aba2f6",
+          "e43e2073-a0f5-43c1-bcc1-d69dca8e73c3",
+          "ff67e738-eb8b-4312-ae59-44f236df45c8",
+          "0a20693d-c5ba-435c-b983-8c7af28f105e",
+          "b9f4eb13-c60a-43a6-8ee4-c0ee3951b3a0",
+          "490dd029-6014-44bc-93b0-51c17cf2bbf2",
+          "378ff5fb-b56d-464f-9a41-9269d22dbe63",
+          "0fc94c5d-2eb5-4b5b-bc74-87eab6a0ac64",
+          "c2b404a3-e2b4-43ce-8f6d-dddcb7b301db",
+          "a4fee956-f59e-4b7f-b60c-c88ff4e4f1ad",
+          "30d15412-bc6b-4dc5-aa76-69ce1b74e68c",
+          "8c205de6-e45d-4346-a1d6-aeda97cc1bf3",
+          "ebbfb111-9b29-44d3-8d0e-d5a5ea31f1d6",
+          "cb09701c-197a-469e-a48f-73ce83062ec2",
+          "ed482acd-c5bd-4098-8e67-87d01b24041b",
+          "c2599d13-2aac-4cd4-bf8b-3097daf2c2d0",
+          "5857496d-03d5-4787-a025-89f4580be852",
+          "88604800-77f8-4ec3-ab9a-d1c72a8e16f5",
+          "d6705705-2b0b-4bd7-b7bb-8fc5465afdf4",
+          "f1d11fcb-304b-4cfd-8e6c-73c6ada53d13",
+          "59e01da0-55de-430d-94a6-e3569961ccd6",
+          "cf7ece3f-5661-4035-b0d5-142a57af73b4",
+          "d74d74cb-5f63-453f-b859-e34f10529e2e",
+          "bab6a556-5fed-4fe8-ad31-f5ca1e8c819b",
+          "bc796058-cb3d-427d-897d-6e56676f7984",
+          "ca456562-cd55-46b0-b03e-4ea1babaef12",
+          "e377de91-6bbd-47af-85e3-8efc2829b00f",
+          "47f143b3-58ec-4450-8c63-7270bd8f491d",
+          "fdfd7751-29eb-40f9-9bf7-d1045a156604",
+          "ffd3b584-1e8d-4075-876f-de854d1113ae",
+          "9c0eee20-c331-4f3d-be67-91fb2b4779f9",
+          "2bb8a046-3e31-46c0-8875-b89d2d1112c4"
         ],
         "visible": true
       }
